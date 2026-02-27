@@ -1,1 +1,48 @@
+<!--
+Program name: thankyou.html
+Author: Your Name
+Date created: Feb 27, 2026
+Date last edited: Feb 27, 2026
+Version: 1.0
+Description: Thank you page for completing Patient Registration Form submission.
+-->
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thank You - We'R'Docs Medical</title>
+    <link href="style.css" rel="stylesheet">
+    <script>
+        // Dynamic date display
+        function showDate() {
+            const today = new Date();
+            const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+            document.getElementById('currentDate').innerText = today.toLocaleDateString('en-US', options);
+        }
+    </script>
+</head>
+<body onload="showDate()">
+
+<!-- Header -->
+<div id="header">
+    <img src="logo.png" alt="We'R'Docs Logo" width="100">
+    <h1>We'R'Docs Medical</h1>
+    <p>Today is: <span id="currentDate"></span></p>
+</div>
+
+<!-- Main Content -->
+<div id="form-section">
+    <h2>Thank You for Your Submission!</h2>
+    <p>We have received your registration information.</p>
+    <p>Our team will contact you shortly if needed.</p>
+    <p><a href="patient-form.html">Go Back to Registration Form</a></p>
+</div>
+
+<!-- Footer -->
+<div id="footer">
+    <p>We'R'Docs Medical &nbsp;&nbsp;<button onclick="alert('Contact us at support@werdocs.com')">Contact Us</button>&nbsp;&nbsp;Sugar Land, TX 77496</p>
+</div>
+
+</body>
+</html>
