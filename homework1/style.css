@@ -2,8 +2,8 @@
 Program name: style.css
 Author: Minatu Anifata
 Date created: Feb 23, 2026
-Version: 1.1
-Description: CSS for We Care Medical Clinic Patient Registration Form
+Version: 1.2
+Description: CSS for We Care Medical Clinic Patient Registration Form (spacious layout)
 */
 
 /* Colors harmonized with logo: #5CE1E6, #C1FF72, #E2A9F1 */
@@ -23,50 +23,59 @@ h1, h2 {
 
 #header, #footer {
     text-align: center;
-    padding: 15px;
+    padding: 25px 15px;
     background-color: #C1FF72; /* soft green from logo */
 }
 
 #form-section {
-    width: 80%;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff; /* form white background */
-    border-radius: 8px;
-    box-shadow: 0 0 10px #aaa;
+    width: 90%; /* wider form */
+    max-width: 1200px; /* prevent it from getting too wide on big screens */
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #aaa;
 }
 
 table {
     width: 100%;
     border-collapse: separate;
-    border-spacing: 10px;
+    border-spacing: 20px; /* more spacing between cells */
 }
 
 td {
-    padding: 5px;
+    padding: 10px 5px;
     vertical-align: top;
 }
 
-input, select, textarea {
-    padding: 5px;
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+    width: 100%; /* make inputs full width of their table cell */
+    padding: 8px 10px;
     font-size: 1em;
     border: 1px solid #5CE1E6;
-    border-radius: 4px;
+    border-radius: 6px;
+    box-sizing: border-box;
 }
 
 input[type="submit"], input[type="reset"], button {
-    padding: 10px 15px;
-    margin: 10px;
+    padding: 12px 20px;
+    margin: 15px;
     font-size: 1em;
-    background-color: #5CE1E6; /* turquoise button */
+    background-color: #5CE1E6;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
 }
 
 input[type="submit"]:hover, input[type="reset"]:hover, button:hover {
-    background-color: #2fa8b2; /* slightly darker turquoise hover */
+    background-color: #2fa8b2;
 }
 
 textarea {
@@ -76,4 +85,21 @@ textarea {
 #sliderValue {
     font-weight: bold;
     color: #5CE1E6;
+    margin-left: 10px;
+}
+
+/* Make the table responsive on smaller screens */
+@media (max-width: 768px) {
+    table, tr, td {
+        display: block;
+        width: 100%;
+    }
+
+    td {
+        margin-bottom: 15px;
+    }
+
+    td:first-child {
+        font-weight: bold;
+    }
 }
