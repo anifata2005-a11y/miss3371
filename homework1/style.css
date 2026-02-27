@@ -63,5 +63,7 @@ a:visited {
 .highlight {
     color: red;
     font-weight: bold;
+    
+    <link href="style.css" rel="stylesheet">
 }
-<link href="style.css" rel="stylesheet">
+
