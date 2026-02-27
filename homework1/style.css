@@ -1,1 +1,67 @@
+/*
+Program name: style.css
+Author: Minatu Anifata
+Date created: 02/23/2026
+Date last edited: 02/26/2026
+Version: 1.0
+Description: External stylesheet for Patient Registration Form
+*/
+/* ===== Page Background and Body (TAG selector) ===== */
+body {
+    background-color: #e6f2ff;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #003366;
+}
 
+/* ===== Header Section (ID selector) ===== */
+#header {
+    background-color: #cce0ff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* ===== Heading Styling (TAG selector) ===== */
+h1 {
+    color: darkblue;
+    font-size: 32px;
+}
+
+/* ===== Main Section (ID selector) ===== */
+#main {
+    padding: 20px;
+}
+
+/* ===== Footer Section (ID selector) ===== */
+#footer {
+    background-color: #99c2ff;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+/* ===== Table Styling (TAG selector) ===== */
+table {
+    border-spacing: 10px;
+}
+
+/* ===== Input Fields (TAG selector) ===== */
+input, select, textarea {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* ===== Hyperlinks ===== */
+a {
+    color: purple;
+}
+
+a:visited {
+    color: darkred;
+}
+
+/* ===== Example CLASS selector ===== */
+.highlight {
+    color: red;
+    font-weight: bold;
+}
+<link href="style.css" rel="stylesheet">
