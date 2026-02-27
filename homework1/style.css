@@ -1,69 +1,79 @@
 /*
 Program name: style.css
 Author: Minatu Anifata
-Date created: 02/23/2026
-Date last edited: 02/26/2026
-Version: 1.0
-Description: External stylesheet for Patient Registration Form
+Date created: Feb 23, 2026
+Version: 1.1
+Description: CSS for We Care Medical Clinic Patient Registration Form
 */
-/* ===== Page Background and Body (TAG selector) ===== */
+
+/* Colors harmonized with logo: #5CE1E6, #C1FF72, #E2A9F1 */
 body {
-    background-color: #e6f2ff;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #003366;
+    font-family: Arial, sans-serif;
+    background-color: #E2A9F1; /* light lavender from logo */
+    color: #333333;
+    margin: 0;
+    padding: 0;
 }
 
-/* ===== Header Section (ID selector) ===== */
-#header {
-    background-color: #cce0ff;
+h1, h2 {
+    font-family: 'Verdana', sans-serif;
+    color: #5CE1E6; /* turquoise from logo */
     text-align: center;
-    padding: 20px;
 }
 
-/* ===== Heading Styling (TAG selector) ===== */
-h1 {
-    color: darkblue;
-    font-size: 32px;
-}
-
-/* ===== Main Section (ID selector) ===== */
-#main {
-    padding: 20px;
-}
-
-/* ===== Footer Section (ID selector) ===== */
-#footer {
-    background-color: #99c2ff;
+#header, #footer {
     text-align: center;
     padding: 15px;
-    margin-top: 30px;
+    background-color: #C1FF72; /* soft green from logo */
 }
 
-/* ===== Table Styling (TAG selector) ===== */
+#form-section {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff; /* form white background */
+    border-radius: 8px;
+    box-shadow: 0 0 10px #aaa;
+}
+
 table {
+    width: 100%;
+    border-collapse: separate;
     border-spacing: 10px;
 }
 
-/* ===== Input Fields (TAG selector) ===== */
+td {
+    padding: 5px;
+    vertical-align: top;
+}
+
 input, select, textarea {
     padding: 5px;
-    border-radius: 5px;
+    font-size: 1em;
+    border: 1px solid #5CE1E6;
+    border-radius: 4px;
 }
 
-/* ===== Hyperlinks ===== */
-a {
-    color: purple;
+input[type="submit"], input[type="reset"], button {
+    padding: 10px 15px;
+    margin: 10px;
+    font-size: 1em;
+    background-color: #5CE1E6; /* turquoise button */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-a:visited {
-    color: darkred;
+input[type="submit"]:hover, input[type="reset"]:hover, button:hover {
+    background-color: #2fa8b2; /* slightly darker turquoise hover */
 }
 
-/* ===== Example CLASS selector ===== */
-.highlight {
-    color: red;
+textarea {
+    resize: vertical;
+}
+
+#sliderValue {
     font-weight: bold;
-    
-    <link href="style.css" rel="stylesheet">
+    color: #5CE1E6;
 }
-
