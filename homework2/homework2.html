@@ -82,8 +82,52 @@
       placeholder="000-000-0000"
       pattern="^\d{3}-\d{3}-\d{4}$">
 
-    <!-- BLOCK 3 -->
-    <h3>Address</h3>
 
-    <input type="text" id="address1"
-      placeholder="Address Line 
+    <h2>Block 3: Address</h2>
+
+<input type="text" id="address1" placeholder="Address Line 1" required>
+
+<input type="text" id="city" placeholder="City" required>
+
+<select id="state" required>
+  <option value="">Select State</option>
+</select>
+
+<input type="text" id="zip"
+placeholder="Zip Code"
+pattern="^\d{5}(-\d{4})?$">
+<h2>Block 4: Health Info</h2>
+
+<label><input type="checkbox" id="covid"> COVID-19</label>
+<label><input type="checkbox" id="measles"> Measles</label>
+<label><input type="checkbox" id="chickenpox"> Chicken Pox</label>
+<label><input type="checkbox" id="mumps"> Mumps</label>
+<label><input type="checkbox" id="diabetes"> Diabetes</label>
+
+<br><br>
+
+<label><input type="radio" name="vax" value="yes"> Vaccinated</label>
+<label><input type="radio" name="vax" value="no"> Not Vaccinated</label>
+<label><input type="radio" name="vax" value="unsure"> Unsure</label>
+<h2>Salary Range</h2>
+
+$<span id="salaryVal">50000</span>
+
+<input type="range"
+id="salary"
+min="20000"
+max="200000"
+step="1000"
+value="50000">
+<h2>Symptoms</h2>
+
+<textarea id="symptoms" rows="4" cols="40"></textarea>
+<h2>User ID</h2>
+
+<input type="text" id="userId"
+pattern="^[A-Za-z_][A-Za-z0-9_-]{4,29}$"
+title="5–30 chars, no spaces, cannot start with number">
+<h2>Password</h2>
+
+<input type="password" id="pw1" placeholder="Password">
+<input type="password" id="pw2" placeholder="Re-enter Password">
