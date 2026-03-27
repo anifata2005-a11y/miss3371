@@ -1,1 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <title>Homework 2 Registration Form</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      gap: 30px;
+      padding: 20px;
+    }
+
+    form {
+      width: 55%;
+      border: 1px solid #ccc;
+      padding: 15px;
+    }
+
+    #reviewBox {
+      width: 40%;
+      border: 2px solid black;
+      padding: 15px;
+      min-height: 300px;
+      white-space: pre-line;
+    }
+
+    input, select, textarea {
+      display: block;
+      margin-bottom: 10px;
+      width: 100%;
+      padding: 5px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= FORM ================= -->
+  <form id="regForm">
+
+    <h2>Registration Form</h2>
+
+    <!-- BLOCK 1 -->
+    <h3>Name & Date</h3>
+
+    <input type="text" id="firstName"
+      placeholder="First Name"
+      title="Letters, apostrophes, dashes only"
+      pattern="^[A-Za-z'-]{1,30}$"
+      required>
+
+    <input type="text" id="middleInitial"
+      placeholder="Middle Initial"
+      maxlength="1"
+      pattern="^[A-Za-z]?$"
+      title="One letter only">
+
+    <input type="text" id="lastName"
+      placeholder="Last Name"
+      pattern="^[A-Za-z0-9'-]{1,30}$"
+      required>
+
+    <input type="date" id="dob" required>
+
+    <!-- BLOCK 2 -->
+    <h3>Contact Info</h3>
+
+    <input type="email" id="email"
+      placeholder="Email"
+      required>
+
+    <input type="tel" id="phone"
+      placeholder="000-000-0000"
+      pattern="^\d{3}-\d{3}-\d{4}$">
+
+    <!-- BLOCK 3 -->
+    <h3>Address</h3>
+
+    <input type="text" id="address1"
+      placeholder="Address Line 
