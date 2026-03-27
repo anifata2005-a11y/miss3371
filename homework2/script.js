@@ -1,123 +1,115 @@
-// SLIDER LIVE UPDATE
-document.getElementById("salary").addEventListener("input", function () {
-  document.getElementById("salaryVal").innerText = this.value;
+/*
+Program name: script.js
+Author: Minatu Anifata
+Date created: Feb 23, 2026
+Version: 1.2
+Description: Validation + Review logic for We Care Medical Clinic form
+*/
+
+// -------------------------------
+// Populate budget display
+// -------------------------------
+window.addEventListener("DOMContentLoaded", function () {
+
+    const budget = document.getElementById("budget");
+    const budgetValue = document.getElementById("budgetValue");
+
+    if (budget) {
+        budget.addEventListener("input", function () {
+            budgetValue.textContent = "$" + Number(budget.value).toLocaleString();
+        });
+    }
+
+    // Load states from states.js if function exists
+    if (typeof populateStates === "function") {
+        populateStates();
+    }
 });
 
 
-// REVIEW BUTTON
+// -------------------------------
+// REVIEW FUNCTION
+// -------------------------------
 function reviewForm() {
 
-  let first = document.getElementById("firstName").value;
-  let middle = document.getElementById("middleInitial").value;
-  let last = document.getElementById("lastName").value;
+    const reviewArea = document.getElementById("reviewArea");
 
-  let email = document.getElementById("email").value;
-  let phone = document.getElementById("phone").value;
+    const firstName = document.getElementById("firstName").value;
+    const middleInitial = document.getElementById("middleInitial").value;
+    const lastName = document.getElementById("lastName").value;
 
-  let address = document.getElementById("address1").value;
-  let city = document.getElementById("city").value;
-  let state = document.getElementById("state").value;
-  let zip = document.getElementById("zip").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
 
-  let salary = document.getElementById("salary").value;
+    const address1 = document.getElementById("address1").value;
+    const city = document.getElementById("city").value;
+    const state = document.getElementById("state").value;
+    const zip = document.getElementById("zip").value;
 
-  let symptoms = document.getElementById("symptoms").value;
+    const budget = document.getElementById("budget").value;
 
-  let userId = document.getElementById("userId").value.toLowerCase();
+    const userId = document.getElementById("userId").value;
 
-  let pw1 = document.getElementById("pw1").value;
-
-
-  document.getElementById("reviewBox").innerHTML = `
-    <h2>PLEASE REVIEW THIS INFORMATION</h2>
-
-    Name: ${first} ${middle} ${last}<br>
-    Email: ${email}<br>
-    Phone: ${phone}<br><br>
-
-    Address:<br>
-    ${address}, ${city}, ${state} ${zip}<br><br>
-
-    Salary: $${salary}<br><br>
-
-    Symptoms: ${symptoms}<br><br>
-
-    User ID: ${userId}<br>
-    Password: ${pw1}
-  `;
+    reviewArea.innerHTML = `
+        <h2>Review Your Information</h2>
+        <p><strong>Name:</strong> ${firstName} ${middleInitial} ${lastName}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Address:</strong> ${address1}, ${city}, ${state} ${zip}</p>
+        <p><strong>Budget:</strong> $${Number(budget).toLocaleString()}</p>
+        <p><strong>User ID:</strong> ${userId}</p>
+    `;
 }
 
 
-// PASSWORD VALIDATION
-
+// -------------------------------
+// FORM VALIDATION
+// -------------------------------
 function validateForm() {
 
-  let userId = document.getElementById("userId").value;
-  let password = document.getElementById("password").value;
-  let confirmPassword = document.getElementById("confirmPassword").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const userId = document.getElementById("userId").value;
 
-  let firstName = document.getElementById("firstName").value.toLowerCase();
-  let lastName = document.getElementById("lastName").value.toLowerCase();
+    // -----------------------
+    // Password match check
+    // -----------------------
+    if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return false;
+    }
 
-  // ✅ CONVERT USER ID TO LOWERCASE
-  userId = userId.toLowerCase();
-  document.getElementById("userId").value = userId;
+    // -----------------------
+    // Password strength check
+    // -----------------------
+    if (password.length < 6) {
+        alert("Password must be at least 6 characters long.");
+        return false;
+    }
 
+    // -----------------------
+    // User ID validation
+    // Must start with letter, 5–30 chars
+    // -----------------------
+    const userIdPattern = /^[A-Za-z][A-Za-z0-9_-]{4,29}$/;
 
-  // ❌ PASSWORDS MUST MATCH
-  if (password !== confirmPassword) {
-    alert("Passwords do not match");
-    return false;
-  }
+    if (!userIdPattern.test(userId)) {
+        alert("User ID must start with a letter and be 5–30 characters long.");
+        return false;
+    }
 
-
-  // ❌ PASSWORD LENGTH
-  if (password.length < 8 || password.length > 30) {
-    alert("Password must be 8–30 characters");
-    return false;
-  }
-
-
-  // ❌ PASSWORD MUST CONTAIN REQUIRED TYPES
-  let pattern =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#%^&*()_\-+=<>.,`~\/]).+$/;
-
-  if (!pattern.test(password)) {
-    alert("Password must include uppercase, lowercase, number, special character");
-    return false;
-  }
-
-
-  // ❌ NO QUOTES ALLOWED
-  if (password.includes('"') || password.includes("'")) {
-    alert("Password cannot contain quotes");
-    return false;
-  }
-
-
-  // ❌ PASSWORD CANNOT BE USER ID
-  if (password.toLowerCase() === userId) {
-    alert("Password cannot be the same as User ID");
-    return false;
-  }
-
-
-  // ❌ PASSWORD CANNOT CONTAIN NAME
-  if (
-    password.toLowerCase().includes(firstName) ||
-    password.toLowerCase().includes(lastName)
-  ) {
-    alert("Password cannot contain your name");
-    return false;
-  }
-
-  return true;
+    alert("Form submitted successfully!");
+    return true;
 }
 
 
-// SUBMIT CHECK
-document.getElementById("regForm").addEventListener("submit", function (e) {
-  if (!validatePassword()) {
-    e.preventDefault();
-  }
+// -------------------------------
+// RESET HANDLING (optional cleanup)
+// -------------------------------
+document.getElementById("mainForm")?.addEventListener("reset", function () {
+
+    document.getElementById("reviewArea").innerHTML =
+        "<h2>Review Section</h2><p>Click Review to see your info.</p>";
+
+    document.getElementById("budgetValue").textContent = "$50,000";
 });
