@@ -1,143 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>We Care Medical Clinic - Patient Form</title>
-
-<link rel="stylesheet" href="style.css">
-<script src="states.js"></script>
-<script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <title>Homework 2 Registration</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div id="header">
-    <img src="Red Circle Health Logo.png" id="logo" alt="Clinic Logo">
-    <h1>We Care Medical Clinic</h1>
-    <h2>Patient Registration</h2>
-    <p id="currentDate"></p>
-</div>
+<div class="container">
 
-<!-- BANNER -->
-<div id="banner">Compassionate Care • Modern Health • Trusted Clinic</div>
+    <h1>💜 User Registration Form</h1>
 
-<!-- FORM -->
-<div id="form-section">
+    <div class="layout">
 
-<form id="mainForm" onsubmit="return validateForm()">
+        <!-- FORM SIDE -->
+        <form id="userForm">
 
-<table>
+            <h2>Register</h2>
 
-<!-- NAME -->
-<tr>
-<td>First Name</td>
-<td>
-<input type="text" id="firstName" maxlength="30"
-title="Max 30 characters, letters only"
-pattern="[A-Za-z]{1,30}" required>
-<span class="error" id="firstNameErr"></span>
-</td>
-</tr>
+            <!-- NAME -->
+            <label>First Name</label>
+            <input type="text" id="firstName" title="Letters, apostrophes, dashes only (1-30 chars)"
+                   pattern="[A-Za-z'-]{1,30}" required>
 
-<tr>
-<td>Middle Initial</td>
-<td>
-<input type="text" id="middleInitial" maxlength="1"
-pattern="[A-Za-z]{1}"
-title="1 letter only">
-</td>
-</tr>
+            <label>Middle Initial</label>
+            <input type="text" id="middleInitial" title="One letter only"
+                   pattern="[A-Za-z]{0,1}" maxlength="1">
 
-<tr>
-<td>Last Name</td>
-<td>
-<input type="text" id="lastName" maxlength="30"
-pattern="[A-Za-z]{1,30}" required>
-<span class="error" id="lastNameErr"></span>
-</td>
-</tr>
+            <label>Last Name</label>
+            <input type="text" id="lastName" title="Letters, numbers 2-5, apostrophes, dashes"
+                   pattern="[A-Za-z0-9'-]{1,30}" required>
 
-<!-- DOB -->
-<tr>
-<td>Date of Birth</td>
-<td>
-<input type="date" id="dob" required>
-<span class="error" id="dobErr"></span>
-</td>
-</tr>
+            <!-- DATE -->
+            <label>Date of Birth</label>
+            <input type="date" id="dob" required>
 
+            <!-- EMAIL -->
+            <label>Email</label>
+            <input type="email" id="email" title="name@domain.com" required>
 
+            <!-- PHONE -->
+            <label>Phone</label>
+            <input type="tel" id="phone" placeholder="000-000-0000"
+                   pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
 
-<!-- EMAIL -->
-<tr>
-<td>Email</td>
-<td>
-<input type="email" id="email" required>
-<span class="error" id="emailErr"></span>
-</td>
-</tr>
+            <!-- ADDRESS -->
+            <label>Address 1</label>
+            <input type="text" id="addr1" required>
 
-<!-- PHONE -->
-<tr>
-<td>Phone</td>
-<td>
-<input type="tel" id="phone"
-pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-placeholder="123-456-7890">
-<span class="error" id="phoneErr"></span>
-</td>
-</tr>
+            <label>Address 2</label>
+            <input type="text" id="addr2">
 
-<!-- ADDRESS -->
-<tr>
-<td>Address</td>
-<td>
-<input type="text" id="address" maxlength="30" required>
-</td>
-</tr>
+            <label>City</label>
+            <input type="text" id="city" required>
 
-<tr>
-<td>City</td>
-<td>
-<input type="text" id="city" maxlength="30" required>
-</td>
-</tr>
+            <label>State</label>
+            <select id="state" required>
+                <option value="">Select State</option>
+                <option>TX</option><option>CA</option><option>NY</option><option>FL</option>
+                <option>GA</option><option>WA</option><option>AZ</option><option>CO</option>
+                <option>IL</option><option>PA</option><option>NC</option><option>OH</option>
+                <option>MI</option><option>NV</option><option>UT</option><option>OR</option>
+                <option>MA</option><option>VA</option><option>MD</option><option>DC</option>
+                <option>PR</option>
+            </select>
 
-<tr>
-<td>State</td>
-<td>
-<select id="state" required></select>
-</td>
-</tr>
+            <label>Zip Code</label>
+            <input type="text" id="zip" pattern="[0-9]{5}(-[0-9]{4})?" required>
 
-<tr>
-<td>Zip</td>
-<td>
-<input type="text" id="zip"
-pattern="[0-9]{5}(-[0-9]{4})?"
-title="5 digit or 5-4 zip">
-</td>
-</tr>
-
-<!-- TEXTAREA -->
-<tr>
-<td>Notes</td>
-<td>
-<textarea id="notes"></textarea>
-</td>
-</tr>
-
-<!-- RADIO -->
-<tr>
-<td>Insurance</td>
-<td>
-<input type="radio" name="ins" value="Private">Private
-<input type="radio" name="ins" value="Public">Public
-<input type="radio" name="ins" value="None">None
-</td>
-</tr>
-    <!-- CHOICES -->
+            <!-- CHOICES -->
             <label>Illness History</label>
             <div class="box">
                 <input type="checkbox" id="chickenpox"> Chicken Pox
@@ -154,73 +86,43 @@ title="5 digit or 5-4 zip">
                 <input type="radio" name="status" value="Unsure"> Unsure
             </div>
 
-<!-- CHECKBOX -->
-<tr>
-<td>Services</td>
-<td>
-<input type="checkbox">Checkup
-<input type="checkbox">Emergency
-<input type="checkbox">Consult
-</td>
-</tr>
+            <!-- SLIDER -->
+            <label>Desired Salary: $<span id="salaryValue">60000</span></label>
+            <input type="range" id="salary" min="20000" max="200000" value="60000">
 
-<!-- SLIDER -->
-<tr>
-<td>Budget</td>
-<td>
-<input type="range" id="budget" min="20000" max="200000">
-<span id="budgetValue"></span>
-</td>
-</tr>
+            <!-- TEXT AREA -->
+            <label>Symptoms</label>
+            <textarea id="symptoms"></textarea>
 
-<!-- USER ID -->
-<tr>
-<td>User ID</td>
-<td>
-<input type="text" id="userId"
-pattern="^[A-Za-z][A-Za-z0-9_-]{4,29}$"
-title="5–30 chars, must start with letter">
-<span class="error" id="userIdErr"></span>
-</td>
-</tr>
+            <!-- USER ID -->
+            <label>User ID</label>
+            <input type="text" id="userId" required>
 
-<!-- PASSWORD -->
-<tr>
-<td>Password</td>
-<td>
-<input type="password" id="password" required>
-<span class="error" id="passErr"></span>
-</td>
-</tr>
+            <!-- PASSWORD -->
+            <label>Password</label>
+            <input type="password" id="password" required>
 
-<tr>
-<td>Confirm Password</td>
-<td>
-<input type="password" id="confirmPassword" required>
-<span class="error" id="confirmErr"></span>
-</td>
-</tr>
+            <label>Re-enter Password</label>
+            <input type="password" id="password2" required>
 
-</table>
+            <!-- BUTTONS -->
+            <div class="buttons">
+                <button type="button" onclick="reviewForm()">Review</button>
+                <button type="submit">Submit</button>
+                <button type="reset">Start Over</button>
+            </div>
 
-<br>
+        </form>
 
-<button type="button" onclick="reviewForm()">Review</button>
-<button type="submit">Submit</button>
-<button type="reset">Reset</button>
+        <!-- REVIEW SIDE -->
+        <div class="reviewBox">
+            <h2>PLEASE REVIEW THIS INFORMATION</h2>
+            <table id="reviewTable"></table>
+        </div>
 
-</form>
-
-<!-- REVIEW -->
-<div id="reviewArea"></div>
-
+    </div>
 </div>
 
-<!-- FOOTER -->
-<div id="footer">
-<p>© 2026 We Care Medical Clinic |
-<a href="https://www.cdc.gov" target="_blank">Health Info</a></p>
-</div>
-
+<script src="script.js"></script>
 </body>
 </html>
