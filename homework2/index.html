@@ -2,150 +2,173 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Homework 2 Form</title>
+    <title>Homework 2 - Registration Form</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
+
 <body>
 
 <h1>User Registration Form</h1>
 
 <form id="userForm">
 
-    <!-- BLOCK 1 -->
-    <fieldset>
-        <legend>Personal Info</legend>
+<!-- PERSONAL -->
+<fieldset>
+<legend>Personal Info</legend>
 
-        First Name:
-        <input type="text" id="firstName"
-        pattern="[A-Za-z'-]{1,30}"
-        title="1-30 letters only" required>
+First Name:
+<input type="text" id="firstName"
+pattern="[A-Za-z'-]{1,30}" required
+title="1–30 letters, apostrophes, dashes only">
+<span class="error" id="errFirst"></span>
 
-        Middle Initial:
-        <input type="text" id="mi"
-        pattern="[A-Za-z]{1}"
-        title="One letter only">
+Middle Initial:
+<input type="text" id="mi"
+pattern="[A-Za-z]?"
+title="Optional single letter">
+<span class="error" id="errMI"></span>
 
-        Last Name:
-        <input type="text" id="lastName"
-        pattern="[A-Za-z0-9'-]{1,30}"
-        title="1-30 valid characters" required>
+Last Name:
+<input type="text" id="lastName"
+pattern="[A-Za-z0-9'-]{1,30}" required
+title="Letters, numbers 2–5, apostrophes, dashes">
+<span class="error" id="errLast"></span>
 
-        <br><br>
+<br>
 
-        Date of Birth:
-        <input type="date" id="dob" required>
+Date of Birth:
+<input type="date" id="dob" required>
+<span class="error" id="errDOB"></span>
 
-        <br><br>
+<br>
 
-        ID Number:
-        <input type="password" id="idnum"
-        title="Enter ID securely" required>
-    </fieldset>
+ID Number:
+<input type="password" id="idnum" required>
+</fieldset>
 
-    <!-- BLOCK 2 -->
-    <fieldset>
-        <legend>Contact Info</legend>
+<!-- CONTACT -->
+<fieldset>
+<legend>Contact Info</legend>
 
-        Email:
-        <input type="email" id="email"
-        title="name@domain.com" required>
+Email:
+<input type="email" id="email" required>
+<span class="error" id="errEmail"></span>
 
-        Phone:
-        <input type="tel" id="phone"
-        pattern="\d{3}-\d{3}-\d{4}"
-        title="123-456-7890" required>
-    </fieldset>
+Phone:
+<input type="tel" id="phone"
+pattern="\d{3}-\d{3}-\d{4}" required
+title="123-456-7890">
+<span class="error" id="errPhone"></span>
+</fieldset>
 
-    <!-- BLOCK 3 -->
-    <fieldset>
-        <legend>Address</legend>
+<!-- ADDRESS -->
+<fieldset>
+<legend>Address</legend>
 
-        Address Line 1:
-        <input type="text" id="addr1" required>
+Address 1:
+<input type="text" id="addr1" required>
 
-        Address Line 2:
-        <input type="text" id="addr2">
+Address 2:
+<input type="text" id="addr2">
 
-        City:
-        <input type="text" id="city" required>
+City:
+<input type="text" id="city" required>
 
-        State:
-        <select id="state" required>
-            <option value="">Select</option>
-            <option>TX</option>
-            <option>CA</option>
-            <option>NY</option>
-        </select>
+State:
+<select id="state" required>
+<option value="">Select</option>
+<option>TX</option><option>CA</option><option>NY</option>
+<option>FL</option><option>IL</option><option>GA</option>
+<option>WA</option><option>PA</option><option>OH</option>
+<option>NC</option><option>MI</option><option>NJ</option>
+<option>VA</option><option>CO</option><option>MA</option>
+<option>TN</option><option>IN</option><option>MO</option>
+<option>MD</option><option>WI</option><option>MN</option>
+<option>SC</option><option>AL</option><option>LA</option>
+<option>KY</option><option>OR</option><option>OK</option>
+<option>CT</option><option>UT</option><option>IA</option>
+<option>NV</option><option>AR</option><option>MS</option>
+<option>KS</option><option>NM</option><option>NE</option>
+<option>WV</option><option>ID</option><option>HI</option>
+<option>NH</option><option>ME</option><option>MT</option>
+<option>RI</option><option>DE</option><option>SD</option>
+<option>ND</option><option>AK</option><option>VT</option>
+<option>DC</option><option>PR</option>
+</select>
 
-        Zip:
-        <input type="text" id="zip"
-        pattern="\d{5}(-\d{4})?"
-        title="12345 or 12345-6789" required>
-    </fieldset>
+Zip:
+<input type="text" id="zip"
+pattern="\d{5}(-\d{4})?" required>
+<span class="error" id="errZip"></span>
+</fieldset>
 
-    <!-- BLOCK 4 -->
-    <fieldset>
-        <legend>Health</legend>
+<!-- HEALTH -->
+<fieldset>
+<legend>Health Info</legend>
 
-        Chicken Pox <input type="checkbox" id="cp">
-        Measles <input type="checkbox" id="measles">
-        Covid <input type="checkbox" id="covid">
+<label><input type="checkbox" id="cp"> Chicken Pox</label>
+<label><input type="checkbox" id="measles"> Measles</label>
+<label><input type="checkbox" id="covid"> Covid-19</label>
 
-        <br><br>
+<br><br>
 
-        Vaccinated:
-        <input type="radio" name="vax" value="Yes">Yes
-        <input type="radio" name="vax" value="No">No
+Vaccinated:
+<label><input type="radio" name="vax" value="Yes">Yes</label>
+<label><input type="radio" name="vax" value="No">No</label>
 
-        <br><br>
+<br><br>
 
-        Desired Salary:
-        <input type="range" min="20000" max="200000"
-        value="50000" oninput="updateSalary(this.value)">
-        <span id="salaryOutput">$50000</span>
+Health Score:
+<input type="range" min="0" max="100"
+value="50" oninput="updateHealth(this.value)">
+<span id="healthOutput">50 (Moderate Health)</span>
 
-        <br><br>
+<br><br>
 
-        Notes:
-        <textarea id="notes"></textarea>
-    </fieldset>
+<textarea id="notes" placeholder="Optional notes"></textarea>
+</fieldset>
 
-    <!-- LOGIN -->
-    <fieldset>
-        <legend>Account</legend>
+<!-- ACCOUNT -->
+<fieldset>
+<legend>Account</legend>
 
-        User ID:
-        <input type="text" id="userId"
-        pattern="[a-zA-Z][a-zA-Z0-9_-]{4,29}"
-        title="5-30 chars, no spaces" required>
+User ID:
+<input type="text" id="userId"
+pattern="[a-zA-Z][a-zA-Z0-9_-]{4,29}"
+oninput="fixUserId()" required>
+<span class="error" id="errUser"></span>
 
-        Password:
-        <input type="password" id="password" required>
+Password:
+<input type="password" id="password"
+oninput="passwordCheck()" required>
 
-        Confirm Password:
-        <input type="password" id="confirmPassword" required>
-    </fieldset>
+Confirm Password:
+<input type="password" id="confirmPassword" required>
+<span class="error" id="errPass"></span>
+</fieldset>
 
-    <br>
+<br>
 
-    <button type="button" onclick="reviewForm()">Review</button>
-    <button type="submit" onclick="checkPassword()">Submit</button>
-    <button type="reset">Start Over</button>
+<button type="button" onclick="reviewForm()">Review</button>
+<button type="submit" onclick="return validateAll()">Submit</button>
+<button type="reset">Start Over</button>
 
 </form>
 
-<!-- REVIEW SECTION -->
+<!-- REVIEW -->
 <div id="reviewSection">
-    <h2>PLEASE REVIEW THIS INFORMATION</h2>
+<h2>PLEASE REVIEW THIS INFORMATION</h2>
 
-    <table>
-        <tr>
-            <th>Field</th>
-            <th>Value</th>
-        </tr>
-        <tbody id="reviewTable"></tbody>
-    </table>
+<table>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Status</th>
+</tr>
+
+<tbody id="reviewTable"></tbody>
+</table>
 </div>
 
 </body>
