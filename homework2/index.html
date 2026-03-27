@@ -67,15 +67,7 @@ pattern="[A-Za-z]{1,30}" required>
 </td>
 </tr>
 
-<!-- SSN -->
-<tr>
-<td>SSN</td>
-<td>
-<input type="password" id="ssn"
-placeholder="XXX-XX-XXXX"
-title="Sensitive info (hidden input)">
-</td>
-</tr>
+
 
 <!-- EMAIL -->
 <tr>
@@ -145,6 +137,22 @@ title="5 digit or 5-4 zip">
 <input type="radio" name="ins" value="None">None
 </td>
 </tr>
+    <!-- CHOICES -->
+            <label>Illness History</label>
+            <div class="box">
+                <input type="checkbox" id="chickenpox"> Chicken Pox
+                <input type="checkbox" id="measles"> Measles
+                <input type="checkbox" id="covid"> Covid-19
+                <input type="checkbox" id="mumps"> Mumps
+                <input type="checkbox" id="diabetes"> Diabetes
+            </div>
+
+            <label>Status</label>
+            <div class="box">
+                <input type="radio" name="status" value="Own"> Own
+                <input type="radio" name="status" value="Rent"> Rent
+                <input type="radio" name="status" value="Unsure"> Unsure
+            </div>
 
 <!-- CHECKBOX -->
 <tr>
