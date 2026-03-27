@@ -1,73 +1,72 @@
-window.addEventListener("DOMContentLoaded", function () {
+function updateHealth(val) {
+    let label = "";
 
-    document.getElementById("currentDate").textContent =
-        new Date().toLocaleDateString();
+    if (val < 30) label = "Poor Health";
+    else if (val < 60) label = "Moderate Health";
+    else if (val < 80) label = "Good Health";
+    else label = "Excellent Health";
 
-    const budget = document.getElementById("budget");
-    const budgetValue = document.getElementById("budgetValue");
-
-    budget.addEventListener("input", function () {
-        budgetValue.textContent = "$" + budget.value;
-    });
-});
-
-
-// ================= REVIEW =================
-function reviewForm() {
-
-    const data = `
-    <h3>Review Info</h3>
-    <p>Name: ${firstName.value} ${lastName.value}</p>
-    <p>Email: ${email.value}</p>
-    <p>Phone: ${phone.value}</p>
-    <p>City: ${city.value}</p>
-    <p>State: ${state.value}</p>
-    `;
-
-    document.getElementById("reviewArea").innerHTML = data;
+    document.getElementById("healthOutput").innerText =
+        val + " (" + label + ")";
 }
 
+function fixUserId() {
+    userId.value = userId.value.toLowerCase();
+}
 
-// ================= VALIDATION =================
-function validateForm() {
+function passwordCheck() {
+    let pass = password.value;
 
-    let valid = true;
+    let valid =
+        /[A-Z]/.test(pass) &&
+        /[a-z]/.test(pass) &&
+        /\d/.test(pass) &&
+        /[!@#%^&*()_\-+=\/<>.,`~]/.test(pass) &&
+        pass.length >= 8 &&
+        pass.length <= 30;
 
-    const email = document.getElementById("email");
-    const phone = document.getElementById("phone");
-    const pass = document.getElementById("password");
-    const confirm = document.getElementById("confirmPassword");
-    const dob = document.getElementById("dob");
+    errPass.innerText = valid ? "" : "Weak password";
+}
 
-    // PASSWORD MATCH
-    if (pass.value !== confirm.value) {
-        document.getElementById("confirmErr").innerText = "Passwords do not match";
-        valid = false;
+function validateAll() {
+    let ok = true;
+
+    if (password.value !== confirmPassword.value) {
+        errPass.innerText = "Passwords do not match";
+        ok = false;
     }
 
-    // EMAIL
-    if (!email.value.includes("@")) {
-        document.getElementById("emailErr").innerText = "Invalid email";
-        valid = false;
-    }
+    return ok;
+}
 
-    // PHONE
-    if (phone.value && !phone.value.match(/\d{3}-\d{3}-\d{4}/)) {
-        document.getElementById("phoneErr").innerText = "Format 123-456-7890";
-        valid = false;
-    }
+function validateDOB() {
+    let dob = new Date(document.getElementById("dob").value);
+    let today = new Date();
+    let min = new Date();
+    min.setFullYear(today.getFullYear() - 120);
 
-    // DOB RANGE CHECK (18+ simple check)
-    let birth = new Date(dob.value);
-    let age = new Date().getFullYear() - birth.getFullYear();
-    if (age < 0 || age > 120) {
-        document.getElementById("dobErr").innerText = "Invalid date";
-        valid = false;
-    }
+    if (dob > today) return "ERROR: Future date";
+    if (dob < min) return "ERROR: Too old";
+    return "PASS";
+}
 
-    if (valid) {
-        alert("Form submitted successfully!");
-    }
+function reviewForm() {
 
-    return valid;
+    reviewTable.innerHTML = `
+<tr><td>Name</td><td>${firstName.value} ${mi.value} ${lastName.value}</td><td>PASS</td></tr>
+
+<tr><td>DOB</td><td>${dob.value}</td><td>${validateDOB()}</td></tr>
+
+<tr><td>Email</td><td>${email.value}</td><td>${email.value.includes("@") ? "PASS" : "ERROR"}</td></tr>
+
+<tr><td>Phone</td><td>${phone.value}</td><td>${/^\d{3}-\d{3}-\d{4}$/.test(phone.value) ? "PASS" : "ERROR"}</td></tr>
+
+<tr><td>Address</td><td>${addr1.value}, ${city.value}, ${state.value} ${zip.value}</td><td>PASS</td></tr>
+
+<tr><td>Health Score</td><td>${healthOutput.innerText}</td><td>PASS</td></tr>
+
+<tr><td>User ID</td><td>${userId.value}</td><td>PASS</td></tr>
+
+<tr><td>Password</td><td>****</td><td>${password.value === confirmPassword.value ? "PASS" : "ERROR"}</td></tr>
+`;
 }
