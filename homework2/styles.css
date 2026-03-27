@@ -1,126 +1,98 @@
-/* BACKGROUND */
+/*
+We Care Medical Clinic Style Sheet
+Theme: Medical Care (Turquoise + Green + Lavender)
+*/
+
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(135deg, #dbeafe, #f8fafc);
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#E2A9F1, #ffffff);
     margin: 0;
     padding: 0;
 }
 
-/* TITLE */
-h1 {
+/* HEADER */
+#header {
     text-align: center;
-    color: #1e3a8a;
-    margin: 20px 0;
-}
-
-/* MAIN LAYOUT */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 25px;
+    background-color: #C1FF72;
     padding: 20px;
 }
 
+#logo {
+    width: 100px;
+}
+
+/* BANNER */
+#banner {
+    background-color: #5CE1E6;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* TITLE */
+h1, h2 {
+    font-family: Verdana;
+    color: #333;
+}
+
 /* FORM BOX */
-form {
+#form-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 25px;
     background: white;
-    padding: 25px;
-    width: 45%;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 15px gray;
 }
 
-/* REVIEW BOX */
-#reviewArea {
-    background: #f9fafb;
-    padding: 25px;
-    width: 45%;
-    border-radius: 12px;
-    border: 2px solid #2563eb;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+/* TABLE */
+table {
+    width: 100%;
+    border-spacing: 15px;
 }
 
-/* HEADINGS */
-h2 {
-    color: #2563eb;
-    border-bottom: 2px solid #bfdbfe;
-    padding-bottom: 5px;
-    margin-top: 20px;
-}
-
-/* LABELS */
-label {
-    font-weight: 600;
-    margin-top: 10px;
-    display: block;
-    color: #374151;
+td {
+    padding: 8px;
 }
 
 /* INPUTS */
 input, select, textarea {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 12px;
-    border-radius: 8px;
-    border: 1px solid #d1d5db;
-    background-color: #f9fafb;
-    transition: all 0.2s ease;
-}
-
-/* INPUT FOCUS */
-input:focus, select:focus, textarea:focus {
-    border-color: #2563eb;
-    background-color: #ffffff;
-    box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
-    outline: none;
-}
-
-/* PLACEHOLDER TEXT */
-input::placeholder, textarea::placeholder {
-    color: #9ca3af;
+    padding: 8px;
+    border: 1px solid #5CE1E6;
+    border-radius: 5px;
 }
 
 /* BUTTONS */
 button {
-    background: linear-gradient(to right, #3b82f6, #2563eb);
-    color: white;
+    padding: 10px 15px;
+    margin: 10px;
+    background-color: #5CE1E6;
     border: none;
-    padding: 10px 16px;
-    margin-right: 10px;
-    border-radius: 8px;
+    color: white;
     cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s;
+    border-radius: 5px;
 }
 
-/* BUTTON HOVER */
 button:hover {
-    transform: translateY(-2px);
-    background: linear-gradient(to right, #2563eb, #1e40af);
+    background-color: #2fa8b2;
 }
 
 /* SLIDER TEXT */
 #budgetValue {
     font-weight: bold;
-    color: #1e3a8a;
 }
 
-/* REVIEW TEXT */
-#reviewArea p {
-    margin: 10px 0;
-    font-size: 15px;
+/* FOOTER */
+#footer {
+    text-align: center;
+    background-color: #C1FF72;
+    padding: 15px;
+    margin-top: 20px;
 }
 
-/* MOBILE FRIENDLY */
-@media (max-width: 900px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    form, #reviewArea {
-        width: 90%;
-    }
+#footer a {
+    color: #333;
+    font-weight: bold;
 }
