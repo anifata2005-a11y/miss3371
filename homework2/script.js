@@ -49,20 +49,65 @@ function reviewForm() {
 
 
 // PASSWORD VALIDATION
-function validatePassword() {
 
-  let pw1 = document.getElementById("pw1").value;
-  let pw2 = document.getElementById("pw2").value;
+function validateForm() {
 
-  let pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=<>]).{8,30}$/;
+  let userId = document.getElementById("userId").value;
+  let password = document.getElementById("password").value;
+  let confirmPassword = document.getElementById("confirmPassword").value;
 
-  if (pw1 !== pw2) {
+  let firstName = document.getElementById("firstName").value.toLowerCase();
+  let lastName = document.getElementById("lastName").value.toLowerCase();
+
+  // ✅ CONVERT USER ID TO LOWERCASE
+  userId = userId.toLowerCase();
+  document.getElementById("userId").value = userId;
+
+
+  // ❌ PASSWORDS MUST MATCH
+  if (password !== confirmPassword) {
     alert("Passwords do not match");
     return false;
   }
 
-  if (!pattern.test(pw1)) {
-    alert("Invalid password format");
+
+  // ❌ PASSWORD LENGTH
+  if (password.length < 8 || password.length > 30) {
+    alert("Password must be 8–30 characters");
+    return false;
+  }
+
+
+  // ❌ PASSWORD MUST CONTAIN REQUIRED TYPES
+  let pattern =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#%^&*()_\-+=<>.,`~\/]).+$/;
+
+  if (!pattern.test(password)) {
+    alert("Password must include uppercase, lowercase, number, special character");
+    return false;
+  }
+
+
+  // ❌ NO QUOTES ALLOWED
+  if (password.includes('"') || password.includes("'")) {
+    alert("Password cannot contain quotes");
+    return false;
+  }
+
+
+  // ❌ PASSWORD CANNOT BE USER ID
+  if (password.toLowerCase() === userId) {
+    alert("Password cannot be the same as User ID");
+    return false;
+  }
+
+
+  // ❌ PASSWORD CANNOT CONTAIN NAME
+  if (
+    password.toLowerCase().includes(firstName) ||
+    password.toLowerCase().includes(lastName)
+  ) {
+    alert("Password cannot contain your name");
     return false;
   }
 
