@@ -3,131 +3,99 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Homework 2 Registration Form</title>
+  <title>Homework 2</title>
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      gap: 30px;
-      padding: 20px;
-    }
-
-    form {
-      width: 55%;
-      border: 1px solid #ccc;
-      padding: 15px;
-    }
-
-    #reviewBox {
-      width: 40%;
-      border: 2px solid black;
-      padding: 15px;
-      min-height: 300px;
-      white-space: pre-line;
-    }
-
-    input, select, textarea {
-      display: block;
-      margin-bottom: 10px;
-      width: 100%;
-      padding: 5px;
-    }
-
-    h2 {
-      margin-top: 0;
-    }
-  </style>
+  <script src="states.js"></script>
+  <script src="script.js" defer></script>
 </head>
 
 <body>
 
-  <!-- ================= FORM ================= -->
-  <form id="regForm">
+<h1>Homework 2 Registration Form</h1>
 
-    <h2>Registration Form</h2>
+<form id="regForm">
 
-    <!-- BLOCK 1 -->
-    <h3>Name & Date</h3>
+  <h2>Name</h2>
+  <input type="text" id="firstName" placeholder="First Name"
+    pattern="^[A-Za-z'-]{1,30}$" title="Letters only" required>
 
-    <input type="text" id="firstName"
-      placeholder="First Name"
-      title="Letters, apostrophes, dashes only"
-      pattern="^[A-Za-z'-]{1,30}$"
-      required>
+  <input type="text" id="middleInitial" placeholder="MI"
+    maxlength="1" pattern="^[A-Za-z]?$">
 
-    <input type="text" id="middleInitial"
-      placeholder="Middle Initial"
-      maxlength="1"
-      pattern="^[A-Za-z]?$"
-      title="One letter only">
+  <input type="text" id="lastName" placeholder="Last Name"
+    pattern="^[A-Za-z0-9'-]{1,30}$" required>
 
-    <input type="text" id="lastName"
-      placeholder="Last Name"
-      pattern="^[A-Za-z0-9'-]{1,30}$"
-      required>
-
-    <input type="date" id="dob" required>
-
-    <!-- BLOCK 2 -->
-    <h3>Contact Info</h3>
-
-    <input type="email" id="email"
-      placeholder="Email"
-      required>
-
-    <input type="tel" id="phone"
-      placeholder="000-000-0000"
-      pattern="^\d{3}-\d{3}-\d{4}$">
+  <input type="date" id="dob" required>
 
 
-    <h2>Block 3: Address</h2>
+  <h2>Contact</h2>
+  <input type="email" id="email" placeholder="Email" required>
 
-<input type="text" id="address1" placeholder="Address Line 1" required>
+  <input type="tel" id="phone" placeholder="000-000-0000"
+    pattern="^\d{3}-\d{3}-\d{4}$">
 
-<input type="text" id="city" placeholder="City" required>
 
-<select id="state" required>
-  <option value="">Select State</option>
-</select>
+  <h2>Address</h2>
+  <input type="text" id="address1" placeholder="Address" required>
 
-<input type="text" id="zip"
-placeholder="Zip Code"
-pattern="^\d{5}(-\d{4})?$">
-<h2>Block 4: Health Info</h2>
+  <input type="text" id="city" placeholder="City" required>
 
-<label><input type="checkbox" id="covid"> COVID-19</label>
-<label><input type="checkbox" id="measles"> Measles</label>
-<label><input type="checkbox" id="chickenpox"> Chicken Pox</label>
-<label><input type="checkbox" id="mumps"> Mumps</label>
-<label><input type="checkbox" id="diabetes"> Diabetes</label>
+  <select id="state" required>
+    <option value="">Select State</option>
+  </select>
 
-<br><br>
+  <input type="text" id="zip" placeholder="Zip Code"
+    pattern="^\d{5}(-\d{4})?$">
 
-<label><input type="radio" name="vax" value="yes"> Vaccinated</label>
-<label><input type="radio" name="vax" value="no"> Not Vaccinated</label>
-<label><input type="radio" name="vax" value="unsure"> Unsure</label>
-<h2>Salary Range</h2>
 
-$<span id="salaryVal">50000</span>
+  <h2>Health</h2>
 
-<input type="range"
-id="salary"
-min="20000"
-max="200000"
-step="1000"
-value="50000">
-<h2>Symptoms</h2>
+  <label><input type="checkbox" id="covid"> COVID-19</label>
+  <label><input type="checkbox" id="measles"> Measles</label>
+  <label><input type="checkbox" id="chickenpox"> Chicken Pox</label>
+  <label><input type="checkbox" id="mumps"> Mumps</label>
+  <label><input type="checkbox" id="diabetes"> Diabetes</label>
 
-<textarea id="symptoms" rows="4" cols="40"></textarea>
-<h2>User ID</h2>
+  <br><br>
 
-<input type="text" id="userId"
-pattern="^[A-Za-z_][A-Za-z0-9_-]{4,29}$"
-title="5–30 chars, no spaces, cannot start with number">
-<h2>Password</h2>
+  <label><input type="radio" name="vax" value="yes"> Vaccinated</label>
+  <label><input type="radio" name="vax" value="no"> Not Vaccinated</label>
+  <label><input type="radio" name="vax" value="unsure"> Unsure</label>
 
-<input type="password" id="pw1" placeholder="Password">
-<input type="password" id="pw2" placeholder="Re-enter Password">
+
+  <h2>Salary</h2>
+  $<span id="salaryVal">50000</span>
+
+  <input type="range" id="salary"
+    min="20000" max="200000" step="1000" value="50000">
+
+
+  <h2>Symptoms</h2>
+  <textarea id="symptoms"></textarea>
+
+
+  <h2>User ID</h2>
+  <input type="text" id="userId"
+    pattern="^[A-Za-z_][A-Za-z0-9_-]{4,29}$">
+
+
+  <h2>Password</h2>
+  <input type="password" id="pw1" placeholder="Password">
+  <input type="password" id="pw2" placeholder="Re-enter Password">
+
+
+  <br><br>
+
+  <button type="button" onclick="reviewForm()">Review</button>
+  <button type="submit">Submit</button>
+  <button type="reset">Start Over</button>
+
+</form>
+
+
+<div id="reviewBox"></div>
+
+</body>
+</html>
