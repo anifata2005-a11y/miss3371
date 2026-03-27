@@ -1,115 +1,67 @@
 /*
-Program name: script.js
-Author: Minatu Anifata
-Date created: Feb 23, 2026
-Version: 1.2
-Description: Validation + Review logic for We Care Medical Clinic form
+We Care Medical Clinic JavaScript
+Handles validation, review, and dynamic features
 */
 
-// -------------------------------
-// Populate budget display
-// -------------------------------
 window.addEventListener("DOMContentLoaded", function () {
 
-    const budget = document.getElementById("budget");
-    const budgetValue = document.getElementById("budgetValue");
+    // ---------------- DATE ----------------
+    const date = new Date();
+    document.getElementById("currentDate").textContent =
+        "Today: " + date.toLocaleDateString();
 
-    if (budget) {
-        budget.addEventListener("input", function () {
-            budgetValue.textContent = "$" + Number(budget.value).toLocaleString();
-        });
-    }
-
-    // Load states from states.js if function exists
+    // ---------------- STATES ----------------
     if (typeof populateStates === "function") {
         populateStates();
     }
+
+    // ---------------- SLIDER ----------------
+    const budget = document.getElementById("budget");
+    const budgetValue = document.getElementById("budgetValue");
+
+    budget.addEventListener("input", function () {
+        budgetValue.textContent = "$" + Number(budget.value).toLocaleString();
+    });
 });
 
 
-// -------------------------------
-// REVIEW FUNCTION
-// -------------------------------
+// ================= REVIEW =================
 function reviewForm() {
 
-    const reviewArea = document.getElementById("reviewArea");
+    const fields = [
+        "firstName", "middleInitial", "lastName",
+        "dob", "email", "phone",
+        "address", "city", "state", "zip",
+        "userId"
+    ];
 
-    const firstName = document.getElementById("firstName").value;
-    const middleInitial = document.getElementById("middleInitial").value;
-    const lastName = document.getElementById("lastName").value;
+    let output = "<h2>Review Information</h2>";
 
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
+    fields.forEach(id => {
+        let value = document.getElementById(id).value;
+        output += `<p><strong>${id}:</strong> ${value}</p>`;
+    });
 
-    const address1 = document.getElementById("address1").value;
-    const city = document.getElementById("city").value;
-    const state = document.getElementById("state").value;
-    const zip = document.getElementById("zip").value;
-
-    const budget = document.getElementById("budget").value;
-
-    const userId = document.getElementById("userId").value;
-
-    reviewArea.innerHTML = `
-        <h2>Review Your Information</h2>
-        <p><strong>Name:</strong> ${firstName} ${middleInitial} ${lastName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Address:</strong> ${address1}, ${city}, ${state} ${zip}</p>
-        <p><strong>Budget:</strong> $${Number(budget).toLocaleString()}</p>
-        <p><strong>User ID:</strong> ${userId}</p>
-    `;
+    document.getElementById("reviewArea").innerHTML = output;
 }
 
 
-// -------------------------------
-// FORM VALIDATION
-// -------------------------------
+// ================= VALIDATION =================
 function validateForm() {
 
     const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
-    const userId = document.getElementById("userId").value;
+    const confirm = document.getElementById("confirmPassword").value;
 
-    // -----------------------
-    // Password match check
-    // -----------------------
-    if (password !== confirmPassword) {
+    if (password !== confirm) {
         alert("Passwords do not match!");
         return false;
     }
 
-    // -----------------------
-    // Password strength check
-    // -----------------------
     if (password.length < 6) {
-        alert("Password must be at least 6 characters long.");
-        return false;
-    }
-
-    // -----------------------
-    // User ID validation
-    // Must start with letter, 5–30 chars
-    // -----------------------
-    const userIdPattern = /^[A-Za-z][A-Za-z0-9_-]{4,29}$/;
-
-    if (!userIdPattern.test(userId)) {
-        alert("User ID must start with a letter and be 5–30 characters long.");
+        alert("Password must be at least 6 characters");
         return false;
     }
 
     alert("Form submitted successfully!");
     return true;
 }
-
-
-// -------------------------------
-// RESET HANDLING (optional cleanup)
-// -------------------------------
-document.getElementById("mainForm")?.addEventListener("reset", function () {
-
-    document.getElementById("reviewArea").innerHTML =
-        "<h2>Review Section</h2><p>Click Review to see your info.</p>";
-
-    document.getElementById("budgetValue").textContent = "$50,000";
-});
