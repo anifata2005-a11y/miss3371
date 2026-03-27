@@ -1,98 +1,68 @@
-/*
-We Care Medical Clinic Style Sheet
-Theme: Medical Care (Turquoise + Green + Lavender)
-*/
-
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(#E2A9F1, #ffffff);
+    font-family: Arial;
+    background: linear-gradient(135deg,#f3e8ff,#d6b3ff);
     margin: 0;
-    padding: 0;
 }
 
-/* HEADER */
 #header {
     text-align: center;
-    background-color: #C1FF72;
+    background: #c1ff72;
     padding: 20px;
 }
 
-#logo {
-    width: 100px;
-}
+#logo { width: 80px; }
 
-/* BANNER */
 #banner {
-    background-color: #5CE1E6;
     text-align: center;
+    background: #5ce1e6;
     padding: 10px;
     font-weight: bold;
 }
 
-/* TITLE */
-h1, h2 {
-    font-family: Verdana;
-    color: #333;
-}
-
-/* FORM BOX */
 #form-section {
     width: 90%;
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 25px;
+    max-width: 1100px;
+    margin: 20px auto;
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 15px gray;
+    padding: 25px;
+    border-radius: 12px;
 }
 
-/* TABLE */
 table {
     width: 100%;
     border-spacing: 15px;
 }
 
-td {
-    padding: 8px;
+td:first-child {
+    font-weight: bold;
+    color: #6a2ca0;
 }
 
-/* INPUTS */
 input, select, textarea {
     width: 100%;
     padding: 8px;
-    border: 1px solid #5CE1E6;
-    border-radius: 5px;
+    border-radius: 6px;
+    border: 1px solid #b38bff;
 }
 
-/* BUTTONS */
 button {
-    padding: 10px 15px;
-    margin: 10px;
-    background-color: #5CE1E6;
-    border: none;
+    background: #7a3db8;
     color: white;
-    cursor: pointer;
-    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
 }
 
-button:hover {
-    background-color: #2fa8b2;
+button:hover { opacity: 0.8; }
+
+.error {
+    color: red;
+    font-size: 12px;
 }
 
-/* SLIDER TEXT */
-#budgetValue {
-    font-weight: bold;
-}
-
-/* FOOTER */
 #footer {
     text-align: center;
-    background-color: #C1FF72;
+    background: #c1ff72;
     padding: 15px;
-    margin-top: 20px;
-}
-
-#footer a {
-    color: #333;
-    font-weight: bold;
 }
