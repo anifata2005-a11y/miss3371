@@ -2,127 +2,151 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Homework 2 Registration</title>
+    <title>Homework 2 Form</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
-
 <body>
 
-<div class="container">
+<h1>User Registration Form</h1>
 
-    <h1>💜 User Registration Form</h1>
+<form id="userForm">
 
-    <div class="layout">
+    <!-- BLOCK 1 -->
+    <fieldset>
+        <legend>Personal Info</legend>
 
-        <!-- FORM SIDE -->
-        <form id="userForm">
+        First Name:
+        <input type="text" id="firstName"
+        pattern="[A-Za-z'-]{1,30}"
+        title="1-30 letters only" required>
 
-            <h2>Register</h2>
+        Middle Initial:
+        <input type="text" id="mi"
+        pattern="[A-Za-z]{1}"
+        title="One letter only">
 
-            <!-- NAME -->
-            <label>First Name</label>
-            <input type="text" id="firstName" title="Letters, apostrophes, dashes only (1-30 chars)"
-                   pattern="[A-Za-z'-]{1,30}" required>
+        Last Name:
+        <input type="text" id="lastName"
+        pattern="[A-Za-z0-9'-]{1,30}"
+        title="1-30 valid characters" required>
 
-            <label>Middle Initial</label>
-            <input type="text" id="middleInitial" title="One letter only"
-                   pattern="[A-Za-z]{0,1}" maxlength="1">
+        <br><br>
 
-            <label>Last Name</label>
-            <input type="text" id="lastName" title="Letters, numbers 2-5, apostrophes, dashes"
-                   pattern="[A-Za-z0-9'-]{1,30}" required>
+        Date of Birth:
+        <input type="date" id="dob" required>
 
-            <!-- DATE -->
-            <label>Date of Birth</label>
-            <input type="date" id="dob" required>
+        <br><br>
 
-            <!-- EMAIL -->
-            <label>Email</label>
-            <input type="email" id="email" title="name@domain.com" required>
+        ID Number:
+        <input type="password" id="idnum"
+        title="Enter ID securely" required>
+    </fieldset>
 
-            <!-- PHONE -->
-            <label>Phone</label>
-            <input type="tel" id="phone" placeholder="000-000-0000"
-                   pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+    <!-- BLOCK 2 -->
+    <fieldset>
+        <legend>Contact Info</legend>
 
-            <!-- ADDRESS -->
-            <label>Address 1</label>
-            <input type="text" id="addr1" required>
+        Email:
+        <input type="email" id="email"
+        title="name@domain.com" required>
 
-            <label>Address 2</label>
-            <input type="text" id="addr2">
+        Phone:
+        <input type="tel" id="phone"
+        pattern="\d{3}-\d{3}-\d{4}"
+        title="123-456-7890" required>
+    </fieldset>
 
-            <label>City</label>
-            <input type="text" id="city" required>
+    <!-- BLOCK 3 -->
+    <fieldset>
+        <legend>Address</legend>
 
-            <label>State</label>
-            <select id="state" required>
-                <option value="">Select State</option>
-                <option>TX</option><option>CA</option><option>NY</option><option>FL</option>
-                <option>GA</option><option>WA</option><option>AZ</option><option>CO</option>
-                <option>IL</option><option>PA</option><option>NC</option><option>OH</option>
-                <option>MI</option><option>NV</option><option>UT</option><option>OR</option>
-                <option>MA</option><option>VA</option><option>MD</option><option>DC</option>
-                <option>PR</option>
-            </select>
+        Address Line 1:
+        <input type="text" id="addr1" required>
 
-            <label>Zip Code</label>
-            <input type="text" id="zip" pattern="[0-9]{5}(-[0-9]{4})?" required>
+        Address Line 2:
+        <input type="text" id="addr2">
 
-            <!-- CHOICES -->
-            <label>Illness History</label>
-            <div class="box">
-                <input type="checkbox" id="chickenpox"> Chicken Pox
-                <input type="checkbox" id="measles"> Measles
-                <input type="checkbox" id="covid"> Covid-19
-                <input type="checkbox" id="mumps"> Mumps
-                <input type="checkbox" id="diabetes"> Diabetes
-            </div>
+        City:
+        <input type="text" id="city" required>
 
-            <label>Status</label>
-            <div class="box">
-                <input type="radio" name="status" value="Own"> Own
-                <input type="radio" name="status" value="Rent"> Rent
-                <input type="radio" name="status" value="Unsure"> Unsure
-            </div>
+        State:
+        <select id="state" required>
+            <option value="">Select</option>
+            <option>TX</option>
+            <option>CA</option>
+            <option>NY</option>
+        </select>
 
-            <!-- SLIDER -->
-            <label>Desired Salary: $<span id="salaryValue">60000</span></label>
-            <input type="range" id="salary" min="20000" max="200000" value="60000">
+        Zip:
+        <input type="text" id="zip"
+        pattern="\d{5}(-\d{4})?"
+        title="12345 or 12345-6789" required>
+    </fieldset>
 
-            <!-- TEXT AREA -->
-            <label>Symptoms</label>
-            <textarea id="symptoms"></textarea>
+    <!-- BLOCK 4 -->
+    <fieldset>
+        <legend>Health</legend>
 
-            <!-- USER ID -->
-            <label>User ID</label>
-            <input type="text" id="userId" required>
+        Chicken Pox <input type="checkbox" id="cp">
+        Measles <input type="checkbox" id="measles">
+        Covid <input type="checkbox" id="covid">
 
-            <!-- PASSWORD -->
-            <label>Password</label>
-            <input type="password" id="password" required>
+        <br><br>
 
-            <label>Re-enter Password</label>
-            <input type="password" id="password2" required>
+        Vaccinated:
+        <input type="radio" name="vax" value="Yes">Yes
+        <input type="radio" name="vax" value="No">No
 
-            <!-- BUTTONS -->
-            <div class="buttons">
-                <button type="button" onclick="reviewForm()">Review</button>
-                <button type="submit">Submit</button>
-                <button type="reset">Start Over</button>
-            </div>
+        <br><br>
 
-        </form>
+        Desired Salary:
+        <input type="range" min="20000" max="200000"
+        value="50000" oninput="updateSalary(this.value)">
+        <span id="salaryOutput">$50000</span>
 
-        <!-- REVIEW SIDE -->
-        <div class="reviewBox">
-            <h2>PLEASE REVIEW THIS INFORMATION</h2>
-            <table id="reviewTable"></table>
-        </div>
+        <br><br>
 
-    </div>
+        Notes:
+        <textarea id="notes"></textarea>
+    </fieldset>
+
+    <!-- LOGIN -->
+    <fieldset>
+        <legend>Account</legend>
+
+        User ID:
+        <input type="text" id="userId"
+        pattern="[a-zA-Z][a-zA-Z0-9_-]{4,29}"
+        title="5-30 chars, no spaces" required>
+
+        Password:
+        <input type="password" id="password" required>
+
+        Confirm Password:
+        <input type="password" id="confirmPassword" required>
+    </fieldset>
+
+    <br>
+
+    <button type="button" onclick="reviewForm()">Review</button>
+    <button type="submit" onclick="checkPassword()">Submit</button>
+    <button type="reset">Start Over</button>
+
+</form>
+
+<!-- REVIEW SECTION -->
+<div id="reviewSection">
+    <h2>PLEASE REVIEW THIS INFORMATION</h2>
+
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Value</th>
+        </tr>
+        <tbody id="reviewTable"></tbody>
+    </table>
 </div>
 
-<script src="script.js"></script>
 </body>
 </html>
