@@ -1,90 +1,78 @@
 body {
-    font-family: Arial;
-    background: linear-gradient(135deg, #f3e8ff, #d9b3ff);
-    margin: 0;
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #f3e8ff, #e0c3fc);
 }
 
-.container {
-    padding: 20px;
+.page {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
 }
 
 h1 {
-    text-align: center;
-    color: #4b0082;
+  text-align: center;
+  color: #4b0082;
 }
 
-.layout {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-form {
-    background: white;
-    padding: 20px;
-    width: 45%;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
 
-.reviewBox {
-    width: 55%;
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
 }
 
 label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
 }
 
-input, select, textarea {
-    width: 100%;
-    padding: 6px;
-    margin-top: 4px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+input, select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 
-textarea {
-    height: 80px;
-}
-
-.box {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    font-size: 14px;
+.sliderBox {
+  margin-top: 15px;
 }
 
 .buttons {
-    margin-top: 15px;
-    display: flex;
-    gap: 10px;
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
 }
 
 button {
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    background: #7b2cbf;
-    color: white;
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #7b2cbf;
+  color: white;
+  cursor: pointer;
 }
 
 button:hover {
-    background: #5a189a;
+  background: #5a189a;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+.review table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-td {
-    padding: 8px;
-    border-bottom: 1px solid #eee;
+.review td {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
 }
