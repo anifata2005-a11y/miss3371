@@ -2,83 +2,112 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Homework 2 Registration</title>
+    <title>Homework 2 Registration Form</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <script src="states.js"></script>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
 
-<h1>Welcome - User Registration</h1>
+<h1>Patient Registration Form</h1>
 
 <div class="container">
 
-    <!-- FORM -->
-    <form id="mainForm">
+<!-- ================= FORM ================= -->
+<form id="mainForm" onsubmit="return validateForm()">
 
-        <h2>Register</h2>
+    <h2>Personal Information</h2>
 
-        <label>First Name</label>
-        <input type="text" id="firstName">
+    <label>First Name</label>
+    <input type="text" id="firstName"
+        placeholder="Enter first name" required>
 
-        <label>Last Name</label>
-        <input type="text" id="lastName">
+    <label>Middle Initial</label>
+    <input type="text" id="middleInitial"
+        placeholder="M" maxlength="1">
 
-        <label>Email</label>
-        <input type="email" id="email">
-
-        <label>Phone</label>
-        <input type="text" id="phone">
-
-        <h3>Address</h3>
-
-        <label>Address 1</label>
-        <input type="text" id="address1">
-
-        <label>City</label>
-        <input type="text" id="city">
-
-        <label>State</label>
-        <select id="state"></select>
-
-        <label>Zip</label>
-        <input type="text" id="zip">
-
-        <h3>Budget</h3>
-
-        <input type="range" id="budget" min="20000" max="200000" step="1000">
-        <span id="budgetValue">$20,000</span>
-
-        <h3>User ID</h3>
-
-<input type="text" id="userId"
-  placeholder="Enter User ID"
-  title="5–30 chars, must start with letter, no spaces, only letters, numbers, _ or -"
-  pattern="^[A-Za-z][A-Za-z0-9_-]{4,29}$"
-  required>
+    <label>Last Name</label>
+    <input type="text" id="lastName"
+        placeholder="Enter last name" required>
 
 
-<h2>Password</h2>
+    <h2>Contact Information</h2>
 
-<input type="password" id="password"
-  placeholder="Enter Password"
-  required>
+    <label>Email</label>
+    <input type="email" id="email"
+        placeholder="example@email.com" required>
 
-<input type="password" id="confirmPassword"
-  placeholder="Re-enter Password"
-  required>
+    <label>Phone</label>
+    <input type="text" id="phone"
+        placeholder="123-456-7890">
 
-    </form>
 
-    <!-- REVIEW AREA (REQUIRED NEW DIV) -->
-    <div id="reviewArea">
-        <h2>Review Information</h2>
-        <p>Click "Review" to display entered data.</p>
-    </div>
+    <h2>Address</h2>
 
+    <label>Address Line 1</label>
+    <input type="text" id="address1"
+        placeholder="Street address" required>
+
+    <label>City</label>
+    <input type="text" id="city"
+        placeholder="City" required>
+
+    <label>State</label>
+    <select id="state" required>
+        <option value="">Select State</option>
+    </select>
+
+    <label>Zip Code</label>
+    <input type="text" id="zip"
+        placeholder="77002 or 77002-1234">
+
+
+    <h2>Budget Selection</h2>
+
+    <input type="range" id="budget"
+        min="20000" max="200000" step="1000" value="50000">
+
+    <p>Selected Budget:
+        <span id="budgetValue">$50,000</span>
+    </p>
+
+
+    <h2>User Credentials</h2>
+
+    <label>User ID</label>
+    <input type="text" id="userId"
+        placeholder="Enter user ID"
+        pattern="^[A-Za-z][A-Za-z0-9_-]{4,29}$"
+        title="5–30 chars, start with letter, no spaces">
+
+    <label>Password</label>
+    <input type="password" id="password"
+        placeholder="Enter password">
+
+    <label>Confirm Password</label>
+    <input type="password" id="confirmPassword"
+        placeholder="Re-enter password">
+
+
+    <!-- ================= BUTTONS ================= -->
+    <br><br>
+
+    <button type="button" onclick="reviewForm()">Review</button>
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+
+</form>
+
+<!-- ================= REVIEW AREA ================= -->
+<div id="reviewArea">
+    <h2>Review Section</h2>
+    <p>Click "Review" to display your entered information.</p>
 </div>
 
-<script src="states.js"></script>
-<script src="script.js"></script>
+</div>
 
 </body>
 </html>
