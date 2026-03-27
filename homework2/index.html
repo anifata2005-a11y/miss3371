@@ -1,136 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>We Care Medical Clinic - Patient Registration</title>
+<meta charset="UTF-8">
+<title>We Care Medical Clinic - Patient Form</title>
 
-    <link rel="stylesheet" href="style.css">
-    <script src="states.js"></script>
-    <script src="script.js" defer></script>
+<link rel="stylesheet" href="style.css">
+<script src="states.js"></script>
+<script src="script.js" defer></script>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- HEADER -->
 <div id="header">
-    <img src="logo.png" id="logo" alt="Clinic Logo">
-
+    <img src="Red Circle Health Logo.png" id="logo" alt="Clinic Logo">
     <h1>We Care Medical Clinic</h1>
-    <h2>Patient Registration Form</h2>
-
+    <h2>Patient Registration</h2>
     <p id="currentDate"></p>
 </div>
 
-<!-- ================= BANNER ================= -->
-<div id="banner">
-    <p>Quality Care. Trusted Health. Compassion First.</p>
-</div>
+<!-- BANNER -->
+<div id="banner">Compassionate Care • Modern Health • Trusted Clinic</div>
 
-<!-- ================= FORM SECTION ================= -->
+<!-- FORM -->
 <div id="form-section">
 
 <form id="mainForm" onsubmit="return validateForm()">
 
 <table>
 
-<!-- ================= PERSONAL INFO ================= -->
-<tr><td>First Name (max 30 chars)</td>
-<td><input type="text" id="firstName" maxlength="30" required></td></tr>
-
-<tr><td>Middle Initial (1 char)</td>
-<td><input type="text" id="middleInitial" maxlength="1"></td></tr>
-
-<tr><td>Last Name (max 30 chars)</td>
-<td><input type="text" id="lastName" maxlength="30" required></td></tr>
-
-<tr><td>Date of Birth (MM/DD/YYYY)</td>
-<td><input type="date" id="dob" required></td></tr>
-
-<tr><td>SSN (hidden)</td>
-<td><input type="password" id="ssn" placeholder="XXX-XX-XXXX"></td></tr>
-
-<!-- ================= CONTACT ================= -->
-<tr><td>Email</td>
-<td><input type="email" id="email" required></td></tr>
-
-<tr><td>Phone</td>
-<td><input type="tel" id="phone" placeholder="123-456-7890"></td></tr>
-
-<!-- ================= ADDRESS ================= -->
-<tr><td>Address</td>
-<td><input type="text" id="address" maxlength="30" required></td></tr>
-
-<tr><td>City</td>
-<td><input type="text" id="city" maxlength="30" required></td></tr>
-
-<tr><td>State</td>
-<td>
-<select id="state" required>
-<option value="">Select State</option>
-</select>
-</td></tr>
-
-<tr><td>Zip Code</td>
-<td><input type="text" id="zip" pattern="\d{5}(-\d{4})?"></td></tr>
-
-<!-- ================= TEXT AREA ================= -->
-<tr><td>Medical Notes</td>
-<td><textarea id="notes" rows="4" cols="30"></textarea></td></tr>
-
-<!-- ================= CHECKBOXES ================= -->
+<!-- NAME -->
 <tr>
-<td>Services Needed</td>
+<td>First Name</td>
 <td>
-<input type="checkbox" id="check1"> Checkup
-<input type="checkbox" id="check2"> Emergency
-<input type="checkbox" id="check3"> Consultation
+<input type="text" id="firstName" maxlength="30"
+title="Max 30 characters, letters only"
+pattern="[A-Za-z]{1,30}" required>
+<span class="error" id="firstNameErr"></span>
 </td>
 </tr>
 
-<!-- ================= RADIO BUTTONS ================= -->
 <tr>
-<td>Insurance Type</td>
+<td>Middle Initial</td>
 <td>
-<input type="radio" name="insurance" value="Private"> Private
-<input type="radio" name="insurance" value="Medicare"> Medicare
-<input type="radio" name="insurance" value="None"> None
+<input type="text" id="middleInitial" maxlength="1"
+pattern="[A-Za-z]{1}"
+title="1 letter only">
 </td>
 </tr>
 
-<!-- ================= SLIDER ================= -->
+<tr>
+<td>Last Name</td>
+<td>
+<input type="text" id="lastName" maxlength="30"
+pattern="[A-Za-z]{1,30}" required>
+<span class="error" id="lastNameErr"></span>
+</td>
+</tr>
+
+<!-- DOB -->
+<tr>
+<td>Date of Birth</td>
+<td>
+<input type="date" id="dob" required>
+<span class="error" id="dobErr"></span>
+</td>
+</tr>
+
+<!-- SSN -->
+<tr>
+<td>SSN</td>
+<td>
+<input type="password" id="ssn"
+placeholder="XXX-XX-XXXX"
+title="Sensitive info (hidden input)">
+</td>
+</tr>
+
+<!-- EMAIL -->
+<tr>
+<td>Email</td>
+<td>
+<input type="email" id="email" required>
+<span class="error" id="emailErr"></span>
+</td>
+</tr>
+
+<!-- PHONE -->
+<tr>
+<td>Phone</td>
+<td>
+<input type="tel" id="phone"
+pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+placeholder="123-456-7890">
+<span class="error" id="phoneErr"></span>
+</td>
+</tr>
+
+<!-- ADDRESS -->
+<tr>
+<td>Address</td>
+<td>
+<input type="text" id="address" maxlength="30" required>
+</td>
+</tr>
+
+<tr>
+<td>City</td>
+<td>
+<input type="text" id="city" maxlength="30" required>
+</td>
+</tr>
+
+<tr>
+<td>State</td>
+<td>
+<select id="state" required></select>
+</td>
+</tr>
+
+<tr>
+<td>Zip</td>
+<td>
+<input type="text" id="zip"
+pattern="[0-9]{5}(-[0-9]{4})?"
+title="5 digit or 5-4 zip">
+</td>
+</tr>
+
+<!-- TEXTAREA -->
+<tr>
+<td>Notes</td>
+<td>
+<textarea id="notes"></textarea>
+</td>
+</tr>
+
+<!-- RADIO -->
+<tr>
+<td>Insurance</td>
+<td>
+<input type="radio" name="ins" value="Private">Private
+<input type="radio" name="ins" value="Public">Public
+<input type="radio" name="ins" value="None">None
+</td>
+</tr>
+
+<!-- CHECKBOX -->
+<tr>
+<td>Services</td>
+<td>
+<input type="checkbox">Checkup
+<input type="checkbox">Emergency
+<input type="checkbox">Consult
+</td>
+</tr>
+
+<!-- SLIDER -->
 <tr>
 <td>Budget</td>
 <td>
-<input type="range" id="budget" min="20000" max="200000" step="1000">
-<span id="budgetValue">$50,000</span>
+<input type="range" id="budget" min="20000" max="200000">
+<span id="budgetValue"></span>
 </td>
 </tr>
 
-<!-- ================= USER ID ================= -->
+<!-- USER ID -->
 <tr>
 <td>User ID</td>
 <td>
 <input type="text" id="userId"
-pattern="^[A-Za-z][A-Za-z0-9_-]{4,29}$">
+pattern="^[A-Za-z][A-Za-z0-9_-]{4,29}$"
+title="5–30 chars, must start with letter">
+<span class="error" id="userIdErr"></span>
 </td>
 </tr>
 
-<!-- ================= PASSWORD ================= -->
+<!-- PASSWORD -->
 <tr>
 <td>Password</td>
-<td><input type="password" id="password" required></td>
+<td>
+<input type="password" id="password" required>
+<span class="error" id="passErr"></span>
+</td>
 </tr>
 
 <tr>
 <td>Confirm Password</td>
-<td><input type="password" id="confirmPassword" required></td>
+<td>
+<input type="password" id="confirmPassword" required>
+<span class="error" id="confirmErr"></span>
+</td>
 </tr>
 
 </table>
 
 <br>
 
-<!-- ================= BUTTONS ================= -->
 <button type="button" onclick="reviewForm()">Review</button>
 <button type="submit">Submit</button>
 <button type="reset">Reset</button>
@@ -138,17 +204,14 @@ pattern="^[A-Za-z][A-Za-z0-9_-]{4,29}$">
 </form>
 
 <!-- REVIEW -->
-<div id="reviewArea">
-<h2>Review Section</h2>
-<p>Click Review to see your information.</p>
-</div>
+<div id="reviewArea"></div>
 
 </div>
 
-<!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 <div id="footer">
 <p>© 2026 We Care Medical Clinic |
-<a href="https://www.cdc.gov" target="_blank">Health Resources</a></p>
+<a href="https://www.cdc.gov" target="_blank">Health Info</a></p>
 </div>
 
 </body>
