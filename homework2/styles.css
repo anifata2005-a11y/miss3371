@@ -1,68 +1,128 @@
-body {
-    font-family: Arial;
-    background: linear-gradient(135deg,#f3e8ff,#d6b3ff);
-    margin: 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 2 Registration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-#header {
-    text-align: center;
-    background: #c1ff72;
-    padding: 20px;
-}
+<body>
 
-#logo { width: 80px; }
+<div class="container">
 
-#banner {
-    text-align: center;
-    background: #5ce1e6;
-    padding: 10px;
-    font-weight: bold;
-}
+    <h1> User Registration Form</h1>
 
-#form-section {
-    width: 90%;
-    max-width: 1100px;
-    margin: 20px auto;
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-}
+    <div class="layout">
 
-table {
-    width: 100%;
-    border-spacing: 15px;
-}
+        <!-- FORM SIDE -->
+        <form id="userForm">
 
-td:first-child {
-    font-weight: bold;
-    color: #6a2ca0;
-}
+            <h2>Register</h2>
 
-input, select, textarea {
-    width: 100%;
-    padding: 8px;
-    border-radius: 6px;
-    border: 1px solid #b38bff;
-}
+            <!-- NAME -->
+            <label>First Name</label>
+            <input type="text" id="firstName" title="Letters, apostrophes, dashes only (1-30 chars)"
+                   pattern="[A-Za-z'-]{1,30}" required>
 
-button {
-    background: #7a3db8;
-    color: white;
-    padding: 10px;
-    margin: 5px;
-    border: none;
-    border-radius: 8px;
-}
+            <label>Middle Initial</label>
+            <input type="text" id="middleInitial" title="One letter only"
+                   pattern="[A-Za-z]{0,1}" maxlength="1">
 
-button:hover { opacity: 0.8; }
+            <label>Last Name</label>
+            <input type="text" id="lastName" title="Letters, numbers 2-5, apostrophes, dashes"
+                   pattern="[A-Za-z0-9'-]{1,30}" required>
 
-.error {
-    color: red;
-    font-size: 12px;
-}
+            <!-- DATE -->
+            <label>Date of Birth</label>
+            <input type="date" id="dob" required>
 
-#footer {
-    text-align: center;
-    background: #c1ff72;
-    padding: 15px;
-}
+            <!-- EMAIL -->
+            <label>Email</label>
+            <input type="email" id="email" title="name@domain.com" required>
+
+            <!-- PHONE -->
+            <label>Phone</label>
+            <input type="tel" id="phone" placeholder="000-000-0000"
+                   pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+
+            <!-- ADDRESS -->
+            <label>Address 1</label>
+            <input type="text" id="addr1" required>
+
+            <label>Address 2</label>
+            <input type="text" id="addr2">
+
+            <label>City</label>
+            <input type="text" id="city" required>
+
+            <label>State</label>
+            <select id="state" required>
+                <option value="">Select State</option>
+                <option>TX</option><option>CA</option><option>NY</option><option>FL</option>
+                <option>GA</option><option>WA</option><option>AZ</option><option>CO</option>
+                <option>IL</option><option>PA</option><option>NC</option><option>OH</option>
+                <option>MI</option><option>NV</option><option>UT</option><option>OR</option>
+                <option>MA</option><option>VA</option><option>MD</option><option>DC</option>
+                <option>PR</option>
+            </select>
+
+            <label>Zip Code</label>
+            <input type="text" id="zip" pattern="[0-9]{5}(-[0-9]{4})?" required>
+
+            <!-- CHOICES -->
+            <label>Illness History</label>
+            <div class="box">
+                <input type="checkbox" id="chickenpox"> Chicken Pox
+                <input type="checkbox" id="measles"> Measles
+                <input type="checkbox" id="covid"> Covid-19
+                <input type="checkbox" id="mumps"> Mumps
+                <input type="checkbox" id="diabetes"> Diabetes
+            </div>
+
+            <label>Status</label>
+            <div class="box">
+                <input type="radio" name="status" value="Own"> Own
+                <input type="radio" name="status" value="Rent"> Rent
+                <input type="radio" name="status" value="Unsure"> Unsure
+            </div>
+
+            <!-- SLIDER -->
+            <label>Desired Salary: $<span id="salaryValue">60000</span></label>
+            <input type="range" id="salary" min="20000" max="200000" value="60000">
+
+            <!-- TEXT AREA -->
+            <label>Symptoms</label>
+            <textarea id="symptoms"></textarea>
+
+            <!-- USER ID -->
+            <label>User ID</label>
+            <input type="text" id="userId" required>
+
+            <!-- PASSWORD -->
+            <label>Password</label>
+            <input type="password" id="password" required>
+
+            <label>Re-enter Password</label>
+            <input type="password" id="password2" required>
+
+            <!-- BUTTONS -->
+            <div class="buttons">
+                <button type="button" onclick="reviewForm()">Review</button>
+                <button type="submit">Submit</button>
+                <button type="reset">Start Over</button>
+            </div>
+
+        </form>
+
+        <!-- REVIEW SIDE -->
+        <div class="reviewBox">
+            <h2>PLEASE REVIEW THIS INFORMATION</h2>
+            <table id="reviewTable"></table>
+        </div>
+
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
