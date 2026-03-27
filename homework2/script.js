@@ -1,26 +1,13 @@
-/*
-We Care Medical Clinic JavaScript
-Handles validation, review, and dynamic features
-*/
-
 window.addEventListener("DOMContentLoaded", function () {
 
-    // ---------------- DATE ----------------
-    const date = new Date();
     document.getElementById("currentDate").textContent =
-        "Today: " + date.toLocaleDateString();
+        new Date().toLocaleDateString();
 
-    // ---------------- STATES ----------------
-    if (typeof populateStates === "function") {
-        populateStates();
-    }
-
-    // ---------------- SLIDER ----------------
     const budget = document.getElementById("budget");
     const budgetValue = document.getElementById("budgetValue");
 
     budget.addEventListener("input", function () {
-        budgetValue.textContent = "$" + Number(budget.value).toLocaleString();
+        budgetValue.textContent = "$" + budget.value;
     });
 });
 
@@ -28,40 +15,59 @@ window.addEventListener("DOMContentLoaded", function () {
 // ================= REVIEW =================
 function reviewForm() {
 
-    const fields = [
-        "firstName", "middleInitial", "lastName",
-        "dob", "email", "phone",
-        "address", "city", "state", "zip",
-        "userId"
-    ];
+    const data = `
+    <h3>Review Info</h3>
+    <p>Name: ${firstName.value} ${lastName.value}</p>
+    <p>Email: ${email.value}</p>
+    <p>Phone: ${phone.value}</p>
+    <p>City: ${city.value}</p>
+    <p>State: ${state.value}</p>
+    `;
 
-    let output = "<h2>Review Information</h2>";
-
-    fields.forEach(id => {
-        let value = document.getElementById(id).value;
-        output += `<p><strong>${id}:</strong> ${value}</p>`;
-    });
-
-    document.getElementById("reviewArea").innerHTML = output;
+    document.getElementById("reviewArea").innerHTML = data;
 }
 
 
 // ================= VALIDATION =================
 function validateForm() {
 
-    const password = document.getElementById("password").value;
-    const confirm = document.getElementById("confirmPassword").value;
+    let valid = true;
 
-    if (password !== confirm) {
-        alert("Passwords do not match!");
-        return false;
+    const email = document.getElementById("email");
+    const phone = document.getElementById("phone");
+    const pass = document.getElementById("password");
+    const confirm = document.getElementById("confirmPassword");
+    const dob = document.getElementById("dob");
+
+    // PASSWORD MATCH
+    if (pass.value !== confirm.value) {
+        document.getElementById("confirmErr").innerText = "Passwords do not match";
+        valid = false;
     }
 
-    if (password.length < 6) {
-        alert("Password must be at least 6 characters");
-        return false;
+    // EMAIL
+    if (!email.value.includes("@")) {
+        document.getElementById("emailErr").innerText = "Invalid email";
+        valid = false;
     }
 
-    alert("Form submitted successfully!");
-    return true;
+    // PHONE
+    if (phone.value && !phone.value.match(/\d{3}-\d{3}-\d{4}/)) {
+        document.getElementById("phoneErr").innerText = "Format 123-456-7890";
+        valid = false;
+    }
+
+    // DOB RANGE CHECK (18+ simple check)
+    let birth = new Date(dob.value);
+    let age = new Date().getFullYear() - birth.getFullYear();
+    if (age < 0 || age > 120) {
+        document.getElementById("dobErr").innerText = "Invalid date";
+        valid = false;
+    }
+
+    if (valid) {
+        alert("Form submitted successfully!");
+    }
+
+    return valid;
 }
