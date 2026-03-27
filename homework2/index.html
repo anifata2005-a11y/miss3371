@@ -1,101 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <title>Homework 2</title>
-
-  <link rel="stylesheet" href="style.css">
-
-  <script src="states.js"></script>
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <title>Homework 2 Registration</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1>Homework 2 Registration Form</h1>
+<h1>Welcome - User Registration</h1>
 
-<form id="regForm">
+<div class="container">
 
-  <h2>Name</h2>
-  <input type="text" id="firstName" placeholder="First Name"
-    pattern="^[A-Za-z'-]{1,30}$" title="Letters only" required>
+    <!-- FORM -->
+    <form id="mainForm">
 
-  <input type="text" id="middleInitial" placeholder="MI"
-    maxlength="1" pattern="^[A-Za-z]?$">
+        <h2>Register</h2>
 
-  <input type="text" id="lastName" placeholder="Last Name"
-    pattern="^[A-Za-z0-9'-]{1,30}$" required>
+        <label>First Name</label>
+        <input type="text" id="firstName">
 
-  <input type="date" id="dob" required>
+        <label>Last Name</label>
+        <input type="text" id="lastName">
 
+        <label>Email</label>
+        <input type="email" id="email">
 
-  <h2>Contact</h2>
-  <input type="email" id="email" placeholder="Email" required>
+        <label>Phone</label>
+        <input type="text" id="phone">
 
-  <input type="tel" id="phone" placeholder="000-000-0000"
-    pattern="^\d{3}-\d{3}-\d{4}$">
+        <h3>Address</h3>
 
+        <label>Address 1</label>
+        <input type="text" id="address1">
 
-  <h2>Address</h2>
-  <input type="text" id="address1" placeholder="Address" required>
+        <label>City</label>
+        <input type="text" id="city">
 
-  <input type="text" id="city" placeholder="City" required>
+        <label>State</label>
+        <select id="state"></select>
 
-  <select id="state" required>
-    <option value="">Select State</option>
-  </select>
+        <label>Zip</label>
+        <input type="text" id="zip">
 
-  <input type="text" id="zip" placeholder="Zip Code"
-    pattern="^\d{5}(-\d{4})?$">
+        <h3>Budget</h3>
 
+        <input type="range" id="budget" min="20000" max="200000" step="1000">
+        <span id="budgetValue">$20,000</span>
 
-  <h2>Health</h2>
+        <h3>User ID</h3>
 
-  <label><input type="checkbox" id="covid"> COVID-19</label>
-  <label><input type="checkbox" id="measles"> Measles</label>
-  <label><input type="checkbox" id="chickenpox"> Chicken Pox</label>
-  <label><input type="checkbox" id="mumps"> Mumps</label>
-  <label><input type="checkbox" id="diabetes"> Diabetes</label>
-
-  <br><br>
-
-  <label><input type="radio" name="vax" value="yes"> Vaccinated</label>
-  <label><input type="radio" name="vax" value="no"> Not Vaccinated</label>
-  <label><input type="radio" name="vax" value="unsure"> Unsure</label>
+<input type="text" id="userId"
+  placeholder="Enter User ID"
+  title="5–30 chars, must start with letter, no spaces, only letters, numbers, _ or -"
+  pattern="^[A-Za-z][A-Za-z0-9_-]{4,29}$"
+  required>
 
 
-  <h2>Salary</h2>
-  $<span id="salaryVal">50000</span>
+<h2>Password</h2>
 
-  <input type="range" id="salary"
-    min="20000" max="200000" step="1000" value="50000">
+<input type="password" id="password"
+  placeholder="Enter Password"
+  required>
 
+<input type="password" id="confirmPassword"
+  placeholder="Re-enter Password"
+  required>
 
-  <h2>Symptoms</h2>
-  <textarea id="symptoms"></textarea>
+    </form>
 
+    <!-- REVIEW AREA (REQUIRED NEW DIV) -->
+    <div id="reviewArea">
+        <h2>Review Information</h2>
+        <p>Click "Review" to display entered data.</p>
+    </div>
 
-  <h2>User ID</h2>
-  <input type="text" id="userId"
-    pattern="^[A-Za-z_][A-Za-z0-9_-]{4,29}$">
+</div>
 
-
-  <h2>Password</h2>
-  <input type="password" id="pw1" placeholder="Password">
-  <input type="password" id="pw2" placeholder="Re-enter Password">
-
-
-  <br><br>
-
-  <button type="button" onclick="reviewForm()">Review</button>
-  <button type="submit">Submit</button>
-  <button type="reset">Start Over</button>
-
-</form>
-
-
-<div id="reviewBox"></div>
+<script src="states.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
