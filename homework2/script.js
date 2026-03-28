@@ -23,7 +23,7 @@ function passwordCheck() {
         /\d/.test(pass) &&
         /[!@#%^&*()_\-+=\/<>.,`~]/.test(pass) &&
         pass.length >= 8 &&
-        pass.length <= 30;
+        pass.length >= 30;
 
     errPass.innerText = valid ? "" : "Weak password";
 }
@@ -48,6 +48,21 @@ function validateDOB() {
     if (dob > today) return "ERROR: Future date";
     if (dob < min) return "ERROR: Too old";
     return "PASS";
+}
+
+
+// WORD LIMIT (ADDRESS)
+function checkAddress() {
+    let text = document.getElementById("address").value.trim();
+    let words = text === "" ? 0 : text.split(/\s+/).length;
+
+    if (words > 30) {
+        document.getElementById("errAddress").innerText = "Max 30 words allowed";
+        return false;
+    } else {
+        document.getElementById("errAddress").innerText = "";
+        return true;
+    }
 }
 
 function reviewForm() {
