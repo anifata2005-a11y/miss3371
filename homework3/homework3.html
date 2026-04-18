@@ -1,1 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 3 Form</title>
 
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<h1>Homework 3 Form</h1>
+
+<form id="myForm">
+
+    <!-- First Name -->
+    <label>First Name:</label>
+    <input type="text" id="firstName" oninput="validateFirstName()" title="1-30 letters only">
+    <span class="error" id="firstNameError"></span>
+
+    <br><br>
+
+    <!-- Last Name -->
+    <label>Last Name:</label>
+    <input type="text" id="lastName" oninput="validateLastName()" title="1-30 letters only">
+    <span class="error" id="lastNameError"></span>
+
+    <br><br>
+
+    <!-- Email -->
+    <label>Email:</label>
+    <input type="text" id="email" oninput="validateEmail()">
+    <span class="error" id="emailError"></span>
+
+    <br><br>
+
+    <!-- Password -->
+    <label>Password:</label>
+    <input type="password" id="password" oninput="validatePassword()">
+    <span class="error" id="passwordError"></span>
+
+    <br><br>
+
+    <!-- Confirm Password -->
+    <label>Confirm Password:</label>
+    <input type="password" id="confirmPassword" oninput="validateConfirmPassword()">
+    <span class="error" id="confirmError"></span>
+
+    <br><br>
+
+    <!-- Salary Slider -->
+    <label>Desired Salary:</label>
+    <input type="range" min="20000" max="200000" id="salary" oninput="updateSalary()">
+    <p id="salaryValue">$20000</p>
+
+    <br>
+
+    <!-- Validate Button -->
+    <button type="button" onclick="validateForm()">VALIDATE</button>
+
+    <!-- Hidden Submit -->
+    <button type="button" id="submitBtn" style="display:none;" onclick="submitForm()">Submit</button>
+
+</form>
+
+</body>
+</html>
