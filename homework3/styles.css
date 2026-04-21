@@ -1,44 +1,55 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #E2A9F1; /* light lavender from logo */
-    color: #333333;
+    background-color: #E2A9F1;
+    color: #333;
     margin: 0;
     padding: 0;
 }
 
+/* HEADINGS */
 h1, h2 {
-    font-family: 'Verdana', sans-serif;
-    color: #5CE1E6; /* turquoise from logo */
+    font-family: Verdana, sans-serif;
+    color: #5CE1E6;
     text-align: center;
 }
 
-#header, #footer {
-    text-align: center;
-    padding: 25px 15px;
-    background-color: #C1FF72; /* soft green from logo */
-}
-
+/* FORM CONTAINER */
 #form-section {
-    width: 90%; /* wider form */
-    max-width: 1200px; /* prevent it from getting too wide on big screens */
+    width: 90%;
+    max-width: 900px;
     margin: 30px auto;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 0 15px #aaa;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 12px #aaa;
 }
 
+/* FIELDSETS */
+fieldset {
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* TABLE LAYOUT FIX */
 table {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 20px; /* more spacing between cells */
+    border-collapse: collapse;
 }
 
 td {
-    padding: 10px 5px;
-    vertical-align: top;
+    padding: 8px 10px;
+    vertical-align: middle;
 }
 
+/* LABEL COLUMN */
+td:first-child {
+    width: 30%;
+    font-weight: bold;
+}
+
+/* INPUT STYLING */
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -46,18 +57,40 @@ input[type="tel"],
 input[type="date"],
 select,
 textarea {
-    width: 100%; /* make inputs full width of their table cell */
-    padding: 8px 10px;
-    font-size: 1em;
+    width: 100%;
+    padding: 8px;
+    font-size: 0.95em;
     border: 1px solid #5CE1E6;
     border-radius: 6px;
     box-sizing: border-box;
 }
 
-input[type="submit"], input[type="reset"], button {
-    padding: 12px 20px;
-    margin: 15px;
-    font-size: 1em;
+/*  FIX: MIDDLE INITIAL SMALL BOX */
+#mi {
+    width: 50px;
+    text-align: center;
+}
+
+/*  FIX: ZIP + SMALL INPUTS */
+#zip {
+    width: 120px;
+}
+
+#idnum {
+    width: 180px;
+}
+
+/* TEXTAREA */
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* BUTTONS */
+button, input[type="submit"], input[type="reset"] {
+    padding: 10px 18px;
+    margin: 10px 5px;
+    font-size: 0.95em;
     background-color: #5CE1E6;
     color: white;
     border: none;
@@ -65,32 +98,36 @@ input[type="submit"], input[type="reset"], button {
     cursor: pointer;
 }
 
-input[type="submit"]:hover, input[type="reset"]:hover, button:hover {
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
     background-color: #2fa8b2;
 }
 
-textarea {
-    resize: vertical;
-}
-
-#sliderValue {
+/* SLIDER VALUE */
+#healthOutput {
     font-weight: bold;
     color: #5CE1E6;
     margin-left: 10px;
 }
 
-/* Make the table responsive on smaller screens */
+/* ERROR MESSAGES (NO JUMPING) */
+.error {
+    display: block;
+    min-height: 16px; /* keeps space even when empty */
+    color: red;
+    font-size: 0.8em;
+    margin-top: 3px;
+}
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
     table, tr, td {
         display: block;
         width: 100%;
     }
 
-    td {
-        margin-bottom: 15px;
-    }
-
     td:first-child {
-        font-weight: bold;
+        margin-top: 10px;
     }
 }
