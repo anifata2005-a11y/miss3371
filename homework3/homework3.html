@@ -1,68 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Homework 3 Form</title>
+<meta charset="UTF-8">
+<title>Patient Registration - We Care Medical Clinic</title>
 
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+<style>
+body {
+    font-family: Arial;
+}
+
+#header, #footer {
+    text-align: center;
+    margin: 20px;
+}
+
+table {
+    margin: auto;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    height: 15px; /* prevents jumping */
+}
+
+input, select, textarea {
+    padding: 5px;
+}
+</style>
+
+<script>
+// DATE
+function showDate() {
+    const today = new Date();
+    document.getElementById('currentDate').innerText =
+        today.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' });
+}
+
+// SLIDER
+function showSliderValue(val) {
+    document.getElementById('sliderValue').innerText = val;
+}
+
+// USER ID VALIDATION
+function validateUserId() {
+    let userId = document.getElementById("userId").value;
+    let error = "";
+
+    if (/^[0-9]/.test(userId)) {
+        error = "Cannot start with number";
+    } else if (userId.length < 5 || userId.length > 20) {
+        error = "Must be 5-20 characters";
+    } else if (!/^[a-zA-Z0-9_-]+$/.test(userId)) {
+        error = "Only letters, numbers, - _ allowed";
+    }
+
+    document.getElementById("userIdError").innerText = error;
+    return error === "";
+}
+
+// PASSWORD VALIDATION
+function validatePassword() {
+    let password = document.getElementById("password").value;
+    let userId = document.getElementById("userId").value;
+    let error = "";
+
+    if (password.length < 8) {
+        error = "At least 8 characters";
+    } else if (!/[A-Z]/.test(password)) {
+        error = "Need uppercase";
+    } else if (!/[a-z]/.test(password)) {
+        error = "Need lowercase";
+    } else if (!/[0-9]/.test(password)) {
+        error = "Need number";
+    } else if (password === userId) {
+        error = "Cannot match User ID";
+    }
+
+    document.getElementById("passwordError").innerText = error;
+    return error === "";
+}
+
+// CONFIRM PASSWORD
+function validateConfirmPassword() {
+    let pass = document.getElementById("password").value;
+    let confirm = document.getElementById("confirmPassword").value;
+    let error = "";
+
+    if (pass !== confirm) {
+        error = "Passwords do not match";
+    }
+
+    document.getElementById("confirmPasswordError").innerText = error;
+    return error === "";
+}
+
+// MAIN VALIDATE
+function validateForm() {
+    let a = validateUserId();
+    let b = validatePassword();
+    let c = validateConfirmPassword();
+
+    if (a && b && c) {
+        document.getElementById("submitBtn").disabled = false;
+        alert("All good! You can submit.");
+    } else {
+        document.getElementById("submitBtn").disabled = true;
+    }
+}
+</script>
 </head>
 
-<body>
+<body onload="showDate()">
 
-<h1>Homework 3 Form</h1>
+<div id="header">
+    <h1>We Care Medical Clinic</h1>
+    <p>Today is: <span id="currentDate"></span></p>
+</div>
 
-<form id="myForm">
+<form action="thankyou.html">
 
-    <!-- First Name -->
-    <label>First Name:</label>
-    <input type="text" id="firstName" oninput="validateFirstName()" title="1-30 letters only">
-    <span class="error" id="firstNameError"></span>
+<table>
 
-    <br><br>
+<tr>
+<td>First Name:</td>
+<td><input type="text" required></td>
 
-    <!-- Last Name -->
-    <label>Last Name:</label>
-    <input type="text" id="lastName" oninput="validateLastName()" title="1-30 letters only">
-    <span class="error" id="lastNameError"></span>
+<td>Last Name:</td>
+<td><input type="text" required></td>
+</tr>
 
-    <br><br>
+<tr>
+<td>Email:</td>
+<td><input type="email" required></td>
 
-    <!-- Email -->
-    <label>Email:</label>
-    <input type="text" id="email" oninput="validateEmail()">
-    <span class="error" id="emailError"></span>
+<td>Phone:</td>
+<td><input type="tel"></td>
+</tr>
 
-    <br><br>
+<tr>
+<td>Health Rating:</td>
+<td colspan="3">
+<input type="range" min="1" max="10" value="5" oninput="showSliderValue(this.value)">
+<span id="sliderValue">5</span>
+</td>
+</tr>
 
-    <!-- Password -->
-    <label>Password:</label>
-    <input type="password" id="password" oninput="validatePassword()">
-    <span class="error" id="passwordError"></span>
+<!-- USER SECTION -->
+<tr>
+<td>User ID:</td>
+<td>
+<input type="text" id="userId" oninput="validateUserId()">
+<div class="error" id="userIdError"></div>
+</td>
 
-    <br><br>
+<td>Password:</td>
+<td>
+<input type="password" id="password" oninput="validatePassword()">
+<div class="error" id="passwordError"></div>
+</td>
+</tr>
 
-    <!-- Confirm Password -->
-    <label>Confirm Password:</label>
-    <input type="password" id="confirmPassword" oninput="validateConfirmPassword()">
-    <span class="error" id="confirmError"></span>
+<tr>
+<td>Confirm Password:</td>
+<td>
+<input type="password" id="confirmPassword" oninput="validateConfirmPassword()">
+<div class="error" id="confirmPasswordError"></div>
+</td>
+</tr>
 
-    <br><br>
+<tr>
+<td colspan="4" style="text-align:center;">
+<input type="reset">
 
-    <!-- Salary Slider -->
-    <label>Desired Salary:</label>
-    <input type="range" min="20000" max="200000" id="salary" oninput="updateSalary()">
-    <p id="salaryValue">$20000</p>
+<button type="button" onclick="validateForm()">VALIDATE</button>
 
-    <br>
+<button type="submit" id="submitBtn" disabled>Submit</button>
+</td>
+</tr>
 
-    <!-- Validate Button -->
-    <button type="button" onclick="validateForm()">VALIDATE</button>
-
-    <!-- Hidden Submit -->
-    <button type="button" id="submitBtn" style="display:none;" onclick="submitForm()">Submit</button>
-
+</table>
 </form>
+
+<div id="footer">
+<p>We Care Medical Clinic</p>
+</div>
 
 </body>
 </html>
