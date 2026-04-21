@@ -1,59 +1,154 @@
 body {
-    font-family: Arial;
-    background: linear-gradient(135deg, #f7d9ff, #d6f5ff);
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #f3e8ff, #ede9fe);
     margin: 0;
-}
-
-#header, #footer {
-    text-align: center;
-    background: #C1FF72;
-    padding: 15px;
-}
-
-#form-section {
-    width: 85%;
-    margin: 20px auto;
-    background: white;
     padding: 20px;
-    border-radius: 12px;
+    color: #2c2c2c;
 }
 
+/* TITLE */
+h1 {
+    text-align: center;
+    color: #5b21b6;
+    margin-bottom: 25px;
+}
+
+/* FORM WRAPPER */
+form {
+    width: 70%;
+    margin: auto;
+}
+
+/* FIELDSETS = CARD STYLE */
+fieldset {
+    background: white;
+    border: 2px solid #e9d5ff;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+
+    box-shadow: 0 6px 18px rgba(91, 33, 182, 0.12);
+}
+
+/* LEGENDS */
+legend {
+    font-weight: bold;
+    color: #6d28d9;
+    padding: 0 10px;
+}
+
+/* LABEL + INPUT ALIGNMENT FIX */
+input, select, textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 6px;
+    margin-bottom: 12px;
+
+    border: 1px solid #d8b4fe;
+    border-radius: 10px;
+
+    outline: none;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* FOCUS EFFECT */
+input:focus, select:focus, textarea:focus {
+    border-color: #7c3aed;
+    box-shadow: 0 0 6px rgba(124, 58, 237, 0.25);
+}
+
+/* ERROR TEXT */
+.error {
+    color: #dc2626;
+    font-size: 12px;
+    margin-top: -8px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* BUTTONS */
+button {
+    padding: 10px 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+    font-weight: bold;
+    transition: 0.2s ease-in-out;
+}
+
+/* REVIEW BUTTON */
+button[type="button"] {
+    background: #7c3aed;
+    color: white;
+}
+
+/* SUBMIT BUTTON */
+button[type="submit"] {
+    background: #22c55e;
+    color: white;
+}
+
+/* RESET BUTTON */
+button[type="reset"] {
+    background: #ef4444;
+    color: white;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* REVIEW SECTION */
+#reviewSection {
+    width: 70%;
+    margin: 30px auto;
+    padding: 20px;
+
+    background: white;
+    border-radius: 14px;
+
+    box-shadow: 0 8px 22px rgba(91, 33, 182, 0.15);
+    border: 2px solid #e9d5ff;
+}
+
+/* TABLE */
 table {
     width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-td {
-    padding: 8px;
-}
-
-input {
-    padding: 6px;
-    width: 100%;
-}
-
-.error {
-    color: red;
-    font-size: 12px;
-    height: 14px;
-}
-
-button {
-    padding: 10px;
-    margin: 5px;
-    background: #a855f7;
+/* HEADER */
+th {
+    background: #6d28d9;
     color: white;
-    border: none;
-    border-radius: 8px;
+    padding: 12px;
+    text-align: left;
 }
 
-button:disabled {
-    background: #ccc;
+/* CELLS */
+td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
 }
 
-#reviewSection {
-    width: 85%;
-    margin: 20px auto;
-    background: white;
-    padding: 15px;
-    border-radius: 12px;
+/* ROW HOVER */
+tr:hover {
+    background: #f5f3ff;
+}
+
+/* PASS / ERROR */
+.pass {
+    color: #16a34a;
+    font-weight: bold;
+}
+
+.errorText {
+    color: #dc2626;
+    font-weight: bold;
 }
