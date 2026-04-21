@@ -1,214 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>We Care Medical Clinic</title>
-
-<link rel="stylesheet" href="style.css">
-
-<script>
-// DATE
-function showDate() {
-    const today = new Date();
-    document.getElementById("currentDate").innerText =
-        today.toDateString();
-}
-
-// SLIDER
-function showSlider(val) {
-    document.getElementById("sliderValue").innerText = val;
-}
-
-/* ---------------- VALIDATION ---------------- */
-
-function validateName(id, errorId) {
-    let value = document.getElementById(id).value;
-    let error = document.getElementById(errorId);
-
-    let regex = /^[A-Za-z'-]{1,30}$/;
-
-    if (!regex.test(value)) {
-        error.innerText = "Letters only (max 30)";
-        return false;
-    }
-
-    error.innerText = "";
-    return true;
-}
-
-function validateEmail() {
-    let field = document.getElementById("email");
-    let value = field.value.toLowerCase();
-    field.value = value;
-
-    let error = document.getElementById("emailError");
-
-    let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!regex.test(value)) {
-        error.innerText = "Invalid email";
-        return false;
-    }
-
-    error.innerText = "";
-    return true;
-}
-
-function validateUserId() {
-    let value = document.getElementById("userId").value;
-    let error = document.getElementById("userIdError");
-
-    if (/^[0-9]/.test(value)) {
-        error.innerText = "Cannot start with number";
-        return false;
-    }
-
-    if (value.length < 5 || value.length > 20) {
-        error.innerText = "5–20 characters required";
-        return false;
-    }
-
-    if (!/^[A-Za-z0-9_-]+$/.test(value)) {
-        error.innerText = "Only letters, numbers, - _ allowed";
-        return false;
-    }
-
-    error.innerText = "";
-    return true;
-}
-
-function validatePassword() {
-    let pw = document.getElementById("password").value;
-    let userId = document.getElementById("userId").value;
-    let error = document.getElementById("passwordError");
-
-    let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-
-    if (!regex.test(pw)) {
-        error.innerText = "Min 8 chars, upper, lower, number";
-        return false;
-    }
-
-    if (pw === userId) {
-        error.innerText = "Cannot match User ID";
-        return false;
-    }
-
-    error.innerText = "";
-    return true;
-}
-
-function validateConfirmPassword() {
-    let pw = document.getElementById("password").value;
-    let cpw = document.getElementById("confirmPassword").value;
-    let error = document.getElementById("confirmError");
-
-    if (pw !== cpw) {
-        error.innerText = "Passwords do not match";
-        return false;
-    }
-
-    error.innerText = "";
-    return true;
-}
-
-/* MASTER CHECK */
-function validateForm() {
-    let ok =
-        validateName("firstName", "firstNameError") &
-        validateName("lastName", "lastNameError") &
-        validateEmail() &
-        validateUserId() &
-        validatePassword() &
-        validateConfirmPassword();
-
-    document.getElementById("submitBtn").disabled = !ok;
-
-    if (ok) alert("All good — you can submit!");
-}
-</script>
-
+    <meta charset="UTF-8">
+    <title>Homework 2 - Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 
-<body onload="showDate()">
+<body>
 
-<div id="header">
-    <h1>We Care Medical Clinic</h1>
-    <p>Today: <span id="currentDate"></span></p>
-</div>
+<h1>User Registration Form</h1>
 
-<form action="thankyou.html">
+<form id="userForm">
 
-<table>
+<!-- PERSONAL -->
+<fieldset>
+<legend>Personal Info</legend>
 
-<tr>
-<td>First Name:</td>
-<td>
-<input id="firstName" oninput="validateName('firstName','firstNameError')">
-<div class="error" id="firstNameError"></div>
-</td>
+First Name:
+<input type="text" id="firstName"
+pattern="[A-Za-z'-]{1,30}" required
+title="1–30 letters, apostrophes, dashes only">
+<span class="error" id="errFirst"></span>
 
-<td>Last Name:</td>
-<td>
-<input id="lastName" oninput="validateName('lastName','lastNameError')">
-<div class="error" id="lastNameError"></div>
-</td>
-</tr>
+Middle Initial:
+<input type="text" id="mi"
+pattern="[A-Za-z]?"
+title="single letter">
+<span class="error" id="errMI"></span>
 
-<tr>
-<td>Email:</td>
-<td>
-<input id="email" oninput="validateEmail()">
-<div class="error" id="emailError"></div>
-</td>
-</tr>
+Last Name:
+<input type="text" id="lastName"
+pattern="[A-Za-z0-9'-]{1,30}" required
+title="Letters, numbers 2–5, apostrophes, dashes">
+<span class="error" id="errLast"></span>
 
-<tr>
-<td>User ID:</td>
-<td>
-<input id="userId" oninput="validateUserId()">
-<div class="error" id="userIdError"></div>
-</td>
-</tr>
+<br>
 
-<tr>
-<td>Password:</td>
-<td>
-<input type="password" id="password" oninput="validatePassword()">
-<div class="error" id="passwordError"></div>
-</td>
+Date of Birth:
+<input type="date" id="dob" required>
+<span class="error" id="errDOB"></span>
 
-<td>Confirm:</td>
-<td>
-<input type="password" id="confirmPassword" oninput="validateConfirmPassword()">
-<div class="error" id="confirmError"></div>
-</td>
-</tr>
+<br>
 
-<tr>
-<td>Health:</td>
-<td colspan="3">
-<input type="range" min="1" max="10" value="5" oninput="showSlider(this.value)">
-<span id="sliderValue">5</span>
-</td>
-</tr>
+ID Number:
+<input type="password" id="idnum" required>
+</fieldset>
 
-<tr>
-<td colspan="4" style="text-align:center;">
-<input type="reset">
+<!-- CONTACT -->
+<fieldset>
+<legend>Contact Info</legend>
 
-<button type="button" onclick="validateForm()">VALIDATE</button>
+Email:
+<input type="email" id="email" required>
+<span class="error" id="errEmail"></span>
 
-<button id="submitBtn" type="submit" disabled>Submit</button>
-</td>
-</tr>
+Phone:
+<input type="tel" id="phone"
+pattern="\d{3}-\d{3}-\d{4}" required
+title="123-456-7890">
+<span class="error" id="errPhone"></span>
+</fieldset>
 
-</table>
+<!-- ADDRESS -->
+<fieldset>
+<legend>Address</legend>
+
+Address 1:
+<input type="text" id="addr1" required>
+
+Address 2:
+<input type="text" id="addr2">
+
+City:
+<input type="text" id="city" required>
+
+State:
+<select id="state" required>
+<option value="">Select</option>
+<option>TX</option><option>CA</option><option>NY</option>
+<option>FL</option><option>IL</option><option>GA</option>
+<option>WA</option><option>PA</option><option>OH</option>
+<option>NC</option><option>MI</option><option>NJ</option>
+<option>VA</option><option>CO</option><option>MA</option>
+<option>TN</option><option>IN</option><option>MO</option>
+<option>MD</option><option>WI</option><option>MN</option>
+<option>SC</option><option>AL</option><option>LA</option>
+<option>KY</option><option>OR</option><option>OK</option>
+<option>CT</option><option>UT</option><option>IA</option>
+<option>NV</option><option>AR</option><option>MS</option>
+<option>KS</option><option>NM</option><option>NE</option>
+<option>WV</option><option>ID</option><option>HI</option>
+<option>NH</option><option>ME</option><option>MT</option>
+<option>RI</option><option>DE</option><option>SD</option>
+<option>ND</option><option>AK</option><option>VT</option>
+<option>DC</option><option>PR</option>
+</select>
+
+Zip:
+<input type="text" id="zip"
+pattern="\d{5}(-\d{4})?" required>
+<span class="error" id="errZip"></span>
+</fieldset>
+
+<!-- HEALTH -->
+<fieldset>
+<legend>Health Info</legend>
+
+<label><input type="checkbox" id="cp"> Chicken Pox</label>
+<label><input type="checkbox" id="measles"> Measles</label>
+<label><input type="checkbox" id="covid"> Covid-19</label>
+
+<br><br>
+
+Vaccinated:
+<label><input type="radio" name="vax" value="Yes">Yes</label>
+<label><input type="radio" name="vax" value="No">No</label>
+
+<br><br>
+
+Health Score:
+<input type="range" min="0" max="100"
+value="50" oninput="updateHealth(this.value)">
+<span id="healthOutput">50 (Moderate Health)</span>
+
+<br><br>
+
+<textarea id="notes" placeholder="Optional notes"></textarea>
+</fieldset>
+
+<!-- ACCOUNT -->
+<fieldset>
+<legend>Account</legend>
+
+User ID:
+<input type="text" id="userId"
+pattern="[a-zA-Z][a-zA-Z0-9_-]{4,29}"
+oninput="fixUserId()" required>
+<span class="error" id="errUser"></span>
+
+Password:
+<input type="password" id="password"
+oninput="passwordCheck()" required>
+
+Confirm Password:
+<input type="password" id="confirmPassword" required>
+<span class="error" id="errPass"></span>
+</fieldset>
+
+<br>
+
+<button type="button" onclick="reviewForm()">Review</button>
+<button type="submit" onclick="return validateAll()">Submit</button>
+<button type="reset">Start Over</button>
 
 </form>
 
-<div id="footer">
-<p>We Care Medical Clinic</p>
+<!-- REVIEW -->
+<div id="reviewSection">
+<h2>PLEASE REVIEW THIS INFORMATION</h2>
+
+<table>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Status</th>
+</tr>
+
+<tbody id="reviewTable"></tbody>
+</table>
 </div>
 
 </body>
+</html>
+
