@@ -2,171 +2,139 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Patient Registration - We Care Medical Clinic</title>
+<title>We Care Medical Clinic</title>
 
-<style>
-body {
-    font-family: Arial;
-}
-
-#header, #footer {
-    text-align: center;
-    margin: 20px;
-}
-
-table {
-    margin: auto;
-}
-
-.error {
-    color: red;
-    font-size: 12px;
-    height: 15px;
-}
-
-input, select, textarea {
-    padding: 5px;
-}
-
-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 
 <script>
 // DATE
 function showDate() {
     const today = new Date();
-    document.getElementById('currentDate').innerText =
-        today.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' });
+    document.getElementById("currentDate").innerText =
+        today.toDateString();
 }
 
 // SLIDER
-function showSliderValue(val) {
-    document.getElementById('sliderValue').innerText = val;
+function showSlider(val) {
+    document.getElementById("sliderValue").innerText = val;
 }
 
-// NAME VALIDATION
+/* ---------------- VALIDATION ---------------- */
+
 function validateName(id, errorId) {
     let value = document.getElementById(id).value;
-    let error = "";
+    let error = document.getElementById(errorId);
 
-    if (!/^[a-zA-Z\s']+$/.test(value)) {
-        error = "Only letters allowed";
+    let regex = /^[A-Za-z'-]{1,30}$/;
+
+    if (!regex.test(value)) {
+        error.innerText = "Letters only (max 30)";
+        return false;
     }
 
-    document.getElementById(errorId).innerText = error;
-    return error === "";
+    error.innerText = "";
+    return true;
 }
 
-// EMAIL VALIDATION
 function validateEmail() {
-    let emailField = document.getElementById("email");
-    let email = emailField.value.toLowerCase();
-    emailField.value = email;
+    let field = document.getElementById("email");
+    let value = field.value.toLowerCase();
+    field.value = value;
 
-    let error = "";
+    let error = document.getElementById("emailError");
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        error = "Invalid email format";
+    let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!regex.test(value)) {
+        error.innerText = "Invalid email";
+        return false;
     }
 
-    document.getElementById("emailError").innerText = error;
-    return error === "";
+    error.innerText = "";
+    return true;
 }
 
-// PHONE VALIDATION
-function validatePhone() {
-    let phone = document.getElementById("phone").value;
-    let error = "";
-
-    if (phone && !/^\d{3}-\d{3}-\d{4}$/.test(phone)) {
-        error = "Format: 123-456-7890";
-    }
-
-    document.getElementById("phoneError").innerText = error;
-    return error === "";
-}
-
-// USER ID VALIDATION
 function validateUserId() {
-    let userId = document.getElementById("userId").value;
-    let error = "";
+    let value = document.getElementById("userId").value;
+    let error = document.getElementById("userIdError");
 
-    if (/^[0-9]/.test(userId)) {
-        error = "Cannot start with number";
-    } else if (userId.length < 5 || userId.length > 20) {
-        error = "Must be 5-20 characters";
-    } else if (!/^[a-zA-Z0-9_-]+$/.test(userId)) {
-        error = "Only letters, numbers, - _ allowed";
+    if (/^[0-9]/.test(value)) {
+        error.innerText = "Cannot start with number";
+        return false;
     }
 
-    document.getElementById("userIdError").innerText = error;
-    return error === "";
+    if (value.length < 5 || value.length > 20) {
+        error.innerText = "5–20 characters required";
+        return false;
+    }
+
+    if (!/^[A-Za-z0-9_-]+$/.test(value)) {
+        error.innerText = "Only letters, numbers, - _ allowed";
+        return false;
+    }
+
+    error.innerText = "";
+    return true;
 }
 
-// PASSWORD VALIDATION
 function validatePassword() {
-    let password = document.getElementById("password").value;
+    let pw = document.getElementById("password").value;
     let userId = document.getElementById("userId").value;
-    let error = "";
+    let error = document.getElementById("passwordError");
 
-    if (password.length < 8) {
-        error = "At least 8 characters";
-    } else if (!/[A-Z]/.test(password)) {
-        error = "Need uppercase";
-    } else if (!/[a-z]/.test(password)) {
-        error = "Need lowercase";
-    } else if (!/[0-9]/.test(password)) {
-        error = "Need number";
-    } else if (password === userId) {
-        error = "Cannot match User ID";
+    let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+    if (!regex.test(pw)) {
+        error.innerText = "Min 8 chars, upper, lower, number";
+        return false;
     }
 
-    document.getElementById("passwordError").innerText = error;
-    return error === "";
+    if (pw === userId) {
+        error.innerText = "Cannot match User ID";
+        return false;
+    }
+
+    error.innerText = "";
+    return true;
 }
 
-// CONFIRM PASSWORD
 function validateConfirmPassword() {
-    let pass = document.getElementById("password").value;
-    let confirm = document.getElementById("confirmPassword").value;
-    let error = "";
+    let pw = document.getElementById("password").value;
+    let cpw = document.getElementById("confirmPassword").value;
+    let error = document.getElementById("confirmError");
 
-    if (pass !== confirm) {
-        error = "Passwords do not match";
+    if (pw !== cpw) {
+        error.innerText = "Passwords do not match";
+        return false;
     }
 
-    document.getElementById("confirmPasswordError").innerText = error;
-    return error === "";
+    error.innerText = "";
+    return true;
 }
 
-// MAIN VALIDATE
+/* MASTER CHECK */
 function validateForm() {
-    let valid =
-        validateUserId() &&
-        validatePassword() &&
-        validateConfirmPassword() &&
-        validateName("firstName", "firstNameError") &&
-        validateName("lastName", "lastNameError") &&
-        validateEmail() &&
-        validatePhone();
+    let ok =
+        validateName("firstName", "firstNameError") &
+        validateName("lastName", "lastNameError") &
+        validateEmail() &
+        validateUserId() &
+        validatePassword() &
+        validateConfirmPassword();
 
-    document.getElementById("submitBtn").disabled = !valid;
+    document.getElementById("submitBtn").disabled = !ok;
 
-    if (valid) {
-        alert("All fields are valid! You can submit.");
-    }
+    if (ok) alert("All good — you can submit!");
 }
 </script>
+
 </head>
 
 <body onload="showDate()">
 
 <div id="header">
     <h1>We Care Medical Clinic</h1>
-    <p>Today is: <span id="currentDate"></span></p>
+    <p>Today: <span id="currentDate"></span></p>
 </div>
 
 <form action="thankyou.html">
@@ -176,13 +144,13 @@ function validateForm() {
 <tr>
 <td>First Name:</td>
 <td>
-<input type="text" id="firstName" oninput="validateName('firstName','firstNameError')" required>
+<input id="firstName" oninput="validateName('firstName','firstNameError')">
 <div class="error" id="firstNameError"></div>
 </td>
 
 <td>Last Name:</td>
 <td>
-<input type="text" id="lastName" oninput="validateName('lastName','lastNameError')" required>
+<input id="lastName" oninput="validateName('lastName','lastNameError')">
 <div class="error" id="lastNameError"></div>
 </td>
 </tr>
@@ -190,45 +158,38 @@ function validateForm() {
 <tr>
 <td>Email:</td>
 <td>
-<input type="email" id="email" oninput="validateEmail()" required>
+<input id="email" oninput="validateEmail()">
 <div class="error" id="emailError"></div>
 </td>
-
-<td>Phone:</td>
-<td>
-<input type="tel" id="phone" placeholder="123-456-7890" oninput="validatePhone()">
-<div class="error" id="phoneError"></div>
-</td>
 </tr>
 
-<tr>
-<td>Health Rating:</td>
-<td colspan="3">
-<input type="range" min="1" max="10" value="5" oninput="showSliderValue(this.value)">
-<span id="sliderValue">5</span>
-</td>
-</tr>
-
-<!-- USER SECTION -->
 <tr>
 <td>User ID:</td>
 <td>
-<input type="text" id="userId" oninput="validateUserId()">
+<input id="userId" oninput="validateUserId()">
 <div class="error" id="userIdError"></div>
 </td>
+</tr>
 
+<tr>
 <td>Password:</td>
 <td>
 <input type="password" id="password" oninput="validatePassword()">
 <div class="error" id="passwordError"></div>
 </td>
+
+<td>Confirm:</td>
+<td>
+<input type="password" id="confirmPassword" oninput="validateConfirmPassword()">
+<div class="error" id="confirmError"></div>
+</td>
 </tr>
 
 <tr>
-<td>Confirm Password:</td>
-<td>
-<input type="password" id="confirmPassword" oninput="validateConfirmPassword()">
-<div class="error" id="confirmPasswordError"></div>
+<td>Health:</td>
+<td colspan="3">
+<input type="range" min="1" max="10" value="5" oninput="showSlider(this.value)">
+<span id="sliderValue">5</span>
 </td>
 </tr>
 
@@ -238,11 +199,12 @@ function validateForm() {
 
 <button type="button" onclick="validateForm()">VALIDATE</button>
 
-<button type="submit" id="submitBtn" disabled>Submit</button>
+<button id="submitBtn" type="submit" disabled>Submit</button>
 </td>
 </tr>
 
 </table>
+
 </form>
 
 <div id="footer">
