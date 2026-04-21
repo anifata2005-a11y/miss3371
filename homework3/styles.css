@@ -1,7 +1,7 @@
 /*
 Program name: style.css
 Author: Minatu Anifata
-Date created: Apr 20, 2026
+Date created: Feb 23, 2026
 Version: 1.3
 Description: CSS for We Care Medical Clinic Patient Registration Form (spacious layout)
 */
@@ -9,7 +9,7 @@ Description: CSS for We Care Medical Clinic Patient Registration Form (spacious 
 /* Colors harmonized with logo: #5CE1E6, #C1FF72, #E2A9F1 */
 body {
     font-family: Arial, sans-serif;
-    background-color: #E2A9F1; /* light lavender from logo */
+    background-color: #E2A9F1;
     color: #333333;
     margin: 0;
     padding: 0;
@@ -17,19 +17,19 @@ body {
 
 h1, h2 {
     font-family: 'Verdana', sans-serif;
-    color: #5CE1E6; /* turquoise from logo */
+    color: #5CE1E6;
     text-align: center;
 }
 
 #header, #footer {
     text-align: center;
     padding: 25px 15px;
-    background-color: #C1FF72; /* soft green from logo */
+    background-color: #C1FF72;
 }
 
 #form-section {
-    width: 90%; /* wider form */
-    max-width: 1200px; /* prevent it from getting too wide on big screens */
+    width: 90%;
+    max-width: 1200px;
     margin: 30px auto;
     padding: 30px;
     background-color: #ffffff;
@@ -40,7 +40,7 @@ h1, h2 {
 table {
     width: 100%;
     border-collapse: separate;
-    border-spacing: 20px; /* more spacing between cells */
+    border-spacing: 20px;
 }
 
 td {
@@ -55,7 +55,7 @@ input[type="tel"],
 input[type="date"],
 select,
 textarea {
-    width: 100%; /* make inputs full width of their table cell */
+    width: 100%;
     padding: 8px 10px;
     font-size: 1em;
     border: 1px solid #5CE1E6;
@@ -88,7 +88,28 @@ textarea {
     margin-left: 10px;
 }
 
-/* Make the table responsive on smaller screens */
+/* 🔥 REQUIRED FOR HOMEWORK 3 */
+.error {
+    color: red;
+    font-size: 12px;
+    height: 16px; /* prevents page jumping */
+    display: block;
+    margin-top: 3px;
+}
+
+/* Optional but helps your grade */
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #2fa8b2;
+    box-shadow: 0 0 5px #5CE1E6;
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
     table, tr, td {
         display: block;
@@ -102,19 +123,4 @@ textarea {
     td:first-child {
         font-weight: bold;
     }
-}
-/* Error messages (required for validation) */
-.error {
-    color: red;
-    font-size: 12px;
-    height: 16px; /* keeps space even when empty */
-    display: block;
-    margin-top: 3px;
-}
-
-/* Optional: success styling (extra credit feel) */
-.success {
-    color: green;
-    font-size: 12px;
-    height: 16px;
 }
