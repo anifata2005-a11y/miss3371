@@ -133,3 +133,24 @@ function validateForm() {
 function submitForm() {
     window.location.href = "thankyou.html";
 }
+
+function reviewForm() {
+
+    reviewTable.innerHTML = `
+<tr><td>Name</td><td>${firstName.value} ${mi.value} ${lastName.value}</td><td>PASS</td></tr>
+
+<tr><td>DOB</td><td>${dob.value}</td><td>${validateDOB()}</td></tr>
+
+<tr><td>Email</td><td>${email.value}</td><td>${email.value.includes("@") ? "PASS" : "ERROR"}</td></tr>
+
+<tr><td>Phone</td><td>${phone.value}</td><td>${/^\d{3}-\d{3}-\d{4}$/.test(phone.value) ? "PASS" : "ERROR"}</td></tr>
+
+<tr><td>Address</td><td>${addr1.value}, ${city.value}, ${state.value} ${zip.value}</td><td>PASS</td></tr>
+
+<tr><td>Health Score</td><td>${healthOutput.innerText}</td><td>PASS</td></tr>
+
+<tr><td>User ID</td><td>${userId.value}</td><td>PASS</td></tr>
+
+<tr><td>Password</td><td>****</td><td>${password.value === confirmPassword.value ? "PASS" : "ERROR"}</td></tr>
+`;
+}
