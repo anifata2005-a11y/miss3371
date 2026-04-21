@@ -1,156 +1,111 @@
-// FIRST NAME
+function showDate() {
+    document.getElementById("currentDate").innerText =
+        new Date().toDateString();
+}
+
+function showSlider(val) {
+    document.getElementById("sliderValue").innerText = val;
+}
+
+/* NAME */
 function validateFirstName() {
-    let value = document.getElementById("firstName").value;
-    let error = document.getElementById("firstNameError");
+    let v = document.getElementById("firstName").value;
+    let e = document.getElementById("firstNameError");
+    let ok = /^[A-Za-z'-]{1,30}$/.test(v);
 
-    let regex = /^[A-Za-z'-]{1,30}$/;
-
-    if (!regex.test(value)) {
-        error.textContent = "Invalid first name";
-        return false;
-    } else {
-        error.textContent = "";
-        return true;
-    }
+    e.innerText = ok ? "" : "Invalid first name";
+    return ok;
 }
 
-// LAST NAME
 function validateLastName() {
-    let value = document.getElementById("lastName").value;
-    let error = document.getElementById("lastNameError");
+    let v = document.getElementById("lastName").value;
+    let e = document.getElementById("lastNameError");
+    let ok = /^[A-Za-z'-]{1,30}$/.test(v);
 
-    let regex = /^[A-Za-z'-]{1,30}$/;
-
-    if (!regex.test(value)) {
-        error.textContent = "Invalid last name";
-        return false;
-    } else {
-        error.textContent = "";
-        return true;
-    }
+    e.innerText = ok ? "" : "Invalid last name";
+    return ok;
 }
 
-// EMAIL
+/* EMAIL */
 function validateEmail() {
-    let field = document.getElementById("email");
-    let value = field.value.toLowerCase();
-    field.value = value;
+    let v = document.getElementById("email");
+    v.value = v.value.toLowerCase();
 
-    let error = document.getElementById("emailError");
-    let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let e = document.getElementById("emailError");
+    let ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.value);
 
-    if (!regex.test(value)) {
-        error.textContent = "Invalid email";
-        return false;
-    } else {
-        error.textContent = "";
-        return true;
-    }
+    e.innerText = ok ? "" : "Invalid email";
+    return ok;
 }
 
-// USER ID (REQUIRED)
+/* USER ID */
 function validateUserId() {
-    let value = document.getElementById("userId").value;
-    let error = document.getElementById("userIdError");
+    let v = document.getElementById("userId").value;
+    let e = document.getElementById("userIdError");
 
-    if (/^[0-9]/.test(value)) {
-        error.textContent = "Cannot start with number";
-        return false;
-    } else if (value.length < 5 || value.length > 20) {
-        error.textContent = "5–20 characters required";
-        return false;
-    } else if (!/^[A-Za-z0-9_-]+$/.test(value)) {
-        error.textContent = "Only letters, numbers, - _ allowed";
-        return false;
-    } else {
-        error.textContent = "";
-        return true;
-    }
+    let ok =
+        v.length >= 5 &&
+        v.length <= 20 &&
+        !/^[0-9]/.test(v) &&
+        /^[A-Za-z0-9_-]+$/.test(v);
+
+    e.innerText = ok ? "" : "Invalid User ID";
+    return ok;
 }
 
-// PASSWORD
+/* PASSWORD */
 function validatePassword() {
-    let value = document.getElementById("password").value;
-    let userId = document.getElementById("userId").value;
-    let error = document.getElementById("passwordError");
+    let pw = document.getElementById("password").value;
+    let uid = document.getElementById("userId").value;
+    let e = document.getElementById("passwordError");
 
-    let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+    let ok =
+        pw.length >= 8 &&
+        /[A-Z]/.test(pw) &&
+        /[a-z]/.test(pw) &&
+        /[0-9]/.test(pw) &&
+        pw !== uid;
 
-    if (!regex.test(value)) {
-        error.textContent = "Min 8 chars, 1 upper, 1 lower, 1 number";
-        return false;
-    } else if (value === userId) {
-        error.textContent = "Cannot match User ID";
-        return false;
-    } else {
-        error.textContent = "";
-        return true;
-    }
+    e.innerText = ok ? "" : "Weak password";
+    return ok;
 }
 
-// CONFIRM PASSWORD
+/* CONFIRM */
 function validateConfirmPassword() {
     let pw = document.getElementById("password").value;
-    let confirm = document.getElementById("confirmPassword").value;
-    let error = document.getElementById("confirmPasswordError");
+    let cpw = document.getElementById("confirmPassword").value;
+    let e = document.getElementById("confirmError");
 
-    if (pw !== confirm) {
-        error.textContent = "Passwords do not match";
-        return false;
-    } else {
-        error.textContent = "";
-        return true;
-    }
+    let ok = pw === cpw;
+
+    e.innerText = ok ? "" : "Passwords do not match";
+    return ok;
 }
 
-// SLIDER (if you still use it)
-function updateSalary() {
-    let value = document.getElementById("salary").value;
-    document.getElementById("salaryValue").textContent = "$" + value;
-}
-
-// MAIN VALIDATE
+/* MASTER VALIDATE */
 function validateForm() {
-    let valid = true;
+    let ok =
+        validateFirstName() &
+        validateLastName() &
+        validateEmail() &
+        validateUserId() &
+        validatePassword() &
+        validateConfirmPassword();
 
-    if (!validateFirstName()) valid = false;
-    if (!validateLastName()) valid = false;
-    if (!validateEmail()) valid = false;
-    if (!validateUserId()) valid = false;
-    if (!validatePassword()) valid = false;
-    if (!validateConfirmPassword()) valid = false;
+    document.getElementById("submitBtn").disabled = !ok;
 
-    document.getElementById("submitBtn").disabled = !valid;
-
-    if (valid) {
-        alert("All fields valid! You can submit.");
-    } else {
-        alert("Fix errors before submitting");
-    }
+    if (ok) alert("Ready to submit!");
 }
 
-// OPTIONAL submit redirect (if you use button instead of form action)
-function submitForm() {
-    window.location.href = "thankyou.html";
-}
-
+/* REVIEW BUTTON */
 function reviewForm() {
+    let table = document.getElementById("reviewTable");
 
-    reviewTable.innerHTML = `
-<tr><td>Name</td><td>${firstName.value} ${mi.value} ${lastName.value}</td><td>PASS</td></tr>
-
-<tr><td>DOB</td><td>${dob.value}</td><td>${validateDOB()}</td></tr>
-
-<tr><td>Email</td><td>${email.value}</td><td>${email.value.includes("@") ? "PASS" : "ERROR"}</td></tr>
-
-<tr><td>Phone</td><td>${phone.value}</td><td>${/^\d{3}-\d{3}-\d{4}$/.test(phone.value) ? "PASS" : "ERROR"}</td></tr>
-
-<tr><td>Address</td><td>${addr1.value}, ${city.value}, ${state.value} ${zip.value}</td><td>PASS</td></tr>
-
-<tr><td>Health Score</td><td>${healthOutput.innerText}</td><td>PASS</td></tr>
-
-<tr><td>User ID</td><td>${userId.value}</td><td>PASS</td></tr>
-
-<tr><td>Password</td><td>****</td><td>${password.value === confirmPassword.value ? "PASS" : "ERROR"}</td></tr>
+    table.innerHTML = `
+<tr><td>Name</td><td>${firstName.value} ${lastName.value}</td><td>✔</td></tr>
+<tr><td>Email</td><td>${email.value}</td><td>✔</td></tr>
+<tr><td>User ID</td><td>${userId.value}</td><td>✔</td></tr>
+<tr><td>Health</td><td>${sliderValue.innerText}</td><td>✔</td></tr>
+<tr><td>Password</td><td>••••••</td><td>${password.value === confirmPassword.value ? "✔" : "⚠"}</td></tr>
 `;
 }
