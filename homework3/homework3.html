@@ -21,11 +21,16 @@ table {
 .error {
     color: red;
     font-size: 12px;
-    height: 15px; /* prevents jumping */
+    height: 15px;
 }
 
 input, select, textarea {
     padding: 5px;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
 </style>
 
@@ -40,6 +45,48 @@ function showDate() {
 // SLIDER
 function showSliderValue(val) {
     document.getElementById('sliderValue').innerText = val;
+}
+
+// NAME VALIDATION
+function validateName(id, errorId) {
+    let value = document.getElementById(id).value;
+    let error = "";
+
+    if (!/^[a-zA-Z\s']+$/.test(value)) {
+        error = "Only letters allowed";
+    }
+
+    document.getElementById(errorId).innerText = error;
+    return error === "";
+}
+
+// EMAIL VALIDATION
+function validateEmail() {
+    let emailField = document.getElementById("email");
+    let email = emailField.value.toLowerCase();
+    emailField.value = email;
+
+    let error = "";
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        error = "Invalid email format";
+    }
+
+    document.getElementById("emailError").innerText = error;
+    return error === "";
+}
+
+// PHONE VALIDATION
+function validatePhone() {
+    let phone = document.getElementById("phone").value;
+    let error = "";
+
+    if (phone && !/^\d{3}-\d{3}-\d{4}$/.test(phone)) {
+        error = "Format: 123-456-7890";
+    }
+
+    document.getElementById("phoneError").innerText = error;
+    return error === "";
 }
 
 // USER ID VALIDATION
@@ -97,15 +144,19 @@ function validateConfirmPassword() {
 
 // MAIN VALIDATE
 function validateForm() {
-    let a = validateUserId();
-    let b = validatePassword();
-    let c = validateConfirmPassword();
+    let valid =
+        validateUserId() &&
+        validatePassword() &&
+        validateConfirmPassword() &&
+        validateName("firstName", "firstNameError") &&
+        validateName("lastName", "lastNameError") &&
+        validateEmail() &&
+        validatePhone();
 
-    if (a && b && c) {
-        document.getElementById("submitBtn").disabled = false;
-        alert("All good! You can submit.");
-    } else {
-        document.getElementById("submitBtn").disabled = true;
+    document.getElementById("submitBtn").disabled = !valid;
+
+    if (valid) {
+        alert("All fields are valid! You can submit.");
     }
 }
 </script>
@@ -124,18 +175,30 @@ function validateForm() {
 
 <tr>
 <td>First Name:</td>
-<td><input type="text" required></td>
+<td>
+<input type="text" id="firstName" oninput="validateName('firstName','firstNameError')" required>
+<div class="error" id="firstNameError"></div>
+</td>
 
 <td>Last Name:</td>
-<td><input type="text" required></td>
+<td>
+<input type="text" id="lastName" oninput="validateName('lastName','lastNameError')" required>
+<div class="error" id="lastNameError"></div>
+</td>
 </tr>
 
 <tr>
 <td>Email:</td>
-<td><input type="email" required></td>
+<td>
+<input type="email" id="email" oninput="validateEmail()" required>
+<div class="error" id="emailError"></div>
+</td>
 
 <td>Phone:</td>
-<td><input type="tel"></td>
+<td>
+<input type="tel" id="phone" placeholder="123-456-7890" oninput="validatePhone()">
+<div class="error" id="phoneError"></div>
+</td>
 </tr>
 
 <tr>
