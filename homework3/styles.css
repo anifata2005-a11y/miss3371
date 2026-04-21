@@ -103,3 +103,18 @@ textarea {
         font-weight: bold;
     }
 }
+/* Error messages (required for validation) */
+.error {
+    color: red;
+    font-size: 12px;
+    height: 16px; /* keeps space even when empty */
+    display: block;
+    margin-top: 3px;
+}
+
+/* Optional: success styling (extra credit feel) */
+.success {
+    color: green;
+    font-size: 12px;
+    height: 16px;
+}
