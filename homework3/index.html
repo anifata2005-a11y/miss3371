@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Homework 2 - Registration Form</title>
+    <title>Homework 3 - Registration Form</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
@@ -11,7 +11,7 @@
 
 <h1>User Registration Form</h1>
 
-<form id="userForm">
+<form id="userForm" onsubmit="return false;">
 
 <!-- PERSONAL -->
 <fieldset>
@@ -19,32 +19,33 @@
 
 First Name:
 <input type="text" id="firstName"
-pattern="[A-Za-z'-]{1,30}" required
+oninput="validateName('firstName','errFirst')"
 title="1–30 letters, apostrophes, dashes only">
 <span class="error" id="errFirst"></span>
 
 Middle Initial:
 <input type="text" id="mi"
-pattern="[A-Za-z]?"
-title="single letter">
+oninput="validateMI()">
 <span class="error" id="errMI"></span>
 
 Last Name:
 <input type="text" id="lastName"
-pattern="[A-Za-z0-9'-]{1,30}" required
-title="Letters, numbers 2–5, apostrophes, dashes">
+oninput="validateName('lastName','errLast')">
 <span class="error" id="errLast"></span>
 
 <br>
 
 Date of Birth:
-<input type="date" id="dob" required>
+<input type="date" id="dob" onblur="validateDOB()">
 <span class="error" id="errDOB"></span>
 
 <br>
 
 ID Number:
-<input type="password" id="idnum" required>
+<input type="password" id="idnum"
+oninput="formatID()">
+<span class="error" id="errID"></span>
+
 </fieldset>
 
 <!-- CONTACT -->
@@ -52,13 +53,13 @@ ID Number:
 <legend>Contact Info</legend>
 
 Email:
-<input type="email" id="email" required>
+<input type="text" id="email"
+oninput="validateEmail()">
 <span class="error" id="errEmail"></span>
 
 Phone:
-<input type="tel" id="phone"
-pattern="\d{3}-\d{3}-\d{4}" required
-title="123-456-7890">
+<input type="text" id="phone"
+oninput="validatePhone()">
 <span class="error" id="errPhone"></span>
 </fieldset>
 
@@ -67,16 +68,19 @@ title="123-456-7890">
 <legend>Address</legend>
 
 Address 1:
-<input type="text" id="addr1" required>
+<input type="text" id="addr1" oninput="validateRequired('addr1')">
+<span class="error" id="errAddr1"></span>
 
 Address 2:
-<input type="text" id="addr2">
+<input type="text" id="addr2" oninput="validateOptional('addr2')">
+<span class="error" id="errAddr2"></span>
 
 City:
-<input type="text" id="city" required>
+<input type="text" id="city" oninput="validateRequired('city')">
+<span class="error" id="errCity"></span>
 
 State:
-<select id="state" required>
+<select id="state" onchange="validateState()">
 <option value="">Select</option>
 <option>TX</option><option>CA</option><option>NY</option>
 <option>FL</option><option>IL</option><option>GA</option>
@@ -96,26 +100,31 @@ State:
 <option>ND</option><option>AK</option><option>VT</option>
 <option>DC</option><option>PR</option>
 </select>
+<span class="error" id="errState"></span>
 
 Zip:
 <input type="text" id="zip"
-pattern="\d{5}(-\d{4})?" required>
+oninput="validateZip()">
 <span class="error" id="errZip"></span>
+
 </fieldset>
 
 <!-- HEALTH -->
 <fieldset>
 <legend>Health Info</legend>
 
-<label><input type="checkbox" id="cp"> Chicken Pox</label>
-<label><input type="checkbox" id="measles"> Measles</label>
-<label><input type="checkbox" id="covid"> Covid-19</label>
+<label><input type="checkbox"> Chicken Pox</label>
+<label><input type="checkbox"> Measles</label>
+<label><input type="checkbox"> Covid-19</label>
+<label><input type="checkbox"> Flu</label>
+<label><input type="checkbox"> Mumps</label>
 
 <br><br>
 
 Vaccinated:
 <label><input type="radio" name="vax" value="Yes">Yes</label>
 <label><input type="radio" name="vax" value="No">No</label>
+<label><input type="radio" name="vax" value="Unsure">Unsure</label>
 
 <br><br>
 
@@ -135,42 +144,28 @@ value="50" oninput="updateHealth(this.value)">
 
 User ID:
 <input type="text" id="userId"
-pattern="[a-zA-Z][a-zA-Z0-9_-]{4,29}"
-oninput="fixUserId()" required>
+oninput="validateUserID()">
 <span class="error" id="errUser"></span>
 
 Password:
 <input type="password" id="password"
-oninput="passwordCheck()" required>
+oninput="validatePassword()">
 
 Confirm Password:
-<input type="password" id="confirmPassword" required>
+<input type="password" id="confirmPassword"
+oninput="matchPassword()">
 <span class="error" id="errPass"></span>
+
 </fieldset>
 
 <br>
 
-<button type="button" onclick="reviewForm()">Review</button>
-<button type="submit" onclick="return validateAll()">Submit</button>
+<button type="button" onclick="validateAll()">VALIDATE</button>
+<button type="submit" id="submitBtn" style="display:none;"
+onclick="goToThankYou()">Submit</button>
 <button type="reset">Start Over</button>
 
 </form>
 
-<!-- REVIEW -->
-<div id="reviewSection">
-<h2>PLEASE REVIEW THIS INFORMATION</h2>
-
-<table>
-<tr>
-<th>Field</th>
-<th>Value</th>
-<th>Status</th>
-</tr>
-
-<tbody id="reviewTable"></tbody>
-</table>
-</div>
-
 </body>
 </html>
-
