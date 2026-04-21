@@ -1,154 +1,96 @@
 body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #f3e8ff, #ede9fe);
+    font-family: Arial, sans-serif;
+    background-color: #E2A9F1; /* light lavender from logo */
+    color: #333333;
     margin: 0;
-    padding: 20px;
-    color: #2c2c2c;
+    padding: 0;
 }
 
-/* TITLE */
-h1 {
+h1, h2 {
+    font-family: 'Verdana', sans-serif;
+    color: #5CE1E6; /* turquoise from logo */
     text-align: center;
-    color: #5b21b6;
-    margin-bottom: 25px;
 }
 
-/* FORM WRAPPER */
-form {
-    width: 70%;
-    margin: auto;
+#header, #footer {
+    text-align: center;
+    padding: 25px 15px;
+    background-color: #C1FF72; /* soft green from logo */
 }
 
-/* FIELDSETS = CARD STYLE */
-fieldset {
-    background: white;
-    border: 2px solid #e9d5ff;
-    border-radius: 14px;
-    padding: 20px;
-    margin-bottom: 20px;
-
-    box-shadow: 0 6px 18px rgba(91, 33, 182, 0.12);
-}
-
-/* LEGENDS */
-legend {
-    font-weight: bold;
-    color: #6d28d9;
-    padding: 0 10px;
-}
-
-/* LABEL + INPUT ALIGNMENT FIX */
-input, select, textarea {
-    width: 100%;
-    padding: 10px 12px;
-    margin-top: 6px;
-    margin-bottom: 12px;
-
-    border: 1px solid #d8b4fe;
-    border-radius: 10px;
-
-    outline: none;
-    box-sizing: border-box;
-    font-size: 14px;
-}
-
-/* FOCUS EFFECT */
-input:focus, select:focus, textarea:focus {
-    border-color: #7c3aed;
-    box-shadow: 0 0 6px rgba(124, 58, 237, 0.25);
-}
-
-/* ERROR TEXT */
-.error {
-    color: #dc2626;
-    font-size: 12px;
-    margin-top: -8px;
-    margin-bottom: 10px;
-    display: block;
-}
-
-/* BUTTONS */
-button {
-    padding: 10px 16px;
-    margin: 5px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-
-    font-weight: bold;
-    transition: 0.2s ease-in-out;
-}
-
-/* REVIEW BUTTON */
-button[type="button"] {
-    background: #7c3aed;
-    color: white;
-}
-
-/* SUBMIT BUTTON */
-button[type="submit"] {
-    background: #22c55e;
-    color: white;
-}
-
-/* RESET BUTTON */
-button[type="reset"] {
-    background: #ef4444;
-    color: white;
-}
-
-button:hover {
-    transform: translateY(-2px);
-    opacity: 0.9;
-}
-
-/* REVIEW SECTION */
-#reviewSection {
-    width: 70%;
+#form-section {
+    width: 90%; /* wider form */
+    max-width: 1200px; /* prevent it from getting too wide on big screens */
     margin: 30px auto;
-    padding: 20px;
-
-    background: white;
-    border-radius: 14px;
-
-    box-shadow: 0 8px 22px rgba(91, 33, 182, 0.15);
-    border: 2px solid #e9d5ff;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #aaa;
 }
 
-/* TABLE */
 table {
     width: 100%;
-    border-collapse: collapse;
-    border-radius: 10px;
-    overflow: hidden;
+    border-collapse: separate;
+    border-spacing: 20px; /* more spacing between cells */
 }
 
-/* HEADER */
-th {
-    background: #6d28d9;
-    color: white;
-    padding: 12px;
-    text-align: left;
-}
-
-/* CELLS */
 td {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
+    padding: 10px 5px;
+    vertical-align: top;
 }
 
-/* ROW HOVER */
-tr:hover {
-    background: #f5f3ff;
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+    width: 100%; /* make inputs full width of their table cell */
+    padding: 8px 10px;
+    font-size: 1em;
+    border: 1px solid #5CE1E6;
+    border-radius: 6px;
+    box-sizing: border-box;
 }
 
-/* PASS / ERROR */
-.pass {
-    color: #16a34a;
+input[type="submit"], input[type="reset"], button {
+    padding: 12px 20px;
+    margin: 15px;
+    font-size: 1em;
+    background-color: #5CE1E6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover, button:hover {
+    background-color: #2fa8b2;
+}
+
+textarea {
+    resize: vertical;
+}
+
+#sliderValue {
     font-weight: bold;
+    color: #5CE1E6;
+    margin-left: 10px;
 }
 
-.errorText {
-    color: #dc2626;
-    font-weight: bold;
+/* Make the table responsive on smaller screens */
+@media (max-width: 768px) {
+    table, tr, td {
+        display: block;
+        width: 100%;
+    }
+
+    td {
+        margin-bottom: 15px;
+    }
+
+    td:first-child {
+        font-weight: bold;
+    }
 }
