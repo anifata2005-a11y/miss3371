@@ -2,78 +2,85 @@ body{
   font-family:'Segoe UI',Arial,sans-serif;
   margin:0;
   background:linear-gradient(135deg,#E2A9F1,#5CE1E6);
+  color:#222;
 }
 
 h1{
   text-align:center;
-  margin-top:20px;
-  color:#222;
+  margin:20px 0;
 }
 
-/* MAIN CARD */
+/* FORM CONTAINER */
 #form-section{
   width:90%;
-  max-width:850px;
-  margin:30px auto;
-  background:white;
-  padding:30px;
-  border-radius:18px;
-  box-shadow:0 20px 50px rgba(0,0,0,0.12);
+  max-width:820px;
+  margin:25px auto;
+  background:#fff;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.12);
 }
 
-/* GRID */
+/* GRID (CONTROLLED + STABLE) */
 .form-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:18px 24px;
+  gap:14px 18px;
 }
 
 /* FIELD BLOCK */
 .field{
   display:flex;
   flex-direction:column;
-  margin-bottom:10px;
 }
 
+/* FULL WIDTH */
 .field.full{
   grid-column:span 2;
 }
 
-/* LABELS */
+/* LABEL */
 label{
-  font-size:13px;
+  font-size:12.5px;
   font-weight:600;
-  margin-bottom:6px;
-  color:#2b2b2b;
+  margin-bottom:4px;
+  color:#333;
 }
 
-/* INPUTS (clean + not too long) */
+/* 🔥 FIXED INPUT SYSTEM (NO MORE RANDOM SIZES) */
 input, select{
-  width:260px;
+  width:220px;              /* consistent, not huge */
   max-width:100%;
-  padding:10px 12px;
+  padding:7px 10px;
   font-size:13px;
-  border:1px solid #e0e0e0;
-  border-radius:10px;
+  border:1px solid #ddd;
+  border-radius:8px;
   background:#fafafa;
-  transition:all 0.2s ease;
 }
 
+/* focus */
 input:focus, select:focus{
   outline:none;
   border-color:#5CE1E6;
   background:#fff;
-  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  box-shadow:0 2px 6px rgba(0,0,0,0.08);
 }
 
-/* 🔥 MIDDLE INITIAL FIX */
+/* 🔥 MIDDLE INITIAL FIX (small + correct) */
 #mi{
-  width:45px;
+  width:40px;
   text-align:center;
-  padding:6px;
+  padding:5px;
 }
 
-/* ERROR TEXT */
+/* FULL WIDTH FIELDS ONLY WHEN NEEDED */
+.field.full input,
+.field.full select{
+  width:100%;
+  max-width:420px;
+}
+
+/* ERROR (no jumping layout) */
 .error{
   font-size:11px;
   color:red;
@@ -81,58 +88,53 @@ input:focus, select:focus{
   margin-top:2px;
 }
 
-/* 🔥 HEALTH / CHECKBOX SECTION FIX (THIS IS THE BIG FIX YOU ASKED FOR) */
+/* 🔥 HEALTH SECTION (FIXED STRUCTURE) */
 .health-box{
   grid-column:span 2;
-  padding:14px;
-  border-radius:12px;
+  padding:12px;
+  border-radius:10px;
   background:rgba(92,225,230,0.08);
-  border:1px solid rgba(92,225,230,0.25);
+  border:1px solid rgba(92,225,230,0.2);
 }
 
-/* Title inside health section */
-.health-box label{
-  font-size:13px;
-  font-weight:700;
-  margin-bottom:10px;
-  display:block;
-  color:#222;
-}
-
-/* CHECKBOX ROW FIX (this removes the messy spacing) */
+/* clean checkbox row layout */
 .health-box div{
   display:flex;
   flex-wrap:wrap;
-  gap:10px 18px;
+  gap:10px 16px;
+  margin-top:6px;
 }
 
-/* CHECKBOX ALIGNMENT */
+.health-box label{
+  font-weight:600;
+  margin-bottom:6px;
+  display:block;
+}
+
+/* checkbox alignment */
 .health-box input[type="checkbox"]{
   width:auto;
-  margin-right:6px;
-  transform:scale(1.05);
+  margin-right:5px;
 }
 
-/* BUTTON AREA (Stripe-style layout) */
+/* 🔘 BUTTONS (REAL APP STYLE) */
 .buttons{
   display:flex;
   justify-content:center;
   gap:12px;
-  margin-top:25px;
+  margin-top:20px;
 }
 
-/* BASE BUTTON */
 button{
-  padding:10px 18px;
-  border-radius:12px;
+  padding:9px 16px;
   font-size:13px;
-  font-weight:600;
-  border:1px solid transparent;
+  border-radius:10px;
+  border:none;
   cursor:pointer;
-  transition:all 0.2s ease;
+  transition:0.2s ease;
 }
 
-/* VALIDATE BUTTON (PRIMARY) */
+/* primary */
 button:first-of-type{
   background:#5CE1E6;
   color:white;
@@ -141,30 +143,28 @@ button:first-of-type{
 button:first-of-type:hover{
   background:#3bb9c2;
   transform:translateY(-1px);
-  box-shadow:0 4px 10px rgba(0,0,0,0.08);
 }
 
-/* SUBMIT BUTTON (SECONDARY) */
+/* secondary */
 #submitBtn{
   background:white;
-  color:#333;
   border:1px solid #ddd;
+  color:#333;
 }
 
 #submitBtn:hover{
   background:#f5f5f5;
   transform:translateY(-1px);
-  box-shadow:0 4px 10px rgba(0,0,0,0.05);
 }
 
 /* SLIDER TEXT */
 #salaryDisplay{
-  margin-left:8px;
+  margin-left:6px;
   font-weight:bold;
   color:#3bb9c2;
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 @media(max-width:768px){
   .form-grid{
     grid-template-columns:1fr;
