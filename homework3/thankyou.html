@@ -11,18 +11,18 @@ h1 {
     margin-top: 20px;
 }
 
-/* FORM CONTAINER */
+/* FORM CARD */
 #form-section {
     width: 85%;
-    max-width: 700px; /* 🔥 prevents long ugly stretch */
+    max-width: 700px; /* 🔥 smaller = cleaner */
     margin: 30px auto;
-    padding: 25px;
+    padding: 25px 30px;
     background: white;
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* FIELDSETS */
+/* FIELDSET */
 fieldset {
     border: none;
     margin-bottom: 20px;
@@ -34,15 +34,15 @@ label, legend {
     color: #555;
 }
 
-/* INPUTS */
+/* INPUTS (NOT FULL WIDTH ANYMORE) */
 input, select, textarea {
     width: 100%;
+    max-width: 100%;
     padding: 8px 10px;
     margin-top: 5px;
     margin-bottom: 10px;
     border-radius: 8px;
     border: 1px solid #ddd;
-    box-sizing: border-box;
     transition: 0.2s;
 }
 
@@ -53,29 +53,30 @@ input:focus, select:focus, textarea:focus {
     box-shadow: 0 0 6px #5CE1E6;
 }
 
-/* 🔥 INLINE GROUP (FIRST + MI SAME ROW) */
+/* 🔥 SMALL FIELDS INLINE */
 .inline-group {
     display: flex;
     gap: 15px;
     align-items: center;
 }
 
-/* 🔥 SMALL INPUT FIXES */
+/* middle initial small */
 #mi {
-    width: 50px;  /* middle initial small */
+    width: 50px;
     text-align: center;
+}
+
+/* ID + ZIP smaller */
+#idnum {
+    width: 180px;
 }
 
 #zip {
     width: 120px;
 }
 
-#idnum {
-    width: 180px;
-}
-
 /* BUTTONS */
-button, input[type="submit"], input[type="reset"] {
+button {
     background: linear-gradient(135deg, #5CE1E6, #2fa8b2);
     color: white;
     padding: 10px 18px;
@@ -86,13 +87,11 @@ button, input[type="submit"], input[type="reset"] {
     transition: 0.2s;
 }
 
-button:hover,
-input[type="submit"]:hover,
-input[type="reset"]:hover {
+button:hover {
     transform: scale(1.05);
 }
 
-/* ERROR MESSAGES (NO JUMPING) */
+/* ERROR */
 .error {
     font-size: 12px;
     color: red;
