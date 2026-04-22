@@ -1,105 +1,31 @@
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(135deg, #E2A9F1, #f5d0ff);
-    margin: 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thank You</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-/* TITLE */
-h1 {
-    text-align: center;
-    color: white;
-    margin-top: 20px;
-}
+<body>
 
-/* FORM CARD */
-#form-section {
-    width: 85%;
-    max-width: 700px; /* 🔥 smaller = cleaner */
-    margin: 30px auto;
-    padding: 25px 30px;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
+<div id="form-section" style="text-align:center;">
 
-/* FIELDSET */
-fieldset {
-    border: none;
-    margin-bottom: 20px;
-}
+    <h1>Thank You!</h1>
 
-/* LABELS */
-label, legend {
-    font-weight: 600;
-    color: #555;
-}
+    <p>Your submission has been received successfully.</p>
+    <p>We will be contacting you shortly.</p>
 
-/* INPUTS (NOT FULL WIDTH ANYMORE) */
-input, select, textarea {
-    width: 100%;
-    max-width: 100%;
-    padding: 8px 10px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    transition: 0.2s;
-}
+    <br>
 
-/* ✨ FOCUS EFFECT */
-input:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: #5CE1E6;
-    box-shadow: 0 0 6px #5CE1E6;
-}
+    <button onclick="goBack()">Return to Form</button>
 
-/* 🔥 SMALL FIELDS INLINE */
-.inline-group {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
+</div>
 
-/* middle initial small */
-#mi {
-    width: 50px;
-    text-align: center;
+<script>
+function goBack() {
+    window.location.href = "homework3.html";
 }
+</script>
 
-/* ID + ZIP smaller */
-#idnum {
-    width: 180px;
-}
-
-#zip {
-    width: 120px;
-}
-
-/* BUTTONS */
-button {
-    background: linear-gradient(135deg, #5CE1E6, #2fa8b2);
-    color: white;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    margin: 10px 5px;
-    transition: 0.2s;
-}
-
-button:hover {
-    transform: scale(1.05);
-}
-
-/* ERROR */
-.error {
-    font-size: 12px;
-    color: red;
-    min-height: 14px;
-}
-
-/* SLIDER */
-#healthOutput {
-    font-weight: bold;
-    color: #5CE1E6;
-}
+</body>
+</html>
