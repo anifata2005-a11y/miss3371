@@ -10,32 +10,31 @@ h1{
   color:#222;
 }
 
-/* FORM CARD */
+/* MAIN CARD */
 #form-section{
   width:90%;
   max-width:850px;
   margin:30px auto;
   background:white;
-  padding:25px;
-  border-radius:16px;
-  box-shadow:0 12px 30px rgba(0,0,0,0.15);
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.12);
 }
 
-/* GRID LAYOUT */
+/* GRID */
 .form-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:12px 18px;
+  gap:18px 24px;
 }
 
-/* EACH FIELD */
+/* FIELD BLOCK */
 .field{
   display:flex;
   flex-direction:column;
-  margin-bottom:6px;
+  margin-bottom:10px;
 }
 
-/* FULL WIDTH */
 .field.full{
   grid-column:span 2;
 }
@@ -44,27 +43,27 @@ h1{
 label{
   font-size:13px;
   font-weight:600;
-  margin-bottom:4px;
-  color:#333;
+  margin-bottom:6px;
+  color:#2b2b2b;
 }
 
-/* INPUTS (FIXED SIZE — NOT LONG ANYMORE) */
+/* INPUTS (clean + not too long) */
 input, select{
-  width:240px;
+  width:260px;
   max-width:100%;
-  padding:8px;
+  padding:10px 12px;
   font-size:13px;
-  border:1px solid #ddd;
+  border:1px solid #e0e0e0;
   border-radius:10px;
   background:#fafafa;
-  transition:0.2s;
+  transition:all 0.2s ease;
 }
 
 input:focus, select:focus{
   outline:none;
   border-color:#5CE1E6;
-  box-shadow:0 0 6px rgba(92,225,230,0.4);
-  background:white;
+  background:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
 }
 
 /* 🔥 MIDDLE INITIAL FIX */
@@ -82,47 +81,80 @@ input:focus, select:focus{
   margin-top:2px;
 }
 
-/* 🔥 HEALTH / CHECKBOX SECTION FIX */
+/* 🔥 HEALTH / CHECKBOX SECTION FIX (THIS IS THE BIG FIX YOU ASKED FOR) */
 .health-box{
   grid-column:span 2;
-  padding:12px;
+  padding:14px;
   border-radius:12px;
   background:rgba(92,225,230,0.08);
-  border:1px solid rgba(92,225,230,0.3);
+  border:1px solid rgba(92,225,230,0.25);
 }
 
+/* Title inside health section */
 .health-box label{
   font-size:13px;
-  font-weight:600;
-  margin-bottom:8px;
+  font-weight:700;
+  margin-bottom:10px;
   display:block;
+  color:#222;
 }
 
+/* CHECKBOX ROW FIX (this removes the messy spacing) */
+.health-box div{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 18px;
+}
+
+/* CHECKBOX ALIGNMENT */
 .health-box input[type="checkbox"]{
   width:auto;
   margin-right:6px;
+  transform:scale(1.05);
 }
 
-/* BUTTONS */
+/* BUTTON AREA (Stripe-style layout) */
 .buttons{
-  text-align:center;
-  margin-top:15px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:25px;
 }
 
+/* BASE BUTTON */
 button{
-  padding:9px 16px;
-  margin:6px;
-  border:none;
-  border-radius:10px;
+  padding:10px 18px;
+  border-radius:12px;
+  font-size:13px;
+  font-weight:600;
+  border:1px solid transparent;
+  cursor:pointer;
+  transition:all 0.2s ease;
+}
+
+/* VALIDATE BUTTON (PRIMARY) */
+button:first-of-type{
   background:#5CE1E6;
   color:white;
-  font-weight:600;
-  cursor:pointer;
-  transition:0.2s;
 }
 
-button:hover{
+button:first-of-type:hover{
   background:#3bb9c2;
+  transform:translateY(-1px);
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* SUBMIT BUTTON (SECONDARY) */
+#submitBtn{
+  background:white;
+  color:#333;
+  border:1px solid #ddd;
+}
+
+#submitBtn:hover{
+  background:#f5f5f5;
+  transform:translateY(-1px);
+  box-shadow:0 4px 10px rgba(0,0,0,0.05);
 }
 
 /* SLIDER TEXT */
