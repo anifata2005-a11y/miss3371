@@ -1,23 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Thank You</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<title>Thank You</title>
+
+<style>
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #E2A9F1, #f5d0ff);
+    margin: 0;
+}
+
+/* CARD */
+.container {
+    max-width: 600px;
+    margin: 120px auto;
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* TEXT */
+h1 {
+    color: #5CE1E6;
+    margin-bottom: 15px;
+}
+
+p {
+    color: #555;
+    font-size: 16px;
+}
+
+/* BUTTON */
+button {
+    margin-top: 25px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #5CE1E6, #2fa8b2);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+</style>
 </head>
 
 <body>
 
-<div id="form-section" style="text-align:center;">
+<div class="container">
 
-    <h1>Thank You!</h1>
+    <h1>💖 Thank You!</h1>
 
-    <p>Your submission has been received successfully.</p>
-    <p>We will be contacting you shortly.</p>
+    <p>Your submission has been received.</p>
+    <p>We will contact you shortly.</p>
 
-    <br>
-
-    <button onclick="goBack()">Return to Form</button>
+    <button onclick="goBack()">Back to Form</button>
 
 </div>
 
