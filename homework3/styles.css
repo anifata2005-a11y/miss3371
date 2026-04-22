@@ -1,46 +1,134 @@
 body {
-    font-family: Arial;
-    background: linear-gradient(135deg, #E2A9F1, #5CE1E6);
+    font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
+    background: linear-gradient(135deg, #E2A9F1, #5CE1E6);
+    color: #333;
 }
 
+/* PAGE TITLE */
 h1 {
     text-align: center;
+    margin-top: 25px;
+    font-size: 2rem;
+    color: #222;
 }
 
+/* FORM CARD */
 #form-section {
-    width: 90%;
+    width: 92%;
     max-width: 900px;
     margin: 30px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
+/* REMOVE TABLE "OLD SCHOOL LOOK" */
 table {
     width: 100%;
+    border-spacing: 0 14px;
 }
 
 td {
-    padding: 8px;
+    vertical-align: top;
+    padding: 6px 10px;
 }
 
-input, select, textarea {
+/* LABELS */
+td:first-child {
+    width: 35%;
+    font-weight: 600;
+    padding-top: 12px;
+    color: #444;
+}
+
+/* INPUT FIELDS (MODERN LOOK) */
+input,
+select,
+textarea {
     width: 100%;
-    padding: 8px;
+    padding: 11px 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: 0.2s ease;
+    background: #fafafa;
 }
 
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #5CE1E6;
+    background: white;
+    box-shadow: 0 0 8px rgba(92, 225, 230, 0.4);
+}
+
+/* ERROR TEXT (CLEAN + CONSISTENT SPACE) */
 .error {
-    color: red;
-    font-size: 12px;
     display: block;
-    min-height: 14px;
+    min-height: 16px;
+    font-size: 0.78rem;
+    color: #ff3b3b;
+    margin-top: 4px;
 }
 
+/* SLIDER */
+#salaryDisplay {
+    font-weight: bold;
+    color: #5CE1E6;
+    margin-left: 10px;
+}
+
+/* BUTTONS */
 button {
-    padding: 10px;
-    margin: 10px;
-    background: #5CE1E6;
+    padding: 12px 18px;
+    margin: 15px 8px;
     border: none;
+    border-radius: 12px;
     cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+/* VALIDATE BUTTON */
+button:nth-of-type(1) {
+    background: #5CE1E6;
+    color: white;
+}
+
+button:nth-of-type(1):hover {
+    background: #3db9c2;
+    transform: translateY(-1px);
+}
+
+/* SUBMIT BUTTON */
+#submitBtn {
+    background: #7CFF8A;
+    color: #1a1a1a;
+}
+
+#submitBtn:hover {
+    background: #5fe070;
+    transform: translateY(-1px);
+}
+
+/* CHECKBOX + RADIO CLEANUP */
+input[type="checkbox"],
+input[type="radio"] {
+    width: auto;
+    margin-right: 6px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    table, tr, td {
+        display: block;
+        width: 100%;
+    }
+
+    td:first-child {
+        padding-top: 15px;
+    }
 }
