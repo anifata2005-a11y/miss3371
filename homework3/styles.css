@@ -65,13 +65,13 @@ textarea {
     box-sizing: border-box;
 }
 
-/*  FIX: MIDDLE INITIAL SMALL BOX */
+/* 🔥 FIX: MIDDLE INITIAL SMALL BOX */
 #mi {
     width: 50px;
     text-align: center;
 }
 
-/*  FIX: ZIP + SMALL INPUTS */
+/* 🔥 FIX: ZIP + SMALL INPUTS */
 #zip {
     width: 120px;
 }
@@ -111,7 +111,7 @@ input[type="reset"]:hover {
     margin-left: 10px;
 }
 
-/* ERROR MESSAGES (NO JUMPING) */
+/* 🔥 ERROR MESSAGES (NO JUMPING) */
 .error {
     display: block;
     min-height: 16px; /* keeps space even when empty */
