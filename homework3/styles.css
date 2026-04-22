@@ -1,57 +1,144 @@
+body{
+  font-family:'Segoe UI',Arial,sans-serif;
+  margin:0;
+  background:linear-gradient(135deg,#E2A9F1,#5CE1E6);
+}
+
+h1{
+  text-align:center;
+  margin-top:20px;
+  color:#222;
+}
+
+/* FORM CARD */
+#form-section{
+  width:90%;
+  max-width:850px;
+  margin:30px auto;
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* GRID LAYOUT */
 .form-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:10px 15px;
-  align-items:start;
+  gap:12px 18px;
 }
 
-/* each field won't stretch everything */
+/* EACH FIELD */
 .field{
   display:flex;
   flex-direction:column;
+  margin-bottom:6px;
 }
 
-/* 🔥 THIS FIXES LONG BOXES */
-input, select{
-  width:250px;        /* fixed nice size */
-  max-width:100%;     /* still responsive */
-  padding:7px;
-  font-size:13px;
-  border:1px solid #ddd;
-  border-radius:8px;
+/* FULL WIDTH */
+.field.full{
+  grid-column:span 2;
 }
 
-/* tiny MI stays tiny */
-#mi{
-  width:50px;
-}
-
-/* labels tight */
+/* LABELS */
 label{
   font-size:13px;
-  margin-bottom:3px;
+  font-weight:600;
+  margin-bottom:4px;
+  color:#333;
 }
 
-/* error spacing tight */
+/* INPUTS (FIXED SIZE — NOT LONG ANYMORE) */
+input, select{
+  width:240px;
+  max-width:100%;
+  padding:8px;
+  font-size:13px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  background:#fafafa;
+  transition:0.2s;
+}
+
+input:focus, select:focus{
+  outline:none;
+  border-color:#5CE1E6;
+  box-shadow:0 0 6px rgba(92,225,230,0.4);
+  background:white;
+}
+
+/* 🔥 MIDDLE INITIAL FIX */
+#mi{
+  width:45px;
+  text-align:center;
+  padding:6px;
+}
+
+/* ERROR TEXT */
 .error{
   font-size:11px;
+  color:red;
   min-height:12px;
   margin-top:2px;
 }
 
-/* full width fields don't stretch weird */
-.field.full input{
-  width:100%;
-  max-width:500px;
+/* 🔥 HEALTH / CHECKBOX SECTION FIX */
+.health-box{
+  grid-column:span 2;
+  padding:12px;
+  border-radius:12px;
+  background:rgba(92,225,230,0.08);
+  border:1px solid rgba(92,225,230,0.3);
 }
 
-/* buttons compact */
+.health-box label{
+  font-size:13px;
+  font-weight:600;
+  margin-bottom:8px;
+  display:block;
+}
+
+.health-box input[type="checkbox"]{
+  width:auto;
+  margin-right:6px;
+}
+
+/* BUTTONS */
 .buttons{
-  margin-top:10px;
+  text-align:center;
+  margin-top:15px;
 }
 
 button{
-  padding:8px 14px;
+  padding:9px 16px;
   margin:6px;
+  border:none;
+  border-radius:10px;
+  background:#5CE1E6;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.2s;
 }
+
+button:hover{
+  background:#3bb9c2;
+}
+
+/* SLIDER TEXT */
+#salaryDisplay{
+  margin-left:8px;
+  font-weight:bold;
+  color:#3bb9c2;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .field.full{
+    grid-column:span 1;
+  }
 }
