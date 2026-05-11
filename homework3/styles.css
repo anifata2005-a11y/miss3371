@@ -5,10 +5,6 @@ Version: 1.1
 Description: We Care Medical Clinic Registration Form Styling
 */
 
-/* ===============================
-   BODY
-================================= */
-
 body {
     font-family: Arial, sans-serif;
     background-color: #E2A9F1;
@@ -16,83 +12,62 @@ body {
     padding: 0;
 }
 
-/* ===============================
-   HEADER
-================================= */
-
 #header {
     text-align: center;
-    padding: 15px 10px;
+    padding: 15px;
     background-color: #C1FF72;
 }
 
 .logo {
     max-width: 120px;
-    height: auto;
     display: block;
     margin: 5px auto;
 }
 
-/* ===============================
-   FORM CONTAINER (SHORTER)
-================================= */
-
 #form-section {
-    width: 85%;
-    max-width: 900px;
+    width: 70%;
+    max-width: 800px;
     margin: 20px auto;
-    padding: 20px;
+    padding: 15px;
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
 }
 
-/* ===============================
-   FIELDSETS (Cleaner Spacing)
-================================= */
-
 fieldset {
-    margin-bottom: 15px;
-    padding: 10px 15px;
+    margin-bottom: 10px;
+    padding: 10px;
 }
 
 legend {
     font-weight: bold;
 }
 
-/* ===============================
-   INPUT FIELDS (SMALLER)
-================================= */
-
-input, select, textarea {
-    width: 100%;
-    padding: 6px;
-    margin-top: 4px;
-    margin-bottom: 8px;
-    border: 1px solid #5CE1E6;
-    border-radius: 5px;
-    box-sizing: border-box;
+label {
+    display: inline-block;
+    width: 130px;
+    font-weight: bold;
 }
 
-/* Middle Initial Smaller */
+input {
+    width: 60%;
+    padding: 5px;
+    border: 1px solid #5CE1E6;
+    border-radius: 4px;
+}
 
 #mi {
     width: 50px;
-    display: inline-block;
 }
-
-/* ===============================
-   BUTTONS (TIGHTER)
-================================= */
 
 input[type="submit"],
 input[type="reset"] {
-    padding: 8px 14px;
-    margin: 8px 5px;
+    padding: 6px 12px;
+    margin: 5px;
     background-color: #5CE1E6;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
@@ -101,15 +76,3 @@ input[type="reset"]:hover {
     background-color: #2fa8b2;
 }
 
-/* ===============================
-   REMOVE TABLE SPACING
-================================= */
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-td {
-    padding: 5px;
-}
