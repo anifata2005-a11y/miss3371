@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 3 - Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div id="header">
+    <img src="we-care-medical-clinic.png" class="logo">
+    <h1>We Care Medical Clinic</h1>
+</div>
+
+<div id="form-section">
+
+<h1>User Registration Form</h1>
+
+<form id="userForm" onsubmit="return false;">
+
+<!-- PERSONAL -->
+<fieldset>
+<legend>Personal Info</legend>
+
+First Name:
+<input type="text" id="firstName"
+oninput="validateName('firstName','errFirst')"
+title="1–30 letters, apostrophes, dashes only">
+<span class="error" id="errFirst"></span>
+
+Middle Initial:
+<input type="text" id="mi"
+oninput="validateMI()">
+<span class="error" id="errMI"></span>
+
+Last Name:
+<input type="text" id="lastName"
+oninput="validateName('lastName','errLast')">
+<span class="error" id="errLast"></span>
+
+<br>
+
+Date of Birth:
+<input type="date" id="dob" onblur="validateDOB()">
+<span class="error" id="errDOB"></span>
+
+<br>
+
+ID Number:
+<input type="password" id="idnum"
+oninput="formatID()">
+<span class="error" id="errID"></span>
+
+</fieldset>
+
+<!-- CONTACT -->
+<fieldset>
+<legend>Contact Info</legend>
+
+Email:
+<input type="text" id="email"
+oninput="validateEmail()">
+<span class="error" id="errEmail"></span>
+
+Phone:
+<input type="text" id="phone"
+oninput="validatePhone()">
+<span class="error" id="errPhone"></span>
+</fieldset>
+
+<!-- ADDRESS -->
+<fieldset>
+<legend>Address</legend>
+
+Address 1:
+<input type="text" id="addr1" oninput="validateRequired('addr1')">
+<span class="error" id="errAddr1"></span>
+
+Address 2:
+<input type="text" id="addr2" oninput="validateOptional('addr2')">
+<span class="error" id="errAddr2"></span>
+
+City:
+<input type="text" id="city" oninput="validateRequired('city')">
+<span class="error" id="errCity"></span>
+
+State:
+<select id="state" onchange="validateState()">
+<option value="">Select</option>
+<option>TX</option><option>CA</option><option>NY</option>
+<option>FL</option><option>IL</option><option>GA</option>
+<option>WA</option><option>PA</option><option>OH</option>
+<option>NC</option><option>MI</option><option>NJ</option>
+<option>VA</option><option>CO</option><option>MA</option>
+<option>TN</option><option>IN</option><option>MO</option>
+<option>MD</option><option>WI</option><option>MN</option>
+<option>SC</option><option>AL</option><option>LA</option>
+<option>KY</option><option>OR</option><option>OK</option>
+<option>CT</option><option>UT</option><option>IA</option>
+<option>NV</option><option>AR</option><option>MS</option>
+<option>KS</option><option>NM</option><option>NE</option>
+<option>WV</option><option>ID</option><option>HI</option>
+<option>NH</option><option>ME</option><option>MT</option>
+<option>RI</option><option>DE</option><option>SD</option>
+<option>ND</option><option>AK</option><option>VT</option>
+<option>DC</option><option>PR</option>
+</select>
+<span class="error" id="errState"></span>
+
+Zip:
+<input type="text" id="zip"
+oninput="validateZip()">
+<span class="error" id="errZip"></span>
+
+</fieldset>
+
+<!-- HEALTH -->
+<fieldset>
+<legend>Health Info</legend>
+
+<label><input type="checkbox"> Chicken Pox</label>
+<label><input type="checkbox"> Measles</label>
+<label><input type="checkbox"> Covid-19</label>
+<label><input type="checkbox"> Flu</label>
+<label><input type="checkbox"> Mumps</label>
+
+<br><br>
+
+Vaccinated:
+<label><input type="radio" name="vax" value="Yes">Yes</label>
+<label><input type="radio" name="vax" value="No">No</label>
+<label><input type="radio" name="vax" value="Unsure">Unsure</label>
+
+<br><br>
+
+Health Score:
+<input type="range" min="0" max="100"
+value="50" oninput="updateHealth(this.value)">
+<span id="healthOutput">50 (Moderate Health)</span>
+
+<br><br>
+
+<textarea id="notes" placeholder="Optional notes"></textarea>
+</fieldset>
+
+<!-- ACCOUNT -->
+<fieldset>
+<legend>Account</legend>
+
+User ID:
+<input type="text" id="userId"
+oninput="validateUserID()">
+<span class="error" id="errUser"></span>
+
+Password:
+<input type="password" id="password"
+oninput="validatePassword()">
+
+Confirm Password:
+<input type="password" id="confirmPassword"
+oninput="matchPassword()">
+<span class="error" id="errPass"></span>
+
+</fieldset>
+
+<br>
+
+<button type="button" onclick="validateAll()">VALIDATE</button>
+<button type="submit" id="submitBtn" style="display:none;"
+onclick="goToThankYou()">Submit</button>
+<button type="reset">Start Over</button>
+
+</form>
+
+</body>
+</html>
