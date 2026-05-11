@@ -1,9 +1,8 @@
 /*
 Program name: style.css
 Author: Minatu Anifata
-Version: 1.0
+Version: 1.1
 Description: We Care Medical Clinic Registration Form Styling
-
 */
 
 /* ===============================
@@ -12,7 +11,7 @@ Description: We Care Medical Clinic Registration Form Styling
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #E2A9F1; /* light lavender */
+    background-color: #E2A9F1;
     color: #333333;
     margin: 0;
     padding: 0;
@@ -24,8 +23,9 @@ body {
 
 h1, h2 {
     font-family: Verdana, sans-serif;
-    color: #5CE1E6; /* turquoise */
+    color: #5CE1E6;
     text-align: center;
+    margin: 10px 0;
 }
 
 /* ===============================
@@ -35,12 +35,19 @@ h1, h2 {
 #header,
 #footer {
     text-align: center;
-    padding: 25px 15px;
-    background-color: #C1FF72; /* soft green */
-    <div id="header">
-    <img src="images/we-care-medical-clinic.png" alt="We Care Logo" class="logo">
-    <h1>We Care Medical Clinic</h1>
-</div>
+    padding: 20px 15px;
+    background-color: #C1FF72;
+}
+
+/* ===============================
+   LOGO IMAGE (PNG)
+================================= */
+
+.logo {
+    display: block;
+    margin: 10px auto;
+    max-width: 140px;
+    height: auto;
 }
 
 /* ===============================
@@ -51,24 +58,24 @@ h1, h2 {
     width: 90%;
     max-width: 1200px;
     margin: 30px auto;
-    padding: 30px;
+    padding: 25px;
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 0 15px #aaa;
 }
 
 /* ===============================
-   TABLE LAYOUT (SPACIOUS)
+   TABLE LAYOUT (FIXED SPACING)
 ================================= */
 
 table {
     width: 100%;
     border-collapse: separate;
-    border-spacing: 20px;
+    border-spacing: 15px 18px; /* horizontal + vertical spacing */
 }
 
 td {
-    padding: 10px 5px;
+    padding: 8px;
     vertical-align: top;
 }
 
@@ -85,7 +92,7 @@ input[type="number"],
 select,
 textarea {
     width: 100%;
-    padding: 8px 10px;
+    padding: 10px;
     font-size: 1em;
     border: 1px solid #5CE1E6;
     border-radius: 6px;
@@ -109,7 +116,7 @@ textarea:focus {
 }
 
 /* ===============================
-   SLIDER VALUE TEXT
+   SLIDER VALUE
 ================================= */
 
 #sliderValue {
@@ -125,8 +132,8 @@ textarea:focus {
 input[type="submit"],
 input[type="reset"],
 button {
-    padding: 12px 20px;
-    margin: 15px;
+    padding: 12px 18px;
+    margin: 10px;
     font-size: 1em;
     background-color: #5CE1E6;
     color: white;
@@ -151,31 +158,17 @@ button:hover {
 }
 
 /* ===============================
-   LOGO IMAGE (PNG)
-================================= */
-
-.logo {
-    display: block;
-    margin: 0 auto 15px auto;
-    max-width: 150px;
-    height: auto;
-}
-
-/* ===============================
    RESPONSIVE DESIGN
 ================================= */
 
 @media (max-width: 768px) {
 
-    table,
-    tr,
-    td {
+    table, tr, td {
         display: block;
         width: 100%;
     }
 
     td {
-        margin-bottom: 15px;
+        margin-bottom: 12px;
     }
-
 }
