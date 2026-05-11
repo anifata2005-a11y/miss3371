@@ -1,11 +1,14 @@
 /*
 Program name: style.css
 Author: Minatu Anifata
-Date created: April 13, 2026
-Version: 2.0
-Description: Patient Registration Form 
+Version: 1.0
+Description: We Care Medical Clinic Registration Form Styling
 
+*/
 
+/* ===============================
+   BODY
+================================= */
 
 body {
     font-family: Arial, sans-serif;
@@ -15,22 +18,34 @@ body {
     padding: 0;
 }
 
+/* ===============================
+   HEADINGS
+================================= */
+
 h1, h2 {
     font-family: Verdana, sans-serif;
     color: #5CE1E6; /* turquoise */
     text-align: center;
 }
 
+/* ===============================
+   HEADER & FOOTER
+================================= */
 
-
-#header, 
+#header,
 #footer {
     text-align: center;
     padding: 25px 15px;
     background-color: #C1FF72; /* soft green */
+    <div id="header">
+    <img src="images/we-care-medical-clinic.png" alt="We Care Logo" class="logo">
+    <h1>We Care Medical Clinic</h1>
+</div>
 }
 
-
+/* ===============================
+   FORM CONTAINER
+================================= */
 
 #form-section {
     width: 90%;
@@ -42,7 +57,9 @@ h1, h2 {
     box-shadow: 0 0 15px #aaa;
 }
 
-
+/* ===============================
+   TABLE LAYOUT (SPACIOUS)
+================================= */
 
 table {
     width: 100%;
@@ -55,7 +72,9 @@ td {
     vertical-align: top;
 }
 
-
+/* ===============================
+   INPUT FIELDS
+================================= */
 
 input[type="text"],
 input[type="password"],
@@ -73,9 +92,7 @@ textarea {
     box-sizing: border-box;
 }
 
-textarea {
-    resize: vertical;
-}
+/* Focus Effect */
 
 input:focus,
 select:focus,
@@ -84,14 +101,16 @@ textarea:focus {
     border-color: #2fa8b2;
 }
 
-
+/* Middle Initial */
 
 #mi {
     width: 60px;
     text-align: center;
 }
 
-
+/* ===============================
+   SLIDER VALUE TEXT
+================================= */
 
 #sliderValue {
     font-weight: bold;
@@ -99,7 +118,9 @@ textarea:focus {
     margin-left: 10px;
 }
 
-
+/* ===============================
+   BUTTONS
+================================= */
 
 input[type="submit"],
 input[type="reset"],
@@ -120,18 +141,35 @@ button:hover {
     background-color: #2fa8b2;
 }
 
-
+/* ===============================
+   ERROR MESSAGE
+================================= */
 
 .error {
     font-size: 0.85em;
     color: red;
 }
 
+/* ===============================
+   LOGO IMAGE (PNG)
+================================= */
 
+.logo {
+    display: block;
+    margin: 0 auto 15px auto;
+    max-width: 150px;
+    height: auto;
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+================================= */
 
 @media (max-width: 768px) {
 
-    table, tr, td {
+    table,
+    tr,
+    td {
         display: block;
         width: 100%;
     }
