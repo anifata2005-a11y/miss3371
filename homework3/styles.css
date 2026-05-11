@@ -12,163 +12,104 @@ Description: We Care Medical Clinic Registration Form Styling
 body {
     font-family: Arial, sans-serif;
     background-color: #E2A9F1;
-    color: #333333;
     margin: 0;
     padding: 0;
 }
 
 /* ===============================
-   HEADINGS
+   HEADER
 ================================= */
 
-h1, h2 {
-    font-family: Verdana, sans-serif;
-    color: #5CE1E6;
+#header {
     text-align: center;
-    margin: 10px 0;
-}
-
-/* ===============================
-   HEADER & FOOTER
-================================= */
-
-#header,
-#footer {
-    text-align: center;
-    padding: 20px 15px;
+    padding: 15px 10px;
     background-color: #C1FF72;
 }
 
-/* ===============================
-   LOGO IMAGE (PNG)
-================================= */
-
 .logo {
-    display: block;
-    margin: 10px auto;
-    max-width: 140px;
+    max-width: 120px;
     height: auto;
+    display: block;
+    margin: 5px auto;
 }
 
 /* ===============================
-   FORM CONTAINER
+   FORM CONTAINER (SHORTER)
 ================================= */
 
 #form-section {
-    width: 90%;
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 25px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 0 15px #aaa;
+    width: 85%;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 /* ===============================
-   TABLE LAYOUT (FIXED SPACING)
+   FIELDSETS (Cleaner Spacing)
 ================================= */
 
-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 15px 18px; /* horizontal + vertical spacing */
+fieldset {
+    margin-bottom: 15px;
+    padding: 10px 15px;
 }
 
-td {
-    padding: 8px;
-    vertical-align: top;
+legend {
+    font-weight: bold;
 }
 
 /* ===============================
-   INPUT FIELDS
+   INPUT FIELDS (SMALLER)
 ================================= */
 
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="tel"],
-input[type="date"],
-input[type="number"],
-select,
-textarea {
+input, select, textarea {
     width: 100%;
-    padding: 10px;
-    font-size: 1em;
+    padding: 6px;
+    margin-top: 4px;
+    margin-bottom: 8px;
     border: 1px solid #5CE1E6;
-    border-radius: 6px;
+    border-radius: 5px;
     box-sizing: border-box;
 }
 
-/* Focus Effect */
-
-input:focus,
-select:focus,
-textarea:focus {
-    outline: none;
-    border-color: #2fa8b2;
-}
-
-/* Middle Initial */
+/* Middle Initial Smaller */
 
 #mi {
-    width: 60px;
-    text-align: center;
+    width: 50px;
+    display: inline-block;
 }
 
 /* ===============================
-   SLIDER VALUE
-================================= */
-
-#sliderValue {
-    font-weight: bold;
-    color: #5CE1E6;
-    margin-left: 10px;
-}
-
-/* ===============================
-   BUTTONS
+   BUTTONS (TIGHTER)
 ================================= */
 
 input[type="submit"],
-input[type="reset"],
-button {
-    padding: 12px 18px;
-    margin: 10px;
-    font-size: 1em;
+input[type="reset"] {
+    padding: 8px 14px;
+    margin: 8px 5px;
     background-color: #5CE1E6;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 input[type="submit"]:hover,
-input[type="reset"]:hover,
-button:hover {
+input[type="reset"]:hover {
     background-color: #2fa8b2;
 }
 
 /* ===============================
-   ERROR MESSAGE
+   REMOVE TABLE SPACING
 ================================= */
 
-.error {
-    font-size: 0.85em;
-    color: red;
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-/* ===============================
-   RESPONSIVE DESIGN
-================================= */
-
-@media (max-width: 768px) {
-
-    table, tr, td {
-        display: block;
-        width: 100%;
-    }
-
-    td {
-        margin-bottom: 12px;
-    }
+td {
+    padding: 5px;
 }
