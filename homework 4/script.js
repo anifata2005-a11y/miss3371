@@ -1,159 +1,118 @@
 // =====================
-// FETCH STATES (HOMEWORK 4)
+// COOKIE SYSTEM
 // =====================
-async function loadStates() {
-    try {
-        const response = await fetch("states.txt");
+function setCookie(name, value, hours) {
+    let d = new Date();
+    d.setTime(d.getTime() + (hours * 60 * 60 * 1000));
+    document.cookie = name + "=" + value + ";expires=" + d.toUTCString() + ";path=/";
+}
 
-        if (!response.ok) {
-            throw new Error("Could not load states file");
-        }
+function getCookie(name) {
+    return document.cookie.split("; ").find(row => row.startsWith(name + "="))?.split("=")[1];
+}
 
-        const data = await response.text();
-        const states = data.split("\n");
+function deleteCookie(name) {
+    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
 
-        const stateSelect = document.getElementById("state");
+// =====================
+// WELCOME MESSAGE
+// =====================
+function loadUser() {
+    let name = getCookie("firstName");
+    let welcome = document.getElementById("welcome");
 
-        states.forEach(state => {
-            if (state.trim() !== "") {
-                let option = document.createElement("option");
-                option.value = state.trim();
-                option.textContent = state.trim();
-                stateSelect.appendChild(option);
-            }
-        });
+    if (name) {
+        welcome.innerHTML = "Welcome back, " + name +
+        " <br><a href='#' onclick='newUser()'>Not you?</a>";
 
-    } catch (error) {
-        console.log("Fetch Error:", error);
+        document.getElementById("firstName").value = name;
+    } else {
+        welcome.innerText = "Welcome New User";
     }
 }
 
-// Run fetch when page loads
-window.addEventListener("load", loadStates);
-
-
 // =====================
-// NAME VALIDATION
+// RESET USER
 // =====================
-function validateName(id, errId) {
-    let v = document.getElementById(id).value;
-    let e = document.getElementById(errId);
-
-    let ok = /^[A-Za-z'-]{1,30}$/.test(v);
-
-    e.innerText = ok ? "" : "1–30 letters, apostrophes, dashes only";
-    return ok;
+function newUser() {
+    deleteCookie("firstName");
+    localStorage.clear();
+    location.reload();
 }
 
 // =====================
-// MIDDLE INITIAL
+// SAVE COOKIE
 // =====================
-function validateMI() {
-    let v = document.getElementById("mi").value;
-    let e = document.getElementById("errMI");
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("firstName").addEventListener("blur", function () {
+        if (document.getElementById("remember").checked) {
+            setCookie("firstName", this.value, 48);
+        }
+    });
+});
 
-    let ok = v === "" || /^[A-Za-z]$/.test(v);
+// =====================
+// LOCAL STORAGE
+// =====================
+function saveFormData() {
+    localStorage.setItem("email", email.value);
+    localStorage.setItem("phone", phone.value);
+    localStorage.setItem("city", city.value);
+    localStorage.setItem("addr1", addr1.value);
+    localStorage.setItem("zip", zip.value);
+}
 
-    e.innerText = ok ? "" : "Single letter only";
-    return ok;
+function loadFormData() {
+    email.value = localStorage.getItem("email") || "";
+    phone.value = localStorage.getItem("phone") || "";
+    city.value = localStorage.getItem("city") || "";
+    addr1.value = localStorage.getItem("addr1") || "";
+    zip.value = localStorage.getItem("zip") || "";
 }
 
 // =====================
-// DOB
+// FETCH STATES
 // =====================
-function validateDOB() {
-    let v = document.getElementById("dob").value;
-    let e = document.getElementById("errDOB");
+async function loadStates() {
+    try {
+        let res = await fetch("./states.txt");
+        let data = await res.text();
 
-    let dob = new Date(v);
-    let today = new Date();
+        let states = data.split(",");
+        let dropdown = document.getElementById("state");
 
-    let age = today.getFullYear() - dob.getFullYear();
+        states.forEach(s => {
+            let opt = document.createElement("option");
+            opt.textContent = s.trim();
+            opt.value = s.trim();
+            dropdown.appendChild(opt);
+        });
 
-    let ok = v && dob <= today && age <= 120;
-
-    e.innerText = ok ? "" : "Invalid DOB (0–120 yrs)";
-    return ok;
+    } catch (e) {
+        console.log(e);
+    }
 }
 
 // =====================
-// STATE
-// =====================
-function validateState() {
-    let v = document.getElementById("state").value;
-    let e = document.getElementById("errState");
-
-    let ok = v !== "";
-
-    e.innerText = ok ? "" : "Select a state";
-    return ok;
-}
-
-// =====================
-// EMAIL
-// =====================
-function validateEmail() {
-    let input = document.getElementById("email");
-    let e = document.getElementById("errEmail");
-
-    input.value = input.value.toLowerCase();
-
-    let ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
-
-    e.innerText = ok ? "" : "Invalid email";
-    return ok;
-}
-
-// =====================
-// PHONE
-// =====================
-function validatePhone() {
-    let v = document.getElementById("phone").value;
-    let e = document.getElementById("errPhone");
-
-    let ok = /^\d{3}-\d{3}-\d{4}$/.test(v);
-
-    e.innerText = ok ? "" : "Format: 123-456-7890";
-    return ok;
-}
-
-// =====================
-// ZIP
-// =====================
-function validateZip() {
-    let v = document.getElementById("zip").value;
-    let e = document.getElementById("errZip");
-
-    let ok = /^\d{5}$/.test(v);
-
-    e.innerText = ok ? "" : "5 digits only";
-    return ok;
-}
-
-// =====================
-// MASTER VALIDATION
+// VALIDATION + SUBMIT
 // =====================
 function validateAll() {
 
-    let ok = true;
+    let valid = true;
 
-    if (!validateName("firstName", "errFirst")) ok = false;
-    if (!validateMI()) ok = false;
-    if (!validateName("lastName", "errLast")) ok = false;
-    if (!validateDOB()) ok = false;
-    if (!validateEmail()) ok = false;
-    if (!validatePhone()) ok = false;
-    if (!validateState()) ok = false;
-    if (!validateZip()) ok = false;
+    if (valid) {
+        window.location.href = "thankyou.html";
+    }
 
-    alert(ok ? "Form is valid!" : "Please fix errors.");
-
-    return ok;
+    return false;
 }
 
 // =====================
-// THANK YOU PAGE
+// INIT
 // =====================
-function goToThankYou() {
-    window.location.href = "thankyou.html";
-}
+window.onload = function () {
+    loadUser();
+    loadFormData();
+    loadStates();
+};
