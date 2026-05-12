@@ -1,74 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Thank You</title>
-
-<style>
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(135deg, #E2A9F1, #f5d0ff);
-    margin: 0;
-}
-
-/* CARD */
-.container {
-    max-width: 600px;
-    margin: 120px auto;
-    background: white;
-    padding: 40px 30px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-/* TEXT */
-h1 {
-    color: #5CE1E6;
-    margin-bottom: 15px;
-}
-
-p {
-    color: #555;
-    font-size: 16px;
-}
-
-/* BUTTON */
-button {
-    margin-top: 25px;
-    padding: 10px 20px;
-    background: linear-gradient(135deg, #5CE1E6, #2fa8b2);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-button:hover {
-    transform: scale(1.05);
-}
-</style>
+    <title>Thank You</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="container">
-
-    <h1>💖 Thank You!</h1>
-
-    <p>Your submission has been received.</p>
-    <p>We will contact you shortly.</p>
-
-    <button onclick="goBack()">Back to Form</button>
-
+<div id="header">
+    <h1>Thank You!</h1>
 </div>
 
-<script>
-function goBack() {
-    window.location.href = "homework3.html";
-}
-</script>
+<div id="form-section">
+    <h2>Your form has been submitted successfully.</h2>
+    <p>We Care Medical Clinic appreciates you.</p>
+
+    <button onclick="window.location.href='index.html'">
+        Back to Form
+    </button>
+</div>
+
+<div id="footer">
+    We Care Medical Clinic © 2026
+</div>
 
 </body>
 </html>
