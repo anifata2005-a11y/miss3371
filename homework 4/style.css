@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding-top: 110px;   /* FIXED for smaller header */
+    padding-top: 120px;   /* FIXED for smaller header */
     padding-bottom: 70px;
     background-color: #E2A9F1;
     line-height: 1.4;
