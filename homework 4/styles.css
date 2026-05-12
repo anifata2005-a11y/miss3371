@@ -1,92 +1,73 @@
-/*
-Program name: style.css
-Author: Minatu Anifata
-Version: 1.1
-Description: We Care Medical Clinic Registration Form Styling
-*/
-
 body {
     font-family: Arial, sans-serif;
-    background-color: #E2A9F1;
     margin: 0;
-    padding: 0;
+    padding-top: 120px; 
+    padding-bottom: 60px; 
+    background-color: #E2A9F1;
 }
 
 /* HEADER */
-
 #header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #C1FF72;
     text-align: center;
     padding: 10px;
-    background-color: #C1FF72;
+    z-index: 1000;
 }
 
 .logo {
     max-width: 100px;
-    display: block;
-    margin: 5px auto;
 }
 
-/* FORM CONTAINER */
-
+/* FORM */
 #form-section {
-    width: 60%;
-    max-width: 700px;
-    margin: 15px auto;
-    padding: 15px;
+    width: 80%;
+    max-width: 900px;
+    margin: 20px auto;
     background: white;
+    padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 0 6px rgba(0,0,0,0.2);
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
 }
-
-/* FIELDSETS */
 
 fieldset {
-    margin-bottom: 8px;
-    padding: 8px;
+    margin-bottom: 10px;
+    padding: 10px;
 }
 
 legend {
     font-weight: bold;
-    font-size: 0.95em;
 }
 
-/* LABEL + INPUT INLINE */
-
-label {
-    display: inline-block;
-    width: 120px;
-    font-size: 0.9em;
+input, select {
+    padding: 5px;
+    margin-top: 5px;
 }
 
-input {
-    width: 55%;
-    padding: 4px;
-    margin-bottom: 6px;
-    border: 1px solid #5CE1E6;
-    border-radius: 4px;
-    font-size: 0.9em;
+/* ERRORS */
+.error {
+    color: red;
+    font-size: 0.85em;
 }
 
-/* SHORT MIDDLE INITIAL */
-
-#mi {
-    width: 40px;
+/* IFRAME */
+#iframe-section {
+    width: 80%;
+    margin: 20px auto;
 }
 
-/* BUTTONS */
-
-input[type="submit"],
-input[type="reset"] {
-    padding: 5px 10px;
-    margin: 5px;
-    background-color: #5CE1E6;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+iframe {
+    border: 1px solid #ccc;
 }
 
-input[type="submit"]:hover,
-input[type="reset"]:hover {
-    background-color: #2fa8b2;
+/* FOOTER */
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #C1FF72;
+    text-align: center;
+    padding: 10px;
 }
