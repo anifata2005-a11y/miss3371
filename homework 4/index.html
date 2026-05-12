@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>We Care Medical Clinic</title>
-
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
@@ -11,9 +10,14 @@
 
 <!-- HEADER -->
 <div id="header">
-    <img src="we-care-medical-clinic.png" alt="Logo" class="logo">
+    <img src="we-care-medical-clinic.png" class="logo">
     <h1>We Care Medical Clinic</h1>
-    <h2 id="welcome"></h2>
+    <h2 id="welcome">Loading...</h2>
+
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="resources.html">Resources</a>
+    </nav>
 </div>
 
 <!-- FORM -->
@@ -39,45 +43,44 @@
         DOB:
         <input type="date" id="dob" onblur="validateDOB()">
         <span class="error" id="errDOB"></span>
-
     </fieldset>
 
     <fieldset>
         <legend>Contact</legend>
 
         Email:
-        <input type="email" id="email" onblur="validateEmail()">
-        <span class="error" id="errEmail"></span><br><br>
+        <input type="email" id="email" oninput="saveFormData()">
+        <span class="error"></span><br><br>
 
         Phone:
-        <input type="tel" id="phone" onblur="validatePhone()">
-        <span class="error" id="errPhone"></span>
-
+        <input type="tel" id="phone" oninput="saveFormData()">
+        <span class="error"></span>
     </fieldset>
 
     <fieldset>
         <legend>Address</legend>
 
-        Address 1:
-        <input type="text" id="addr1"><br><br>
+        Address:
+        <input type="text" id="addr1" oninput="saveFormData()"><br><br>
 
         City:
-        <input type="text" id="city"><br><br>
+        <input type="text" id="city" oninput="saveFormData()"><br><br>
 
         State:
-        <select id="state" onchange="validateState()">
-            <option value="">Select</option>
-        </select>
+        <select id="state"></select>
         <span class="error" id="errState"></span><br><br>
 
         Zip:
-        <input type="text" id="zip" onblur="validateZip()">
+        <input type="text" id="zip" oninput="saveFormData()">
         <span class="error" id="errZip"></span>
-
     </fieldset>
 
+    <br>
+
     <input type="checkbox" id="remember" checked>
-    Remember Me<br><br>
+    Remember Me
+
+    <br><br>
 
     <input type="submit" value="Submit">
     <input type="reset" value="Reset">
@@ -86,9 +89,9 @@
 
 </div>
 
-<!-- IFRAME (REQUIRED) -->
+<!-- iFRAME (REQUIRED FEATURE) -->
 <div id="iframe-section">
-    <iframe src="resources.html" width="100%" height="300"></iframe>
+    <iframe src="https://www.w3schools.com" width="100%" height="300"></iframe>
 </div>
 
 <!-- FOOTER -->
