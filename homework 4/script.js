@@ -79,7 +79,7 @@ async function loadStates() {
         let res = await fetch("./states.txt");
         let data = await res.text();
 
-        let states = data.split(",");
+        let states = data.split("\n").map(s => s.trim());
         let dropdown = document.getElementById("state");
 
         states.forEach(s => {
