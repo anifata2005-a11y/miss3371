@@ -1,68 +1,114 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding-top: 120px; 
-    padding-bottom: 60px; 
+    padding-top: 130px;
+    padding-bottom: 70px;
     background-color: #E2A9F1;
+    line-height: 1.4;
 }
 
-/* HEADER */
+/* =====================
+   HEADER
+===================== */
 #header {
     position: fixed;
     top: 0;
     width: 100%;
     background-color: #C1FF72;
     text-align: center;
-    padding: 10px;
+    padding: 12px 10px;
     z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
 .logo {
-    max-width: 100px;
+    max-width: 90px;
+    display: block;
+    margin: 0 auto 5px auto;
 }
 
-/* FORM */
+/* Navigation (adds polish without changing design) */
+#header nav {
+    margin-top: 5px;
+}
+
+#header nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+}
+
+#header nav a:hover {
+    text-decoration: underline;
+}
+
+/* =====================
+   FORM CONTAINER
+===================== */
 #form-section {
-    width: 80%;
+    width: 85%;
     max-width: 900px;
-    margin: 20px auto;
+    margin: 25px auto;
     background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
 }
 
+/* FIELDSETS */
 fieldset {
-    margin-bottom: 10px;
-    padding: 10px;
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
 }
 
 legend {
     font-weight: bold;
+    padding: 0 5px;
 }
 
+/* INPUTS */
 input, select {
-    padding: 5px;
+    padding: 7px;
     margin-top: 5px;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-/* ERRORS */
+/* BETTER FORM SPACING */
+input[type="checkbox"] {
+    width: auto;
+}
+
+/* ERROR TEXT */
 .error {
     color: red;
     font-size: 0.85em;
 }
 
-/* IFRAME */
+/* =====================
+   IFRAME SECTION
+===================== */
 #iframe-section {
-    width: 80%;
+    width: 85%;
+    max-width: 900px;
     margin: 20px auto;
 }
 
 iframe {
+    width: 100%;
     border: 1px solid #ccc;
+    border-radius: 6px;
 }
 
-/* FOOTER */
+/* =====================
+   FOOTER
+===================== */
 #footer {
     position: fixed;
     bottom: 0;
@@ -70,4 +116,6 @@ iframe {
     background-color: #C1FF72;
     text-align: center;
     padding: 10px;
+    font-size: 14px;
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
 }
