@@ -1,15 +1,12 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding-top: 120px;   /* FIXED for smaller header */
-    padding-bottom: 70px;
+    padding-top: 120px;   
     background-color: #E2A9F1;
     line-height: 1.4;
 }
 
-/* =====================
-   HEADER (FIXED + CLEAN)
-===================== */
+
 #header {
     position: fixed;
     top: 0;
